@@ -1,0 +1,408 @@
+Algoritmo Test_VARK
+	Definir p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16 Como Caracter
+	Definir V,A,R,K Como Entero
+	// VARIABLES PARA GUARDAR LAS RESPUESTAS 
+	V <- 0
+	A <- 0
+	R <- 0
+	K <- 0
+	Escribir '--------------- BIENVENIDO AL TEST VARK ---------------'
+	Escribir 'Este cuestionario tiene como proposito ayudarle a conocer como trabaja con la'
+	Escribir 'informacion y cual es su estilo de aprendizaje preferido para captar, procesar, '
+	Escribir 'proporcionar ideas e informacion.'
+	Escribir '--------------- INSTRUCCIONES ---------------'
+	Escribir 'Esta a punto de comenzar el test, se le haran una serie de preguntas.'
+	Escribir 'Seleccione la letra del inciso que usted considere correcto.'
+	Escribir 'Solo puede escribir una respuesta (solo puede ser en minuscula)'
+	Escribir '¡VAMOS A LAS PREGUNTAS!'
+	// INICIO DE LAS PREGUNTAS
+	Escribir '1.  Esta ayudando a una persona que desea ir al aeropuerto, al centro de la ciudad o a la'
+	Escribir 'estacion del ferrocarril, usted... '
+	Escribir 'a.  Iria con ella'
+	Escribir 'b.  Le diria como llegar'
+	Escribir 'c.  Le daria las instrucciones por escrito (sin un mapa)'
+	Escribir 'd.  Le daria un mapa'
+	Leer p1
+	// CONDICION PARA IR GUARDANDO Y SUMANDO LAS RESPUESTAS 
+	Si (p1=='d') Entonces
+		V <- V+1
+	SiNo
+		Si (p1=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p1=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p1=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '2.  No esta seguro si una palabra se escribe como *trascendnete* o *tracendnete*, usted...'
+	Escribir 'a.  Veria las palabras en su mente y eligiria la que mejor luce'
+	Escribir 'b.  Pensaria en como suena cada palabra y elegiria una '
+	Escribir 'c.  Las buscaria en un diccionario '
+	Escribir 'd.  Escribiria ambas palabras y elegiria una '
+	Leer p2
+	Si (p=='a') Entonces
+		V <- V+1
+	SiNo
+		Si (p=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p=='d') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '3.  Esta planeado unas vacaciones para un grupo de personas y desearia la'
+	Escribir ' retroalimentacion de ellos sobre el plan, usted...'
+	Escribir 'a.  Describiria algunos de los atractivos del viaje'
+	Escribir 'b.  Utilizaria un mapa o un sitio web para mostrar los lugares'
+	Escribir 'c.  Les daria una copia del itinerario impreso'
+	Escribir 'd.  Les llamaria por telefono, les escribiria o les enviaria un e-mail'
+	Leer p3
+	Si (p3=='b') Entonces
+		V <- V+1
+	SiNo
+		Si (p3=='d') Entonces
+			A <- A+1
+		FinSi
+		Si (p3=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p1=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '4.  Va a concinar algun platillo especial para su familia, usted...'
+	Escribir 'a.  Cocinaria algo que conoce sin la necesidad de instrucciones'
+	Escribir 'b.  Pediria sugerencias a sus amigos'
+	Escribir 'c.  Hojearia un libro de cocina para tomar ideas de las fotografias'
+	Escribir 'd.  Utilizaria un libro de cocina donde sabe que hay una buena receta'
+	Leer p4
+	Si (p1=='c') Entonces
+		V <- V+1
+	SiNo
+		Si (p1=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p1=='d') Entonces
+			R <- R+1
+		SiNo
+			Si (p1=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '5.  Un grupo de turistas desea aprender sobre los parques o las reservas de vida salvaje'
+	Escribir 'en su area, usted...'
+	Escribir 'a.  Les daria una platica acerca de parques o reservas de vida salvaje'
+	Escribir 'b.  Les mostraria figuras de internet, fotografias o libros con imagenes'
+	Escribir 'c.  Los llevaria a un parque o reserva y daria una caminata con ellos'
+	Escribir 'd.  Les daria libros o folletos sobre parques o reservas de vida salvaje'
+	Leer p5
+	Si (p5=='b') Entonces
+		V <- V+1
+	SiNo
+		Si (p5=='a') Entonces
+			A <- A+1
+		FinSi
+		Si (p5=='d') Entonces
+			R <- R+1
+		SiNo
+			Si (p5=='c') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '6.  Esta a punto de comparar un camara digital o un telefono movil. ¿Ademas del precio,'
+	Escribir 'que mas influye en su decision'
+	Escribir 'a.  Lo utiliza o lo prueba'
+	Escribir 'b.  La lectura de los detalles acerca de las caracteristicas del aparato'
+	Escribir 'c.  El diseño del aparato es moderno y parece bueno'
+	Escribir 'd.  Los comentarios del vendedor acerca de las caracteristicas del aparato'
+	Leer p6
+	Si (p6=='c') Entonces
+		V <- V+1
+	SiNo
+		Si (p6=='d') Entonces
+			A <- A+1
+		FinSi
+		Si (p6=='b') Entonces
+			R <- R+1
+		SiNo
+			Si (p6=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '7.  Recuerde la vez cuando aprendio como hacer algo nuevo. Evite elegir una destreza'
+	Escribir 'fisica, como bicicleta. ¿Como aprendio mejor?'
+	Escribir 'a.  Viendo una demostracion'
+	Escribir 'b.  Escuchando la explicacion de alguien y haciendo preguntas '
+	Escribir 'c.  Siguiendo pistas visuales en diagramas y graficas'
+	Escribir 'd.  Siguiendo instrucciones escritas en un manual o libro de texto'
+	Leer p7
+	Si (p7=='c') Entonces
+		V <- V+1
+	SiNo
+		Si (p7=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p7=='d') Entonces
+			R <- R+1
+		SiNo
+			Si (p7=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '8.  Tiene un problema con su rodilla. Preferiria que el doctor'
+	Escribir 'a.  Le diera una direccion web o algo para leer sobre el asunto'
+	Escribir 'b.  Utilizara un modelo plastico de una rodilla para mostrarle que esta mal'
+	Escribir 'c.  Le describiera que esta mal'
+	Escribir 'd.  Le mostrara con un diagrama que es lo que esta mal'
+	Leer p8
+	Si (p8=='d') Entonces
+		V <- V+1
+	SiNo
+		Si (p8=='c') Entonces
+			A <- A+1
+		FinSi
+		Si (p8=='a') Entonces
+			R <- R+1
+		SiNo
+			Si (p8=='b') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '9.  Desea aprender un nuevo programa, habilidad o juego de computadora, usted...'
+	Escribir 'a.  Leer las instrucciones escritas que vienen con el programa'
+	Escribir 'b.  Platicar con personas que conocen el programa'
+	Escribir 'c.  Utilizar los controles o el teclado'
+	Escribir 'd.  Seguir los diagramas del libro que vienen con el programa'
+	Leer p9
+	Si (p9=='d') Entonces
+		V <- V+1
+	SiNo
+		Si (p9=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p9=='a') Entonces
+			R <- R+1
+		SiNo
+			Si (p9=='c') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '10.  Le gustan los sitios web que tienen...'
+	Escribir 'a.  Cosas que se pueden picar, mover o probar'
+	Escribir 'b.  Un diseño interesante y caracteristicas visuales'
+	Escribir 'c.  Descripciones escritas interesantes, caracteristicas y explicaciones'
+	Escribir 'd.  Canales de audio para oir musica, programas o entrevistas'
+	Leer p10
+	Si (p10=='b') Entonces
+		V <- V+1
+	SiNo
+		Si (p10=='d') Entonces
+			A <- A+1
+		FinSi
+		Si (p10=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p10=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '11.  Ademas del precio. ¿Que influira mas en su decision de comprar un nuevo libro de no'
+	Escribir 'ficcion...'
+	Escribir 'a.  La apariencia le resulta atractiva'
+	Escribir 'b.  Una lectura rapida de algunas partes del libro'
+	Escribir 'c.  Un amigo le habla del libro y se lo recomienda'
+	Escribir 'd.  Tiene historias, experiencias y ejemplos de la vida real'
+	Leer p11
+	Si (p11=='a') Entonces
+		V <- V+1
+	SiNo
+		Si (p11=='c') Entonces
+			A <- A+1
+		FinSi
+		Si (p11=='b') Entonces
+			R <- R+1
+		SiNo
+			Si (p11=='d') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '12.  Esta utilizando un libro, CD o sitio web para aprender como tomar fotografias con su'
+	Escribir 'nueva camara digital. Le gustaria tener...'
+	Escribir 'a.  La oportunidad de hacer preguntas y que le hablen sobre las camaras y sus caracteristicas'
+	Escribir 'b.  Instrucciones escritas con claridad, con caracteristicas y puntos sobre que hacer'
+	Escribir 'c.  Diagramas que muestren la camara y que hace cada una de sus partes'
+	Escribir 'd.  Muchos ejemplos de fotografias buenas y malas y como mejorar estas'
+	Leer p12
+	Si (p12=='c') Entonces
+		V <- V+1
+	SiNo
+		Si (p12=='a') Entonces
+			A <- A+1
+		FinSi
+		Si (p12=='b') Entonces
+			R <- R+1
+		SiNo
+			Si (p12=='d') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '13.  Prefiere a un profesor o un expositor que utiliza...'
+	Escribir 'a.  Demostraciones, modelos o sesiones practicas'
+	Escribir 'b.  Preguntas y respuestas, charlas, grupos de discusion u oradores invitados'
+	Escribir 'c.  Folletos, libros o lecturas'
+	Escribir 'd.  Diagramas, esquemas o graficas'
+	Leer p13
+	Si (p13=='d') Entonces
+		V <- V+1
+	SiNo
+		Si (p13=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p13=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p13=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '14.  Ha acabado una competencia o una prueba o quisiera una retroalimentacion. Quisiera '
+	Escribir 'tener la retoalimentacion...'
+	Escribir 'a.  Utilizando ejemplos de lo que ha hecho'
+	Escribir 'b.  Utilizando una descripcion escrita de sus resultados'
+	Escribir 'c.  Escuchando a alguien haciendo una revision detallada de su desempeño'
+	Escribir 'd.  Utilizando graficas que muestren lo que ha conseguido'
+	Leer p14
+	Si (p14=='d') Entonces
+		V <- V+1
+	SiNo
+		Si (p14=='c') Entonces
+			A <- A+1
+		FinSi
+		Si (p14=='b') Entonces
+			R <- R+1
+		SiNo
+			Si (p14=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '15.  Va a elegir su alimentos en un restaurante o cafe, usted...'
+	Escribir 'a.  Elegiria algo que ya ha probado en ese lugar'
+	Escribir 'b.  Escucharia al mesero o pediria recomendaciones a sus amigos'
+	Escribir 'c.  Elegiria a partir de las descripciones del menu'
+	Escribir 'd.  Observaria lo que otros estan comiendo o las fotografias de cada platillo'
+	Leer p15
+	Si (p15=='d') Entonces
+		V <- V+1
+	SiNo
+		Si (p15=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p15=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p15=='a') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Escribir '16.  Tiene que hacer un discurso importante para una conferencia o una ocasion especial,'
+	Escribir 'usted...'
+	Escribir 'a.  Elaboraria diagramas o conseguiria graficos que le ayuden a explicar las ideas'
+	Escribir 'b.  Escribiria algunas palabras clave y practica su discurso repetidamente'
+	Escribir 'c.  Escribiria su discurso y se lo aprenderia leyendolo varias veces'
+	Escribir 'd.  Conseguiria muchos ejemplos e historias para hacer la charla real y practica'
+	Leer p16
+	Si (p16=='a') Entonces
+		V <- V+1
+		Si (p16=='b') Entonces
+			A <- A+1
+		FinSi
+		Si (p16=='c') Entonces
+			R <- R+1
+		SiNo
+			Si (p16=='d') Entonces
+				K <- K+1
+			FinSi
+		FinSi
+	FinSi
+	Si (V>A Y V>R Y V>K) Entonces
+		Escribir 'El metodo de parendizaje que usted utiliza es, VISUAL'
+		Escribir '--------------- CARACTERISTICAS ---------------'
+		Escribir 'Eres una persona muy observadora.'
+		Escribir 'Presentas una facilidad especial para recordar imagenes (y videos).'
+		Escribir 'Tienes mucha imaginacion y generas imagenes vividas en tu mente.'
+		Escribir 'Las imagenes y los esquemas te van bien para estudiar y memorizar.'
+		Escribir 'Presentas dificultades para recordar o explicar información verbal.'
+		Escribir '--------------- RECOMENDACIONES ---------------'
+		Escribir 'Utilice resaltadores.'
+		Escribir 'Cree mapas conceptuales e infografias.'
+		Escribir 'Minimice las distracciones.'
+		Escribir 'Trate de toma notas a mano'
+	FinSi
+	Si (A>V Y A>R Y A>K) Entonces
+		Escribir 'El metodo de aprendizaje que usted utiliza es, AUDITIVO'
+		Escribir '--------------- CARACTERISTICAS ---------------'
+		Escribir 'Aprendes facilmente al prestar atención a lo que se dice o se narra.'
+		Escribir 'Se te da bien los examenes orales y las presentaciones. '
+		Escribir 'Eres bueno en relatar narraciones, historias y cuentos. '
+		Escribir 'Te gusta estudiar con musica y puedes recordar datos y personas con ella.'
+		Escribir 'Eres capaz de recordar signos audibles con cambios de tono de voz, entonaciones y acentos. '
+		Escribir '--------------- RECOMENDACIONES ---------------'
+		Escribir 'Reproducir música clásica de fondo cuando se estudia.'
+		Escribir 'Trate de realizar debates o equipos de oratoria.'
+		Escribir 'Leer a los demás.'
+		Escribir 'Estudio en grupos o con otra persona para que la gente le haga preguntas en voz alta.'
+	FinSi
+	Si (R>A Y R>V Y R>K) Entonces
+		Escribir 'El metodo de aprendizaje que usted utiliza es, LEER Y ESCRIBIR'
+		Escribir '--------------- CARACTERISTICAS ---------------'
+		Escribir 'Le gusta leer.'
+		Escribir 'Le gusta tomar nota de todo.'
+		Escribir 'Para aprender algo prefiere un manual o libro para leer y seguir instrucciones'
+		Escribir 'Suele consultar sus apuntes y resuelve sus dudas.'
+		Escribir 'Se le da bien la escritura y todo se le facilita con ello.'
+		Escribir '--------------- RECOMENDACIONES ---------------'
+		Escribir 'Para estudiar y aprednder mejor, tome nota lo que considere mas importante'
+		Escribir 'Lea libros, revistas o sitios web para ampliar sus conocimiento'
+		Escribir 'Los apuntes que realice hagalos en orden para que sea facil su comprension'
+		Escribir 'Haga resumenes con lo mas importante de los temas'
+	FinSi
+	Si (K>A Y K>R Y K>V) Entonces
+		Escribir 'El metodo de aprendizaje que usted utiliza es, KINESTESICO'
+		Escribir '--------------- CARACTERISTICAS ---------------'
+		Escribir 'Tus movimientos son una extension de tus pensamientos creativos.'
+		Escribir 'Tienes la necesidad de expresarte de forma corporal.'
+		Escribir 'Eres una persona inquieta, que se mueve constantemente al hacer tarea o concentrarse'
+		Escribir 'en una actividad. '
+		Escribir 'Necesitas involucrarte en lo que estás aprendiendo, de lo contrario, te cuesta mucho'
+		Escribir 'y se convierte en algo cansado.'
+		Escribir 'Te gusta aprender a través de experiencias, como prácticas en laboratorio, juegos,'
+		Escribir 'modelos, incluso representaciones tangentes de lo que estudias.'
+		Escribir '--------------- RECOMENDACIONES ---------------'
+		Escribir 'Haga mapas mentales.'
+		Escribir 'Incluya ejercicios o actividades fisicas que lo ayuden a concentrarse.'
+		Escribir 'Ponga en practica todo lo aprendido, equivocarse es parte del proceso.'
+		Escribir 'Trate de ser mas dinamico, no solo lea ni escriba, porque se terminara aburriendo.'
+	FinSi
+	Escribir 'FIN DEL TEST, QUE PASE UN BONITO DIA :)'
+FinAlgoritmo
