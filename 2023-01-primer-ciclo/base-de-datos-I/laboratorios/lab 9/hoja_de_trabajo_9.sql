@@ -1,0 +1,1 @@
+SELECT * FROM hoja_de_trabajo9.cursos;

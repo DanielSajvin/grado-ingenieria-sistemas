@@ -1,0 +1,217 @@
+{
+  "main": {
+    "id": "eeffad758585e5a8",
+    "type": "split",
+    "children": [
+      {
+        "id": "2ea06956c9f08548",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6abee98ae0efc39a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "virtualizacion/clases/Repaso para primer parcial.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Repaso para primer parcial"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "510e465be962affc",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9200ef6eb5dec1d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "767edb5db0a8f35e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "361a4c3a0547f5ee",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "2b3eff7c8601f9e5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "1a987688790b00e9",
+    "type": "split",
+    "children": [
+      {
+        "id": "8b1827a63c83f801",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0a1f9b314258fca5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "virtualizacion/Repaso Redes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de Repaso Redes"
+            }
+          },
+          {
+            "id": "51a3fdee948148a9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "virtualizacion/Repaso Redes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de Repaso Redes"
+            }
+          },
+          {
+            "id": "d449faebe13baa12",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "0cb4044a5e4a0e38",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "f4246ea5452d87b6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "virtualizacion/Repaso Redes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de Repaso Redes"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "6abee98ae0efc39a",
+  "lastOpenFiles": [
+    "virtualizacion/clases/Tipos de Virtualización.md",
+    "recursos/Pasted image 20260217161347.png",
+    "virtualizacion/clases/Repaso para primer parcial.md",
+    "virtualizacion/clases/Máquinas virtuales y administración.md",
+    "virtualizacion/tareas/Podcast.md",
+    "gestión-de-negocios/clases/Modelos de Análisis.md",
+    "gestión-de-negocios/clases/Administración.md",
+    "gestión-de-negocios/tareas/Actividad en clase No. 1.md",
+    "fisica-III/~$CAE 1.docx",
+    "fisica-III/~WRL0001.tmp",
+    "fisica-III/~WRD0000.tmp",
+    "fisica-III/CAE 1.docx",
+    "fisica-III",
+    "Nueva carpeta",
+    "gestión-de-negocios/entregados/Actividad en clase No. 1.pdf",
+    "gestión-de-negocios/entregados 1",
+    "gestión-de-negocios/Actividad en clase No. 1.pdf",
+    "recursos/Pasted image 20260211130318.png",
+    "Sin título.md",
+    "recursos",
+    "recursos/Pasted image 20260211125933.png",
+    "recursos/Pasted image 20260128115646.png",
+    "virtualizacion/tareas/Laboratorio 1.md",
+    "recursos/Pasted image 20260211130023.png",
+    "virtualizacion/tareas/Actividad No. 1.md",
+    "virtualizacion/clases/Hipervisores.md",
+    "virtualizacion/Repaso Redes.md"
+  ]
+}
