@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2ea06956c9f08548",
+        "id": "a5b7323548868897",
         "type": "tabs",
         "children": [
           {
-            "id": "6abee98ae0efc39a",
+            "id": "5bf4b044c240353c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "virtualizacion/clases/Repaso para primer parcial.md",
+                "file": "virtualizacion/entregados/Actividad No. 10.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Repaso para primer parcial"
+              "title": "Actividad No. 10"
             }
           }
         ]
@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTimeReverse",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "1a987688790b00e9",
@@ -95,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "virtualizacion/Repaso Redes.md",
+                "file": "virtualizacion/tareas/Laboratorio - entregable individual.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de Repaso Redes"
+              "title": "Enlaces entrantes de Laboratorio - entregable individual"
             }
           },
           {
@@ -184,34 +183,53 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "6abee98ae0efc39a",
+  "active": "5bf4b044c240353c",
   "lastOpenFiles": [
-    "virtualizacion/clases/Tipos de Virtualización.md",
-    "recursos/Pasted image 20260217161347.png",
-    "virtualizacion/clases/Repaso para primer parcial.md",
-    "virtualizacion/clases/Máquinas virtuales y administración.md",
-    "virtualizacion/tareas/Podcast.md",
-    "gestión-de-negocios/clases/Modelos de Análisis.md",
+    "virtualizacion/entregados/Actividad No. 10.pdf",
+    "virtualizacion/clases/Sin título.md",
+    "virtualizacion/entregados/Actividad No. 10.md",
+    "gestión-de-negocios/clases/Repaso 2do. Parcial.md",
+    "gestión-de-negocios/entregados/Repaso 2do. Parcial.pdf",
+    "recursos/Pasted image 20260422222033.png",
+    "gestión-de-negocios/clases/Integración.md",
+    "gestión-de-negocios/tareas/Organización Empresarial.md",
+    "gestión-de-negocios/entregados/Organización Empresarial.pdf",
+    "recursos/mermaid-diagram-2026-04-15-214758.png",
+    "virtualizacion/tareas/Laboratorio No. 3.md",
+    "virtualizacion/tareas/lab 3.pkt~",
+    "virtualizacion/tareas/lab 3.pkt",
+    "virtualizacion/clases/Modelos de computación en la Nube.md",
+    "virtualizacion/tareas/Laboratorio - entregable individual.md",
+    "virtualizacion/entregados/Laboratorio - entregable individual.pdf",
+    "gestión-de-negocios/clases/Organización.md",
     "gestión-de-negocios/clases/Administración.md",
+    "gestión-de-negocios/clases/Modelos de Análisis.md",
+    "gestión-de-negocios/tareas/Misión y Visión para nuestra empresa.md",
+    "gestión-de-negocios/tareas/Laboratorio de planeación.md",
+    "gestión-de-negocios/tareas/Objetivos.md",
+    "gestión-de-negocios/tareas/Misiones y Visiones de Empresas.md",
+    "gestión-de-negocios/tareas/Repaso Parcial 1.md",
     "gestión-de-negocios/tareas/Actividad en clase No. 1.md",
-    "fisica-III/~$CAE 1.docx",
-    "fisica-III/~WRL0001.tmp",
-    "fisica-III/~WRD0000.tmp",
-    "fisica-III/CAE 1.docx",
-    "fisica-III",
-    "Nueva carpeta",
+    "gestión-de-negocios/entregados/Laboratorio de planeación.pdf",
+    "gestión-de-negocios/entregados/Objetivos.pdf",
     "gestión-de-negocios/entregados/Actividad en clase No. 1.pdf",
-    "gestión-de-negocios/entregados 1",
-    "gestión-de-negocios/Actividad en clase No. 1.pdf",
-    "recursos/Pasted image 20260211130318.png",
-    "Sin título.md",
-    "recursos",
-    "recursos/Pasted image 20260211125933.png",
-    "recursos/Pasted image 20260128115646.png",
-    "virtualizacion/tareas/Laboratorio 1.md",
-    "recursos/Pasted image 20260211130023.png",
-    "virtualizacion/tareas/Actividad No. 1.md",
+    "gestión-de-negocios/clases/Planeación.md",
+    "gestión-de-negocios/clases/Análisis FODA.md",
+    "gestión-de-negocios/clases/Las 5 fuerzas competitivas de Michael Porter.md",
+    "recursos/Pasted image 20260326191909.png",
+    "recursos/Pasted image 20260326191314.png",
+    "recursos/Pasted image 20260326191137.png",
+    "recursos/Pasted image 20260326191125.png",
+    "virtualizacion/clases/Enlace a Video Segunda Parte Parcial 2.md",
+    "virtualizacion/entregados/Enlace a Video Segunda Parte Parcial 2.pdf",
+    "recursos/Pasted image 20260325120927.png",
+    "virtualizacion/clases/02 Repaso Segundo Parcial.md",
+    "virtualizacion/entregados/02 Repaso Segundo Parcial.pdf",
+    "virtualizacion/clases/Introducción a Active Directory y DHCP.md",
+    "virtualizacion/clases/Repaso para primer parcial.md",
     "virtualizacion/clases/Hipervisores.md",
-    "virtualizacion/Repaso Redes.md"
+    "recursos/Pasted image 20260303190237.png",
+    "recursos/Pasted image 20260303185947.png",
+    "recursos/Pasted image 20260303185507.png"
   ]
 }

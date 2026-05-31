@@ -1,0 +1,216 @@
+{
+  "main": {
+    "id": "ec243cfbe8b436d0",
+    "type": "split",
+    "children": [
+      {
+        "id": "2064333c55471316",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "53d04bf5e5c3e6a2",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6502b8b2f9a366bd",
+    "type": "split",
+    "children": [
+      {
+        "id": "e167cf10d41c82f0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bdc120038b61e44c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byCreatedTimeReverse",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "7d16aad4bf072eee",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "e9406146338b36e3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "915145b195d1c15c",
+    "type": "split",
+    "children": [
+      {
+        "id": "3d3b11f202c68221",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e76da9b9e0a2e73",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Producción y Operaciones I/Unidad 1/Clases/Conceptos básicos de dirección de operaciones.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de Conceptos básicos de dirección de operaciones"
+            }
+          },
+          {
+            "id": "d1a38c438caf8268",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Producción y Operaciones I/Unidad 1/Clases/Conceptos básicos de dirección de operaciones.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de Conceptos básicos de dirección de operaciones"
+            }
+          },
+          {
+            "id": "e72a1127ac1783aa",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "8d0ab813aefb7148",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Producción y Operaciones I/Unidad 1/Clases/Conceptos básicos de dirección de operaciones.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de Conceptos básicos de dirección de operaciones"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Crear nueva base": false,
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "53d04bf5e5c3e6a2",
+  "lastOpenFiles": [
+    "Proyectos de Ingeniería en Sistemas/Integrantes del Equipo.md",
+    "Proyectos de Ingeniería en Sistemas/Integrantes del Equipo.pdf",
+    "Proyectos de Ingeniería en Sistemas/Fixes y Vista Users - Argentina.md",
+    "imagenes/Pasted image 20251111221709.png",
+    "imagenes/Pasted image 20251111221426.png",
+    "imagenes/Pasted image 20251111221357.png",
+    "imagenes/Pasted image 20251111221325.png",
+    "imagenes/Pasted image 20251111221254.png",
+    "imagenes/Pasted image 20251111221152.png",
+    "imagenes/Pasted image 20251111221121.png",
+    "imagenes/Pasted image 20251111221053.png",
+    "imagenes/Pasted image 20251111221017.png",
+    "imagenes/Pasted image 20251111220959.png",
+    "Producción y Operaciones I/Dashboard.md",
+    "Proyectos de Ingeniería en Sistemas/QA.md",
+    "Proyectos de Ingeniería en Sistemas/Repaso Parcial Proyectos.md",
+    "Proyectos de Ingeniería en Sistemas/AVANCES.md",
+    "Proyectos de Ingeniería en Sistemas/PENDIENTES.md",
+    "Proyectos de Ingeniería en Sistemas/PRESENTACION.md",
+    "Seminario de Casos de Gestion/Unidad II/Ataques.md",
+    "Seminario de Casos de Gestion/Unidad I/Áreas a Trabajar.md",
+    "Seminario de Casos de Gestion/Unidad I/Definición de Método de Casos.md",
+    "Seminario de Casos de Gestion/Unidad I/Presentación caso 2.md",
+    "Seminario de Casos de Gestion/Unidad I/Caso individual 3.md",
+    "Seminario de Casos de Gestion/Unidad I/Presentación Caso No. 4.md",
+    "Seminario de Casos de Gestion/Unidad I/Presentación Caso No. 5.md",
+    "Seminario de Casos de Gestion/Unidad I/Formulario.md",
+    "Seminario de Casos de Gestion/Unidad II/Caso No. 6 - Claro Centroamérica.md",
+    "Proyectos de Ingeniería en Sistemas/Qué es PMBOK.md",
+    "Proyectos de Ingeniería en Sistemas/Proyecto en General y Tareas de Ingeniería de Software.pdf",
+    "Proyectos de Ingeniería en Sistemas/Proyecto en General y Tareas de Ingeniería de Software.md",
+    "Proyectos de Ingeniería en Sistemas/Requerimientos.md",
+    "Proyectos de Ingeniería en Sistemas/Qué es PMBOK.pdf",
+    "Proyectos de Ingeniería en Sistemas/MarioSajvinPMBOK.pdf",
+    "Proyectos de Ingeniería en Sistemas/Configurar GitHub.md",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos/Nivel 1/Selección de Cable UTP y de FO.md",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos/Nivel 1/Principios de funcionamiento de redes locales.md",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos/Nivel 2/Montaje de dispositivos de red en bastidores de telecomunicaciones.md",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos/Nivel 2/Prueba de cableado de FO.md",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos/Nivel 2",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos/Nivel 1",
+    "Ciencia de Datos/Ciencia-de-datos/Python/clasificafores.ipynb",
+    "Redes y Telecomunicaciones/Tecnología en redes de datos",
+    "Seguridad Informática/Unidad 2/Aplicación de Seguridad en el Ciclo de Vida del Desarrollo de Software para MediCheck.pdf",
+    "Redes y Telecomunicaciones/Unidad II/REPASO PARCIAL 2.xlsx"
+  ]
+}

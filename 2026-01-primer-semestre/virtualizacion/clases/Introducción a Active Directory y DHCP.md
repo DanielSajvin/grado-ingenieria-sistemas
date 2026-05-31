@@ -1,0 +1,5 @@
+Solicitud
+Oferta
+Petición
+Confirmación
+

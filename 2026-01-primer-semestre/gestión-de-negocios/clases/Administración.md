@@ -6,6 +6,7 @@ Pilares fundamentales
 
 Recursos empresariales
 - Recurso humano
+	- Tiempo
 - Recurso tecnológico  
 - Recurso financiero 
 - Recurso material 
