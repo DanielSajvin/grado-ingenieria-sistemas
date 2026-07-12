@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <div id="p1" class="producto">
+        <h2>Producto 1</h2>
+        <p>Descripción breve del producto.</p>
+        <button onclick="agregarAlCarrito('p1', 'Computadora Todo En 1 Marca Dell Inspiron', '24 5415 Con Procesador Ryzen 5 Version 7530U De 2.0 Ghz', 'https://www.intelaf.com/images/productos/gran/te1-dl-5415r585.jpg')">Comprar</button>
+    </div>
+
+    <div id="p2" class="producto">
+        <h2>Producto 2</h2>
+        <p>Descripción breve del producto.</p>
+        <button onclick="agregarAlCarrito('p2', 'TODOEN1 DELL 5430', 'i7 1050U 1.8GHZ 16GB DDR4 1TB M.2 PCI-E MONITOR 23.8', 'https://www.intelaf.com/images/productos/gran/te1-dl-5430i716.jpg')">Comprar</button>
+    </div>
+
+    <div id="p2" class="producto">
+        <h2>Producto 3</h2>
+        <p>Descripción breve del producto.</p>
+        <button onclick="agregarAlCarrito('p3', 'Router Inalambrico', 'Mesh Marca Linksys Modelo MR20MS AX2200 Tecnología Wi-Fi 6', 'https://www.intelaf.com/images/productos/gran/wlrtr-ln-mr20ms.jpg')">Comprar</button>
+    </div>
+
+    <div id="p2" class="producto destacado">
+        <h2>Producto 4 (Destacado)</h2>
+        <p>Descripción de un producto especial.</p>
+        <button onclick="agregarAlCarrito('p4', 'Memoria USB 3.2 ', 'Marca SanDisk Modelo Ultra Shift Flash Drive De 32GB SDCZ410-032G-G46', 'https://www.intelaf.com/images/productos/gran/fla-sndulsh3-32.jpg')">Comprar</button>
+    </div>
+
+    <h2>Carrito de Compras</h2>
+    <ul id="carrito"></ul>
+
+</body>
+</html>

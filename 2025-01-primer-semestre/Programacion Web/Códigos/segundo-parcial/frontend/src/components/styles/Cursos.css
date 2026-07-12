@@ -1,0 +1,23 @@
+.cursos-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.cursos-container h2 {
+  text-align: center;
+}
+
+.cursos-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cursos-container li {
+  background: #f2f2f2;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}

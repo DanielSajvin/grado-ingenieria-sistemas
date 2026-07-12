@@ -1,0 +1,66 @@
+# Entornos virtuales
+entornoJupyter/
+venv/
+.env/
+*.py[cod]
+__pycache__/
+
+# Carpetas y archivos de Python
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+*.pyo
+*.pyd
+*.so
+
+# Librerías y entornos virtuales
+env/
+venv/
+*.egg-info/
+*.eggs/
+*.whl
+pip-log.txt
+pip-delete-this-directory.txt
+entornoJupyter/
+*.exe
+*.dll
+*.lib
+*.so
+*.dylib
+
+# Archivos de configuración de Jupyter Notebook
+*.ipynb_checkpoints
+*.a
+
+
+# Configuraciones de Jupyter
+.ipynb_checkpoints/
+.jupyter/
+
+# Configuraciones de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuraciones de IDEs
+.idea/
+.vscode/
+
+# Archivos de log y salidas
+*.log
+*.out
+*.err
+
+# Archivos generados por Git
+*.orig
+
+# Archivos de caché
+.cache/
+*.bak
+
+# Archivos sensibles (si los tienes)
+.env
+*.key
+*.crt
+
+# Librerías instaladas por pip
+requirements.txt

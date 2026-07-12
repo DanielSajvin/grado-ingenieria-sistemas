@@ -1,0 +1,115 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+import heapq
+import math
+
+# Definición de ciudades
+ciudades = {
+    'A': 'Ciudad de Guatemala',
+    'B': 'San Salvador',
+    'C': 'Tegucigalpa',
+    'D': 'Managua',
+    'E': 'San José',
+    'F': 'Panamá',
+    'G': 'Santa Ana',
+    'H': 'Choluteca',
+    'I': 'León',
+    'J': 'Liberia',
+    'K': 'David',
+    'L': 'Colón',
+    'M': 'Bluefields'
+}
+
+# Grafo con (destino, costo, horas)
+grafo = {
+    'A': [('B', 300, 5), ('G', 200, 4), ('H', 600, 9), ('I', 800, 12), ('D', 900, 11), ('E', 1200, 14)],
+    'B': [('C', 500, 6), ('I', 650, 10), ('H', 400, 5), ('F', 1100, 12)],
+    'G': [('C', 450, 5), ('D', 550, 7)],
+    'C': [('D', 600, 8), ('I', 450, 6), ('H', 200, 3), ('E', 800, 9)],
+    'D': [('E', 700, 8), ('I', 150, 2), ('M', 500, 10), ('F', 900, 9), ('L', 1000, 11)],
+    'I': [('E', 550, 7), ('J', 500, 6), ('L', 1100, 10)],
+    'E': [('F', 800, 9), ('J', 300, 3), ('L', 1000, 9)],
+    'J': [('K', 350, 4), ('L', 700, 7)],
+    'K': [('F', 400, 5), ('L', 350, 6)],
+    'F': [('L', 250, 3), ('M', 900, 10)],
+    'L': [('M', 800, 9)]
+}
+
+PENALIZACION_DIARIA = 200
+HORAS_DIA = 24
+
+# Dijkstra con penalización por tiempo
+def dijkstra(grafo, inicio, destino, max_rutas=3):
+    cola = [(0, 0, inicio, [])]
+    rutas = []
+    visitados = set()
+
+    while cola and len(rutas) < max_rutas:
+        costo_total, tiempo_total, actual, ruta = heapq.heappop(cola)
+
+        nueva_ruta = ruta + [actual]
+        clave_ruta = tuple(nueva_ruta)
+
+        if actual == destino and clave_ruta not in visitados:
+            visitados.add(clave_ruta)
+            dias_extra = max(0, math.ceil(tiempo_total / HORAS_DIA) - 1)
+            penalizacion = dias_extra * PENALIZACION_DIARIA
+            rutas.append({
+                'ruta': nueva_ruta,
+                'costo_total': costo_total + penalizacion,
+                'tiempo_total': tiempo_total,
+                'penalizacion': penalizacion
+            })
+
+        for vecino, costo, horas in grafo.get(actual, []):
+            if vecino not in ruta:
+                heapq.heappush(cola, (
+                    costo_total + costo,
+                    tiempo_total + horas,
+                    vecino,
+                    nueva_ruta
+                ))
+
+    return rutas
+
+# Visualización del grafo con múltiples rutas
+def visualizar_grafo(grafo, rutas):
+    G = nx.DiGraph()
+    for origen, conexiones in grafo.items():
+        for destino, costo, horas in conexiones:
+            etiqueta = f"Q{costo}\n{horas}h"
+            G.add_edge(origen, destino, label=etiqueta)
+
+    pos = nx.kamada_kawai_layout(G)  # Mejor distribución para claridad
+    plt.figure(figsize=(16, 10))
+
+    nx.draw_networkx_nodes(G, pos, node_color='skyblue', node_size=1200)
+    nx.draw_networkx_labels(G, pos, labels=ciudades, font_size=9)
+
+    edge_labels = nx.get_edge_attributes(G, 'label')
+    nx.draw_networkx_edges(G, pos, edge_color='gray', arrows=True)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=7)
+
+    colores = ['red', 'green', 'blue']
+    for i, ruta in enumerate(rutas):
+        edges = list(zip(ruta['ruta'], ruta['ruta'][1:]))
+        nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color=colores[i], width=3, style='solid')
+
+    plt.title("Rutas de transporte (Centroamérica) con comparación de caminos")
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()
+
+# Mostrar las rutas y sus datos
+rutas = dijkstra(grafo, 'A', 'L', max_rutas=3)
+nombres = ["Ruta más económica", "Ruta alternativa 1", "Ruta alternativa 2"]
+
+for i, r in enumerate(rutas):
+    print(f"\n{i+1}. {nombres[i]}")
+    print("   - Ruta:", " -> ".join([ciudades[n] for n in r['ruta']]))
+    print(f"   - Costo total (incluye penalización): Q{r['costo_total']}")
+    print(f"   - Tiempo total: {r['tiempo_total']} horas")
+    print(f"   - Penalización aplicada: Q{r['penalizacion']}")
+
+# Visualizar en el grafo
+visualizar_grafo(grafo, rutas)

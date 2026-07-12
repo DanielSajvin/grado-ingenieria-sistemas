@@ -1,0 +1,30 @@
+.counter-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.reset-button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: darkblue;
+}
+
+.divisibility-text {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.divisible {
+  color: green;
+}
+
+.not-divisible {
+  color: red;
+}

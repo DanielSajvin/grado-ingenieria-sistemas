@@ -1,0 +1,72 @@
+.producto {
+    border: 2px solid gray;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+.producto h2 {
+    color: blue;
+}
+
+.producto h2:hover {
+    color: red;
+}
+
+.destacado {
+    background-color: yellow;
+    border: 4px solid gold;
+}
+
+.producto button {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.producto button:hover {
+    background-color: orange;
+}
+
+.elemento-carrito {
+    border: 2px solid salmon;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+.elemento-carrito h1 {
+    font-size: 18px;
+    color: teal;
+    margin: 5px 0;
+}
+
+.elemento-carrito p {
+    font-size: 14px;
+    color: gray;
+    margin: 5px 0;
+}
+
+.elemento-carrito button {
+    background-color: crimson;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.elemento-carrito button:hover {
+    background-color: darkred;
+}
+
+.imagen-producto {
+    width: 100%; /* Ajusta al ancho del contenedor */
+    height: auto; /* Mantén la proporción de la imagen */
+    margin-bottom: 10px;
+    border-radius: 5px; /* Opcional: bordes redondeados */
+    display: block; /* Para centrar bien si se necesita */
+}
+

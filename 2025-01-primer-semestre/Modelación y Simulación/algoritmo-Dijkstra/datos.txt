@@ -1,0 +1,46 @@
+Nodos (Ciudades):
+A: Nueva York
+B: Washington D.C.
+C: Filadelfia
+D: Boston
+E: Chicago
+F: Detroit
+G: Cleveland
+H: Atlanta
+I: Miami
+J: Dallas
+K: Houston
+L: San Francisco
+M: Los Ángeles
+
+Aristas (Distancias entre las ciudades):
+De Nueva York (A) a Filadelfia (C): 95 km
+De Nueva York (A) a Boston (D): 215 km
+De Filadelfia (C) a Washington D.C. (B): 140 km
+De Washington D.C. (B) a Detroit (F): 515 km
+De Boston (D) a Chicago (E): 1,000 km
+De Chicago (E) a Detroit (F): 290 km
+De Filadelfia (C) a Cleveland (G): 475 km
+De Detroit (F) a Cleveland (G): 170 km
+De Chicago (E) a Atlanta (H): 1,200 km
+De Atlanta (H) a Miami (I): 660 km
+De Miami (I) a Dallas (J): 1,350 km
+De Dallas (J) a Houston (K): 385 km
+De Houston (K) a San Francisco (L): 2,500 km
+De San Francisco (L) a Los Ángeles (M): 600 km
+
+Condiciones de las carreteras (velocidades promedio):
+Nueva York a Filadelfia: 60 km/h
+Nueva York a Boston: 50 km/h
+Filadelfia a Washington D.C.: 65 km/h
+Washington D.C. a Detroit: 45 km/h
+Boston a Chicago: 70 km/h
+Chicago a Detroit: 80 km/h
+Filadelfia a Cleveland: 55 km/h
+Detroit a Cleveland: 75 km/h
+Chicago a Atlanta: 65 km/h
+Atlanta a Miami: 70 km/h
+Miami a Dallas: 80 km/h
+Dallas a Houston: 90 km/h
+Houston a San Francisco: 75 km/h
+San Francisco a Los Ángeles: 70 km/h
