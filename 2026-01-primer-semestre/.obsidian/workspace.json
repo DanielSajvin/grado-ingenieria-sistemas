@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "virtualizacion/entregados/Actividad No. 10.md",
+                "file": "gestión-de-negocios/tareas/Proceso Administrativo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Actividad No. 10"
+              "title": "Proceso Administrativo"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "1a987688790b00e9",
@@ -185,9 +186,11 @@
   },
   "active": "5bf4b044c240353c",
   "lastOpenFiles": [
+    "recursos/Pasted image 20260708155633.png",
+    "virtualizacion/entregados/Actividad No. 10.md",
+    "gestión-de-negocios/tareas/Proceso Administrativo.md",
     "virtualizacion/entregados/Actividad No. 10.pdf",
     "virtualizacion/clases/Sin título.md",
-    "virtualizacion/entregados/Actividad No. 10.md",
     "gestión-de-negocios/clases/Repaso 2do. Parcial.md",
     "gestión-de-negocios/entregados/Repaso 2do. Parcial.pdf",
     "recursos/Pasted image 20260422222033.png",
@@ -224,10 +227,8 @@
     "virtualizacion/entregados/Enlace a Video Segunda Parte Parcial 2.pdf",
     "recursos/Pasted image 20260325120927.png",
     "virtualizacion/clases/02 Repaso Segundo Parcial.md",
-    "virtualizacion/entregados/02 Repaso Segundo Parcial.pdf",
     "virtualizacion/clases/Introducción a Active Directory y DHCP.md",
     "virtualizacion/clases/Repaso para primer parcial.md",
-    "virtualizacion/clases/Hipervisores.md",
     "recursos/Pasted image 20260303190237.png",
     "recursos/Pasted image 20260303185947.png",
     "recursos/Pasted image 20260303185507.png"

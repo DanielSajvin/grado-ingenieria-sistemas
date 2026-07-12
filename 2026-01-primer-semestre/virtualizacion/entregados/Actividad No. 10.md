@@ -32,3 +32,18 @@
 	    - **Solución:** Tras la migración, si el servidor no arranca, iniciaremos en _Rescue Mode_ para reconstruir el archivo `initramfs`, asegurando que se carguen los drivers de almacenamiento virtual de VMware.
 	- **Reto: Conflicto de IP Fija y Tabla ARP.**
 	    - **Solución:** Al realizar el cambio, ejecutaremos un "gratuitous ARP" o reiniciaremos el switch virtual para limpiar la caché de direcciones MAC, asegurando que las tablets encuentren al Servidor B virtual de inmediato.
+
+
+### Paso 4: Colocar los archivos en tu computadora local
+
+Ahora que tienes todo descargado, debes integrarlo en las carpetas de tu propio juego:
+
+1. En el teclado de tu computadora, presiona las teclas `Windows + R`.
+    
+2. Escribe `%USERPROFILE%\Zomboid` y presiona Enter.
+    
+3. Abre el archivo comprimido que descargaste en el Paso 1 y extrae la carpeta `ProjectZomboid644441` dentro de la carpeta local `Saves/Multiplayer`.
+    
+4. Pega el archivo `.db` (del Paso 2) dentro de tu carpeta local `db`.
+    
+5. Pega los tres archivos de configuración (del Paso 3) dentro de tu carpeta local `Server`.
