@@ -47,7 +47,7 @@ Independencia lógica, se pueden añadir nuevas tablas o columnas sin que las vi
 ## Propiedades ACID
 Propiedades que garantizan que una transacción en una base de datos sea segura. 
 **A - Atomicidad**, la transacción se hace completa o no se hace nada. 
-**C - Consistencia**, la base datos siempre debe basar de un estado válido a otro estado válido, respetando todas las reglas (como que un saldo no quede negativo si no es permitido).
+**C - Consistencia**, la base datos siempre debe pasar de un estado válido a otro estado válido, respetando todas las reglas (como que un saldo no quede negativo si no es permitido).
 **I - Aislamiento**, si hay múltiples usuarios haciendo transacciones al mismo tiempo, el sistema debe tratarlas como si fueran secuenciales para que no choquen entre sí.
 **D - Durabilidad**, una vez que la transacción se completó (hizo commit), los datos se guardan permanentemente y ya no se pierden. 
 
@@ -76,28 +76,28 @@ Define cuántas instancias de una entidad A pueden asociarse a instancias de una
  **1:1 (Uno a Uno)**, una entidad A se relaciona con solo una entidad B.
  **1:N (Uno a Muchos)**, una entidad A se relaciona con muchas entidades B.
  **N:M (Muchos a Muchos)**, muchas entidades A se relacionan con muchas entidades B. Para hacer esta relación se tiene que crear una tabla intermedia (tabla de rompimiento, entidad asociativa o tabla de intersección), entonces la relación muchos a muchos pasa a ser dos relaciones uno a muchos 1:N. Esta tabla de rompimiento solo almacena "punteros" (llaves foráneas) hacia las tablas
- principales, más los datos que solo existen cuando ambas se juntan. 
+ principales, más los datos que solo existen cuando ambas se interactúan. 
 
 ## Dibujado de Diagrama Entidad-Relación (notación Chen)
 **Rectángulos normales**, representan una entidad fuerte, es decir, existe por sí sola. 
 **Rectángulo doble**, entidad débil, su existencia depende de otra entidad. 
-![[Pasted image 20260802165634.png]]
+![](../recursos/Pasted%20image%2020260809211250.png)
 
 **Óvalo normal**, atributo estándar. Por ejemplo: Nombre
 **Óvalo con el texto subrayado**, indica que ese atributo es la llave primaria.
 **Óvalo con línea punteada**, atributo derivado. Es un dato que no se almacena físicamente, sino que se calcula a partir de otro. Por ejemplo: la edad, ya que se pide la fecha de nacimiento no la edad cómo tal. 
 **Óvalo doble**, atributo multivaluado. Se usa cuando un atributo puede tener varios valores al mismo tiempo. 
-![[Pasted image 20260802170128.png]]
-![[Pasted image 20260802170138.png]]
-![[Pasted image 20260802170151.png]]
-![[Pasted image 20260802170208.png]]
-![[Pasted image 20260802170239.png]]
+![](../recursos/Pasted%20image%2020260809211417.png)
+![](../recursos/Pasted%20image%2020260809211427.png)
+![](../recursos/Pasted%20image%2020260809211437.png)
+![](../recursos/Pasted%20image%2020260809211448.png)
+![](../recursos/Pasted%20image%2020260809211459.png)
 
 **Rombo normal**, relación estándar. Adentro se escribe un verbo.
 **Rombo doble**, relación identificadora. Se usa exclusivamente para conectar una entidad fuerte con una entidad débil. 
-![[Pasted image 20260802170436.png]]
+![](../recursos/Pasted%20image%2020260809211608.png)
 
-![[Pasted image 20260802170454.png]]
+![](../recursos/Pasted%20image%2020260809211619.png)
 
 ## Modelo Relacional 
 Es la traducción técnica del diagrama entidad-relación al diagrama relacional. 
@@ -110,16 +110,16 @@ En el modelo relacional cambian los términos y sus significados:
 
 ### Diseño y Dibujado: Notación Pata de Gallo
 UNO, obligatorio
-![[Pasted image 20260802173525.png]]
+![](../recursos/Pasted%20image%2020260809211800.png)
 
 UNO, opcional
-![[Pasted image 20260802173605.png]]
+![](../recursos/Pasted%20image%2020260809211814.png)
 
 MUCHOS, opcional
-![[Pasted image 20260802173703.png]]
+![](../recursos/Pasted%20image%2020260809211840.png)
 
 MUCHOS, obligatorio (uno a muchos)
-![[Pasted image 20260802173725.png]]
+![](../recursos/Pasted%20image%2020260809211829.png)
 
 ### Pasar del Diagrama ER al Diagrama Relacional 
 **Entidades Fuertes**, cada rectángulo fuerte se convierte en una tabla normal con su llave primaria.
@@ -209,7 +209,7 @@ ON estudiantes.carnet = asignaciones.estudiante_carnet;
 Es un bloque de código SQL que se guarda directamente dentro del servidor de base de datos para ser reutilizado. Para que sirven: 
 **Seguridad**, evita los ataques de inyección SQL porque la aplicación externa no envía instrucciones directas, solo manda a llamar al procedimiento. 
 **Rendimiento**, reduce el tráfico de red. En lugar de que mi aplicación mande 30 líneas de código SQL por internet, solo envía una, que es la de llamar al procedimiento almacenado. Además, el motor de base de datos los pre-compila, haciéndolos más rápidos. 
-**Centralización**, si la regla de negocio cambia, modificas el procedimiento en el servidor una sola vez y todas las aplicaciones que lo comuna (web, móvil, escritorio) se actualizan automáticamente.
+**Centralización**, si la regla de negocio cambia, modificas el procedimiento en el servidor una sola vez y todas las aplicaciones que lo consumen (web, móvil, escritorio) se actualizan automáticamente.
 
 ## Trigger (Disparador)
 Es un bloque de código SQL que se ejecuta (se dispara) automáticamente justo antes o justo después de que ocurra un evento de manipulación (INSERT, UPDATE o DELETE) en una tabla específica. Dentro de estos existen comandos que permiten acceder a los datos en tránsito: 

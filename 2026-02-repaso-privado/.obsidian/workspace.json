@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Informática/Análisis y Diseño.md",
+                "file": "Informática/Base de Datos I.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Análisis y Diseño"
+              "title": "Base de Datos I"
             }
           }
         ]
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "b4e926af179cb7f3",
@@ -185,24 +186,24 @@
   },
   "active": "237af7dbf4bfad91",
   "lastOpenFiles": [
-    "recursos/Pasted image 20260809190316.png",
-    "recursos/Pasted image 20260809190252.png",
-    "recursos/Pasted image 20260809185739.png",
-    "recursos/Pasted image 20260809185714.png",
-    "Informática/Base de Datos I.md",
+    "recursos/Pasted image 20260809211840.png",
+    "recursos/Pasted image 20260809211829.png",
+    "recursos/Pasted image 20260809211814.png",
+    "recursos/Pasted image 20260809211800.png",
+    "recursos/Pasted image 20260809211619.png",
+    "recursos/Pasted image 20260809211608.png",
+    "recursos/Pasted image 20260809211459.png",
+    "recursos/Pasted image 20260809211448.png",
+    "recursos/Pasted image 20260809211437.png",
+    "recursos/Pasted image 20260809211427.png",
+    "recursos/Pasted image 20260809211417.png",
     "Informática/Análisis y Diseño.md",
-    "recursos/Pasted image 20260809173624.png",
-    "recursos/Pasted image 20260809122413.png",
+    "Informática/Base de Datos I.md",
     "Gestión/Formulación y Evaluación de Proyectos.md",
     "Gestión",
     "Informática",
     "Sin título.md",
     "Contenidos recomendados/~$Ajuste Enfoque Gestión Industrial.xlsx",
-    "recursos/Pasted image 20260802173725.png",
-    "recursos/Pasted image 20260802173703.png",
-    "recursos/Pasted image 20260802173605.png",
-    "recursos/Pasted image 20260802173525.png",
-    "recursos/Pasted image 20260802170454.png",
     "Prueba.md"
   ]
 }
