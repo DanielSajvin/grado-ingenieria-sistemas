@@ -1,5 +1,4 @@
-
-![[../recursos/Pasted image 20260809185714.png]]
+![](../recursos/Pasted%20image%2020260809190316.png)
 ## Actividades Estructurales 
 1. Comunicación, hablar con el cliente, levantar requerimientos, entender el negocio
 2. Planeación, definir riesgos, recursos, cronogramas y estimaciones
@@ -33,7 +32,8 @@ Es una evolución estricta del modelo en cascada. Su principal característica e
 2.. Pruebas de Integración
 3.. Pruebas de Sistema
 4.. Pruebas de Aceptación 
-![[../recursos/Pasted image 20260809185739.png]]
+
+![](../recursos/Pasted%20image%2020260809190252.png)
 
 ### Modelos Ágiles 
 No se trata de fases secuenciales, se trata de iteraciones cortas. Ya que en este modelo se asume que los requerimientos pueden ir cambiando. 
