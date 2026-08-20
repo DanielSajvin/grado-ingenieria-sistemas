@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Gestión/Ingeniería Económica.md",
+                "file": "Sistemas/Arquitectura del Computador I.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ingeniería Económica"
+              "title": "Arquitectura del Computador I"
             }
           }
         ]
@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTime",
                 "autoReveal": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -186,21 +186,30 @@
   },
   "active": "237af7dbf4bfad91",
   "lastOpenFiles": [
-    "Gestión/Formulación y Evaluación de Proyectos.md",
+    "recursos/Pasted image 20260820121310.png",
+    "Sistemas/Sistemas Operativos.md",
+    "Sistemas/Arquitectura del Computador I.md",
+    "Sistemas/Redes I.md",
+    "Informática/Análisis y Diseño.md",
+    "Gestión/Ingeniería de Costos.md",
+    "Gestión/Fundamentos de Economía.md",
     "Gestión/Ingeniería Económica.md",
+    "recursos/Pasted image 20260818105540.png",
+    "recursos/Pasted image 20260818094417.png",
+    "Pogramas de curso/Sistemas/Programa Sistemas Operativos 2024.pdf",
+    "Pogramas de curso/Sistemas/Sin confirmar 338107.crdownload",
+    "recursos/Pasted image 20260815182106.png",
+    "recursos/Pasted image 20260815174752.png",
+    "recursos/Pasted image 20260815174142.png",
+    "recursos/Pasted image 20260814182810.png",
+    "recursos/Pasted image 20260814160032.png",
+    "recursos/Pasted image 20260814152507.png",
+    "recursos/Pasted image 20260814152426.png",
+    "recursos/Pasted image 20260812214255.png",
+    "Sistemas",
+    "Gestión/Formulación y Evaluación de Proyectos.md",
     "Contenidos recomendados/~$ntenido - Gestión.docx",
     "Informática/Base de Datos I.md",
-    "recursos/Pasted image 20260809211840.png",
-    "recursos/Pasted image 20260809211829.png",
-    "recursos/Pasted image 20260809211814.png",
-    "recursos/Pasted image 20260809211800.png",
-    "recursos/Pasted image 20260809211619.png",
-    "recursos/Pasted image 20260809211608.png",
-    "recursos/Pasted image 20260809211459.png",
-    "recursos/Pasted image 20260809211448.png",
-    "recursos/Pasted image 20260809211437.png",
-    "recursos/Pasted image 20260809211427.png",
-    "Informática/Análisis y Diseño.md",
     "Gestión",
     "Informática",
     "Sin título.md",
