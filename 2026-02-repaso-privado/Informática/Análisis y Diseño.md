@@ -240,3 +240,122 @@ El ingeniero debe adoptar el vocabulario de la empresa. Si el negocio llama a su
 #### Administración del Cambio
 Se tiene que asumir que los requerimientos van a cambiar a mitad del proyecto. Entonces se tiene que determinar o establecer un protocolo para afrontar estos cambios en los requerimientos. ¿Quién autoriza un cambio?, ¿Cómo se documenta?, ¿Cómo se evalúa el impacto en tiempo y costo?, y esto se logra mediante matrices de trazabilidad, donde se cruza cada requerimiento con el módulo de código que lo implementa para saber qué se rompe si cambia algo. 
 
+### Artefactos
+Son los documentos formales que se generan posterior o durante la fase de requerimientos.
+
+**Documento de Visión**
+Es el puente entre Especificación de Requerimientos del negocio y el código. Alinea a todo el equipo para que entiendan qué están construyendo y para quién. Contiene el problema planteado, las características principales del producto y el perfil de los interesados (stakeholders). El objetivo es evitar que el equipo programe funciones que a nivel técnico estén perfectas, pero no resuelven el problema principal. 
+
+**Especificación de Casos de Uso**
+La especificación es el documento de texto que acompaña al dibujo. Este documento ayudar a comprender mejor el dibujo, por lo tanto debe contener lo siguiente: 
+- _Precondiciones_, ¿Qué tiene que ser verdad ANTES de que el caso de uso empiece? Por ejemplo, el usuario debe tener una sesión activa y rol de Administrador
+- _Flujo Básico (Happy Path)_, los pasos 1, 2, 3 donde todo sale perfecto. 
+- _Flujos Alternos_, qué pasa si el usuario ingresa mal la contraseña, si el sistema pierde conexión, entre otros. 
+- _Postcondiciones_, ¿En qué estado queda el sistema o la base de datos DESPUÉS de que el caso de uso termina exitosamente? Por ejemplo, el estado de la factura cambia a "Pagada" y se envía un correo. 
+
+**Especificaciones Suplementarias**
+Este documento almacena todos los Requerimientos No Funcionales (rendimiento, seguridad, usabilidad) y reglas de negocio globales que afectan a la arquitectura completa y no a un solo caso de uso en particular. 
+
+**User Persona**, es un personaje ficticio, un arquetipo, que representa a un segmento de los usuarios reales. Se le pone nombre, edad, nivel de habilidad tecnológica, frustraciones diarias y metas. Ejemplo, en lugar de decir "el software es para los contadores", el equipo diseña para "Doña Marta, 55 años, lleva 20 años usando Excel, se frustra si hay muchos botones en pantalla, su meta es salir a tiempo"; automáticamente el equipo sabe entonces que debe tener una interfaz minimalista. 
+
+**Historias de Usuario**, la historia de usuario es corta y fomenta la conversación entre el programador y el cliente. El caso de uso es largo y busca ser un manual técnico inamovible. La estructura de una historia de usuario es la siguiente: 
+```
+Como [Rol / Actor], quiero [Acción / Funcionalidad] para [Beneficio / Valor de negocio].
+```
+
+<hr> 
+
+### Diagrama Casos de Uso
+Es una representación gráfica en _UML (Unfied Modelling Languaje - Lenguaje de Modelado Unificado)_ que muestra el comportamiento esperado de un sistema. Define el qué debe hacer el sistema desde la perspectiva del usuario o actor externo, sin entrar en detalles técnicos de su implementación interna. El diagrama se compone de 5 elementos estrictos: 
+
+**El Actor**
+Representa un rol, no a una persona específica. Siempre interactúa con el sistema desde afuera. 
+- _Actor Principal_, quien inicia el caso de uso para lograr un objetivo. Se dibuja a la izquierda. 
+- _Actor Secundario_, un sistema externo, base de datos de terceros o persona que el sistema necesita para completas el caso de uso (Ejemplo, una pasarela de pagos de Visa). 
+
+**El Caso de Uso (El óvalo)**
+Representa una funcionalidad concreta que aporta valor al actor.
+Siempre se escribe con un verbo en infinitivo más un sustantivo. Por ejemplo, Registrar Usuario, Generar Reporte, Calcular Impuesto. 
+
+**El Límite del Sistema (El Rectángulo)**
+Es una caja grande que agrupa todos los casos de uso. El nombre del software se pone en la parte superior. Los actores siempre van fuera de la caja; los casos de uso siempre van adentro. Esto demuestra visualmente qué es responsabilidad del código y qué viene de afuera. 
+
+**Relación de Asociación (Línea Continua)**
+Es una línea simple (sin flecha, o con flecha simple) que conecta al Actor con el Caso de Uso. Significa: este actor ejecuta o participa en esta funcionalidad. 
+
+**Relaciones Avanzadas**
+```<<include>>``` (Inclusión), es una dependencia obligatoria. Ocurre cuando un caso de uso base necesita llamar a otro caso de uso para poder terminar su trabajo. 
+- _Cómo se dibuja_, una flecha punteada que SALE del caso de uso base y APUNTA al caso includio, con la etiqueta ```<<include>>```.
+
+```<<extend>>``` (Extensión), es un comportamiento opcional. Ocurre cuando un caso base puede, bajo ciertas condiciones, ejecutar pasos adicionales. 
+- _Cómo se dibuja_, una flecha punteada que SALE del caso de uso opcional y APUNTA al caso de uso base, con la etiqueta ```<<extend>>```. Aquí la flecha va "al revés".
+
+```Generalización``` (Herencia), se usa cuando un caso de uso o actor hereda características de otro, pero agrega algo específico. 
+- _Cómo se dibuja_, una línea continua con una flecha en forma de triángulo vacío apuntando al padre. 
+
+### Diagrama de Flujo 
+El diagrama de flujo no maneja concurrencia (procesos paralelos) ni calles. Es puramente lineal, pensado para un solo hijo de ejecución de la computadora. Su simbología es la siguiente: 
+
+**Terminal (Óvalo o Elipse)**, marca exclusivamente el Inicio y el Fin del algoritmo. 
+![258](../recursos/Pasted%20image%2020260822143925.png)
+
+**Entrada / Salida (Paralelogramo)**, se usa cuando el sistema recibe datos o cuando imprime algo en pantalla. 
+![350](../recursos/Pasted%20image%2020260822175851.png)
+
+**Proceso (Rectángulo)**, se usa para cualquier operación matemática, asignación de variables o llamado a funciones. 
+![308](../recursos/Pasted%20image%2020260822180629.png)
+
+**Decisión (Rombo)**, evalúa una condición lógica. Siempre obligatoriamente, deben salir dos flechas de el: una etiquetada con "Si" y otra con "No".
+![346](../recursos/Pasted%20image%2020260822181759.png)
+
+**Flujo (Flechas)**, conectan los símbolos. En un diagrama de flujo, el flujo siempre debe ir de arriba hacia abajo y de izquierda a derecha. 
+![333](../recursos/Pasted%20image%2020260822182503.png)
+
+### Diagrama de Actividades (o de calle)
+El diagrama de actividad nos dice cómo fluye el proceso paso a paso a lo largo del tiempo. Es la evolución orientada a objetos del clásico diagrama de flujo. Demuestra la lógica de negocio y, sobre todo, los procesos paralelos o concurrentes (cosas que ocurren al mismo tiempo en el procesador o en la empresa). Tiene los siguientes elementos estrictos: 
+
+**Nodo inicial**, un círculo negro y relleno. Indica dónde arranca el proceso. (Solo puede haber uno por diagrama). 
+![](../recursos/Pasted%20image%2020260822135015.png)
+
+**Actividad / Acción**, un rectángulo con las esquinas redondeadas. Dentro va la acción empezando con un verbo. Por ejemplo, Validar datos, Calcular total. 
+![](../recursos/Pasted%20image%2020260822135116.png)
+
+**Flujo de Control (Línea de Transición)**, una línea con una flecha abierta que conecta una ctividad con la siguiente. 
+![588](../recursos/Pasted%20image%2020260822140038.png)
+
+**Nodo de Decisión (Rombo)**, un rombo de donde salen dos o más flechas. Sirve para los condicionales (IF/ELSE). Importante: cada flecha que sale del rombo debe tener una "Guarda" (una condición escrita entre corchetes, ejemplo: [Aprobado] o [Rechazado]).
+![](../recursos/Pasted%20image%2020260822135723.png)
+
+**Barras de Sincronización (Fork y Join)**, se dibujan como una línea negra gruesa (horizontal o vertical). 
+- _Fork (División)_, entran una sola flecha y salen dos o más flechas. Significa que a partir de ahí, las actividades se ejecutan al mismo tiempo (concurrencia/hilos).
+- _Join (Unión)_, entran dos o más flechas y sale una sola. El proceso no puede continuar hasta que todas las tareas paralelas hayan terminado.
+![466](../recursos/Pasted%20image%2020260822140411.png)
+
+**Nodo Final**, un círculo negro rodeado por otro círculo. Indica que el proceso terminó por completo. 
+![](../recursos/Pasted%20image%2020260822140622.png)
+
+**Calles**, se divide la hoja en columnas. Cada columna tiene el nombre de un Actor o Sistema. Sirve para saber quién es el responsable de ejecutar cada rectángulo de actividad. 
+
+## Modelación Visual UML
+
+### Diagrama de Estados
+El diagrama de estados modela exclusivamente el ciclo de vida de un solo objeto a lo largo del tiempo, desde que nace hasta que es destruido. A diferencia del diagrama de actividades que modela el paso a paso de un proceso general donde participan muchos actores. Este diagrama es crítico para entidades complejas, como un Factura (borrador -> emitida -> pagada -> anulada) o una conexión de red (cerrada -> escuchando -> establecida -> desconectada). El diagrama de estados tiene los siguientes elementos estrictos: 
+
+**Estado Inicial**, un círculo negro relleno.
+![](../recursos/Pasted%20image%2020260822191508.png)
+
+**Estado**, un rectángulo con las esquinas redondeadas. Representa una situación o condición en la que se encuentra el objeto en un momento dado. El nombre del estado debe ser un adjetivo o un participio (ejemplo: Pendiente, Conectado, Bloqueado), NUNCA un verbo de acción (no se dice "Pagando", se dice Pagado).
+![361](../recursos/Pasted%20image%2020260822191843.png)
+
+**Transición (Flecha)**, una línea con una flecha abierta que conecta un estado con otro. Indica que el objeto cambió de estado. 
+![374](../recursos/Pasted%20image%2020260822191937.png)
+
+**Etiquetas de Transición**, cada flecha debe llevar texto encima que explique por qué cambió de estado. La sintaxis oficial UML es: 
+- ``` Evento [Condición] / Acción```
+	- Evento, el disparador (por ejemplo, Hacer clic())
+	- Condición, es opcional. Una guarda lógica entre corchetes (ejemplo, [saldo < 0])
+	- / Acción, es opcional. Qué hace el sistema durante el cambio. (ejemplo, / Enviar correo).
+
+**Estado Final**, un círculo negro rodeado por otro círculo. Indica que el objeto dejó de existir o completó su ciclo de vida útil. 
+![367](../recursos/Pasted%20image%2020260822192347.png)
+
