@@ -155,3 +155,103 @@ Todo programa en Linux está regido por derechos de autor (Copyright). La licenc
 1. **Licencias Copyleft o Virales (GPL - General Public License)**, fueron creadas por el movimiento de software libre. El kernel de Linux (y casi todo el proyecto GNU) usa GPLv2. La regla, si tomo un código con licencia GPL, lo modifico o lo agrego dentro de otro programa, ahora ese programa pasa directamente a heredar la licencia GPL. Entonces quedo obligado a liberar y regalar todo mi código fuente al público. 
 2. **Licencias Permisivas (MIT, Apache, BSD)**, son las favoritas del mundo corporativo. La regla es, haz lo que quieras. Puedes tomar el código, modificarlo, cerrarlo, compilarlo y venderlo por millones de dólares sin mostrarle el código fuente a nadie. La única condición legal es que dejes una nota pequeña dando crédito al autor original. 
 
+```
+SISTMAS OPERATIVOS: Historia, Clasificacion de los sistemas operativos, procesos, hilos, algoritmos de planificación, interrupciones, instrucciones, Sección Critica, exclusión Mutua, Dekker, semaforos y colas, interbloqueo e inanicion y sus estrategias, Tipos de medición y herramientas de evaluación para identificar bloqueos y evitar saturaciones
+```
+
+<hr> 
+
+## Repaso 
+
+### Sistema Operativo
+El Sistema Operativo tiene dos propósitos fundamentales o se le conoce cómo: 
+
+**Máquina Extendida**
+El hardware (discos, memoria, procesador) es complejo y difícil de programar. El SO abstrae esta complejidad y le presenta a los programas interfaces limpias y sencillas (conocidas como Llamadas al Sistema o Systems Calls). En lugar de que un programa tenga que saber cómo mover el cabezal magnético de un disco duro, el SO le da la abstracción de "Archivo".
+
+**Administrador de Recursos**
+Se tienen múltiples programas compitiendo por CPU, memoria y red al mismo tiempo. El SO es el administrador que se encarga de repartir estos recursos (los divide en el tiempo y en el espacio), y se hace esto para asegurar que ningún proceso acapare el sistema o corrompa los datos de otro. 
+
+### Historia de los Sistemas Operativos
+**1ra. Generación - Tubos al Vacío (1945 - 1955)**
+Había que programar conectado cables físicamente o también con tarjetas perforadas. El programador era el operador y el sistema operativo. _Problema_, tiempo de máquina caro desperdiciado mientras el humano pensaba, ya que el 90% del tiempo la máquina esta inactiva esperando que el humano configure los cables.
+
+**2da. Generación - Transistores y Procesamiento por Lotes/Batch (1955 - 1965)**
+Para no desperdiciar tiempo de CPU, se agruparon trabajos similares en cintas magnéticas (tarjetas perforadas). Aquí nace un SO primitivo (el monitor residente) que simplemente pasaba de un trabajo a otro automáticamente. _Problema_, si un trabajo necesitaba leer un dato de una cinta (operación de Entrada/Salida) , la CPU se quedaba sin hacer absolutamente nada esperando. 
+
+**3ra. Generación - Circuitos Integrados y Multiprogramación (1965 - 1980)**
+_Multiprogramación, tener múltiples procesos compitiendo por recursos limitados al mismo tiempo._
+
+Para solucionar el desperdicio de CPU por esperas de E/S, se decidió cargar varios trabajos en la memoria al mismo tiempo. Entonces surge lo siguiente: si se tienen varios programas en memoria, se necesita proteger la memoria de uno contra el otro (nace la gestión de memoria). Si se tienen varios programas listos para usar la CPU, se necesita decidir qué programa va primero (nacen los Algoritmos de Planificación). Si un programa está esperando el disco, ¿Cómo le avisa el disco a la CPU que ya terminó? (nacen las interrupciones). Además surge el tiempo compartido, donde el SO engaña a múltiples usuarios dándoles un pedacito de tiempo de CPU a cada uno tan rápido que todos sienten que tienen su propia memoria. 
+
+**4ta. Generación - Computadoras Personales (1980 - Presente) y 5ta. Generación**
+Los sistemas se enfocan en interfaces de usuario, redes, sistemas distribuidos y eficiencia energética. El enfoque pasa de "aprovechar al máximo la CPU" a "hacer la vida más fácil al usuario". Y la quinta generación son SO para computadoras en la nube e IoT.
+
+## Revisión de Hardware 
+
+### Instrucciones y la Arquitectura Modo Dual 
+Los procesadores modernos no ejecutan todas las instrucciones de la misma manera. Tienen un bit en el hardware (en el registro de estado o PSW - Program Status Word) que define el Modo de Ejecución. Existen dos modos principales: 
+1. **Modo Usuario**, es un modo restringido. Aquí corren los programas comunes (navegador, videojuegos). En este modo, el procesador prohíbe ejecutar instrucciones críticas (como hablar directamente con el disco duro, gestionar la memoria RAM o apagar las interrupciones).
+2. **Modo Kernel**, el procesador tiene acceso total y absoluto al hardware. Aquí es donde se ejecuta el núcleo del SO. Puede ejecutar cualquier instrucción. 
+
+### Interrupciones 
+Una interrupción es una señal electrónica que altera el flujo normal de ejecución de la CPU (el ciclo clásico Fetch-Decode-Execute). Sin interrupciones, el SO sería ciego y sordo. Se dividen en dos familias: 
+- **Interrupciones Asíncronas (Hardware)**, son generadas por dispositivos externos y pueden ocurrir en cualquier momento, sin importar qué instrucción esté ejecutando la CPU.
+	- _Se ejecuta de manera independiente del flujo principal, sin esperar a que otra acción termine para continuar, es decir, el sistema no se queda bloqueado esperando el resultado._
+- **Interrupciones Síncronas (Software/ Traps / Excepciones)**, son generadas por la propia CPU al ejecutar una instrucción defectuosa o restringida. Por ejemplo, si un programa intenta acceder a un área de la memoria que no le pertenece, la CPU genera el Trap, detiene el programa y le avisa al SO para que mate al proceso. 
+	- _Se ejecuta de forma secuencia y bloqueante, lo que obliga al programa a esperar a que termine una acción antes de continuar con la siguiente._
+
+#### Flujo de una Interrupción 
+Cuando ocurre una interrupción, el hardware y el SO ejecutan esta secuencia exacta: 
+1. **Suspensión**, la CPU termina la instrucción actual (no deja un proceso a medias).
+2. **Guardado de Contexto**,el hardware guarda automáticamente el _Program Counter (PC)(que indica cuál era la siguiente instrucción del programa interrumpido)_ y el _PSW (registro de estado)_ en la _Pila de Control del Sistema (Stack)_. Esto es vital para poder reanudar el programa después. 
+3. **Vector de Interrupciones**, el dispositivo que interrumpió envía un número por el bus del sistema. La CPU usa ese número como índice para buscar en una tabla en memoria llamada _Vector de Interrupciones_. Esta tabla contiene las direcciones de memoria donde reside el código del SO que sabe cómo manejar esa interrupción específica. 
+4. **Ejecución del ISR**, la CPU salta a esa dirección y ejecuta la _Rutina de Servicio de Interrupción (ISR - Interrupt Service Routine)_ en modo Kernel. (Aquí el SO atiende al disco duro).
+5. **Restauración (IRET)**, al terminar la rutina, el SO ejecuta una instrucción especial de ensamblador (como IRET en x86) que saca el Program Counter y el PSW de la pila, cambia de nuevo a Modo Usuario, y el programa original continúa exactamente donde se quedó, sin siquiera saber que fue interrumpido. 
+
+## Clasificación de los Sistemas Operativos
+Hoy en día los SO se clasifican según el entorno para el que fueron diseñados.
+
+**Sistemas de Tiempo Compartido**, son los de propósito general (como Windows o sistemas de escritorio típicos). Su objetivo principal es la equidad. Dividen el tiempo de CPU entre todos los procesos activos para que el usuario sienta que tiene el control de todos a la vez. No garantizan tiempos exactos de respuesta. 
+
+**Sistemas de Tiempo Real (RTOS)**
+Su objetivo no es la equidad, si no el tiempo. Tienen restricciones de tiempo estrictas. Si una tarea no se completa en su plazo exacto (deadline), se considera un fallo total del sistema. 
+- _Tiempo Real Duro_, un retraso causa una tragedia (sistema de frenos ABS, marcapasos, control de vuelo).
+- _Tiempo Real Suave_, un retraso es molesto pero no fatal (transmisión de audio/video en vivo).
+
+**Sistemas Distribuidos**
+Múltiples computadoras físicamente separadas que se comunican por red, pero el SO las presenta al usuario como si fueran una sola supercomputadora. El usuario no sabe en qué máquina física se está ejecutando realmente su proceso. 
+
+**Sistemas de Computadora Personal / Servidor**
+Optimizados para proveer servicios a múltiples clientes de forma concurrente, priorizando el rendimiento de la red y el disco (E/S) sobre la interfaz gráfica. 
+
+**Sistemas Embebidos**
+Diseñados para operar en dispositivos que no consideramos "computadoras" tradicionales (televisores, microondas). Tienen severas restricciones de tamaño, memoria y consumo de energía. 
+
+## Procesos 
+Un error suele ser confundir programa con proceso. Un programa es una _entidad pasiva_, un archivo ejecutable estático almacenado en el disco duro. Un proceso es una _entidad activa_, es un programa en ejecución.
+
+Para el SO, un proceso no es más que una estructura de datos (en lenguaje C si es Linux) llamado **Bloque de Control de Procesos (Process Control Block - PCB)**, esta estructura de datos reside de forma exclusiva en la memoria del Kernel. El SO interpreta que un "programa en ejecución" existe en el instante exacto en que crea un PCB para él. Cuando la CPU cambia de proceso a otro, el SO guarda toda la información en el Bloque de Control de Procesos del proceso saliente y carga el PCB (Bloque de Control de Procesos) del proceso entrante. El PCB (bloque de control de proceso) contiene lo siguiente: 
+- **Identificación (PID)**, un número único del proceso, el ID del usuario propietario y el ID del proceso padre que lo invocó. 
+- **Estado del Proceso**, el program counter, los registros de la CPU y los punteros de la pila. Esta es la fotografía exacta de cómo estaba el hardware antes de quitarle el control a ese proceso. 
+- **Información de Control y Planificación**, su estado actual (Nuevo, Listo, Ejecución, Bloqueado), su nivel de prioridad y estadística de cuánto tiempo de CPU ha consumido. 
+- **Gestión de Memoria**, punteros estructurales que le indican al hardaware en qué direcciones físicas de la TAM está el código de este proceso. 
+- **Estado de E/S**, una lista de todos los archivos y puertos de red abiertos. 
+
+DUDA QUE ES LA "PILA" - Estado del proceso. 
+
+### Estados y Transiciones de un Proceso
+Como la CPU salta de un proceso a otro, un proceso no está ejecutándose todo el tiempo. Atraviesa un ciclo de vida estrictamente controlado: 
+1. **Nuevo**, el proceso se está creado (asignando memoria). Aún no está listo para competir por la CPU. 
+2. **Listo**, el proceso tiene todo lo que necesita para correr y está en la cola principal, esperando a que el planificador le asigne tiempo de procesador. 
+3. **En ejecución**, el proceso tiene el control de la CPU en este milisegundo y sus instrucciones se están procesando. 
+4. **Bloqueado**, el proceso no puede continuar, incluso si le dieran la CPU, porque está esperando un evento externo (ejemplo, que llegue un paquete de red, que el usuario presione una tecla o que el disco duro entregue un archivo). 
+5. **Terminado**, el proceso terminó su ejecución (con éxito o por algún error) y el SO libera su memoria. 
+
+**Transiciones**
+En ejecución -> Listo, ocurre por interrupción de reloj (expiró su tiempo/quantum) o porque llegó un proceso de mayor prioridad. El proceso quiere seguir, pero el SO se lo quita. 
+
+En ejecución -> Bloqueado, el proceso decide detenerse porque solicitó una operación de Entrada/Salida y no puede avanzar sin ese dato. 
+
+Bloqueado -> Listo, ocurre cuando el evento externo finaliza (el disco entrega el dato). Nunca se pasa de Bloqueado a En ejecución, siempre debe volver a formarse en la cola de Listos. 
+

@@ -359,3 +359,120 @@ El diagrama de estados modela exclusivamente el ciclo de vida de un solo objeto 
 **Estado Final**, un círculo negro rodeado por otro círculo. Indica que el objeto dejó de existir o completó su ciclo de vida útil. 
 ![367](../recursos/Pasted%20image%2020260822192347.png)
 
+![](../recursos/Pasted%20image%2020260826151912.png)
+### Diagrama Estático de Clases y Objetos 
+El diagrama de clases modela la estructura estática del sistema. Muestra los "moldes" (clases) con los que se crearán los objetos, qué datos guardan y cómo se relacionan. El diagrama de clases tiene los siguientes elementos estrictos: 
+
+**Anatomía Estricta de la Clase (La Caja)**
+Una clase en UML se dibuja como un rectángulo dividido en tres compartimentos (filas):
+1. **Fila 1 - Nombre**, el nombre de la clase. Siempre en singular y con la primera letra mayúscula. Ejemplo: "Factura"
+2. **Fila 2 - Atributos**, son las variables. Deben llevar su visibilidad, nombre y tipo de dato. Ejemplo: "- total: float"
+3. **Fila 3 - Métodos/Operaciones**, son las funciones. Deben llevar su visibilidad, nombre, parámetros (si los hay) y tipo de dato de retorno. Ejemplo: "+ calcularIVA(): float"
+
+**Modificadores de Visibilidad (Encapsulamiento)**
+El encapsulamiento, es un principio de programación orientada a objetos que oculta los datos internos de un objeto y solo deja ver las funciones necesarias para usarlo. Protege la información contra cambios por error y ordena mejor el código. Se tienen los siguiente modificadores de privacidad: _public (Público), todos pueden ver y usar el dato. private (Privado), solo la propia clase puede ver y tocar el dato. protected (protegido), las clases hijas (herencias) tienen el mismo poder que la clase padre (dueña). _
+
+En UML, no se escribe public o private. Se usan los siguientes símbolos: 
+- ```+ (Público)```, cualquier otra clase puede acceder a él. Casi todos los métodos son públicos.
+- ```- (Privado)```, solo la propia clase puede usarlo. Por seguridad, todos los atributos deben ser privados, a esto se le llama encapsulamiento. 
+- ```# (Protegido)```, solo la clase y sus clases hijas pueden usarlo. 
+
+**Relaciones**
+No todas las líneas de relación son iguales: 
+- **Asociación (Línea Simple)**, dos clases se conocen y se comunican, pero no dependen la una de la otra para existir.
+	- ![376](../recursos/Pasted%20image%2020260826155214.png)
+- **Herencia / Generalización (Triángulo Vacío)**, una relación "Es un". La flecha con el triángulo hueco apunta a la clase Padre. La clase hija hereda todo. 
+	-  ![376](../recursos/Pasted%20image%2020260826155240.png)
+- **Agregación (Rombo Vacío)**, una relación "Tiene un". Se dibuja un rombo hueco del lado de la clase "Contenedor". La regla: si el contenedor es destruido, los elementos que contenían siguen existiendo de forma independiente. 
+	- ![444](../recursos/Pasted%20image%2020260826155313.png)
+- **Composición (Rombo Relleno Negro)**, una relación "es parte vital de". Se dibuja un rombo pintado de negro. La regla: si el contenedor es destruido, los elementos que contenían se destruyen con él. Ejemplo: si se destruye un edificio, sus habitaciones también dejan de existir. 
+	- ![440](../recursos/Pasted%20image%2020260826155340.png)
+- **Multiplicidad**, se escribe en los extremos de las líneas para indicar cantidades. Ejemplo: 1 a 1..* significa uno a muchos. Las multiplicidades que existen son: 
+	- 1: exactamente uno. Es obligatorio
+	- 0. .1: cero o uno. Es opcional, puede que exista o puede que no.
+	- * o 0..* : de cero a muchos. Puede no haber ninguno, o haber infinitos. 
+	- 1. .* : de uno a muchos. Obligatoriamente debe haber al menos uno, y de ahí hasta el infinito. 
+	- n. .m: un rango específico. Por ejemplo, si un vehículo solo puede tener de 2 a 4 puertas, se escribe 2. .4
+
+Intentar dibujar un diagrama de clases con 300 tablas y objetos, es una pérdida de tiempo y se vuelve algo muy complejo. Para esto la industria utiliza algo llamado **Diseño Guiado por el Dominio**, en lugar de hacer un diagrama muy grande, el ingeniero divide el sistema en módulos (dominios). Entonces ya solo se hace el diagrama de clases de cada módulo. 
+
+### Diagrama de Secuencia 
+Muestra cómo los objetos se envían mensajes (llamadas a funciones) a lo largo del tiempo, de arriba hacia abajo. Es vital para modelar integraciones de red, autenticaciones o flujos de microservicios. El diagrama de secuencia tiene los siguientes elementos: 
+
+**Participantes (Arriba)**, en la parte superior se dibuja un rectángulo (o muñequitos de palitos si son humanos) que representan las instancias u objetos.
+![339](../recursos/Pasted%20image%2020260826163926.png)
+
+**Línea de Vida**, de cada participante baja una línea punteada vertical. Representa el paso del tiempo de arriba hacia abajo. 
+![90](../recursos/Pasted%20image%2020260826164027.png)
+
+**Foco de Control (Caja de Ejecución)**, un pequeño rectángulo vertical largo y delgado que se dibuja sobre la línea de vida. Indica que ese objeto está procesando algo o su CPU está activo en ese momento. 
+![71](../recursos/Pasted%20image%2020260826164218.png)
+
+**Mensajes**
+- **Mensajes Síncronos (Flecha Negra Rellena)**, el objeto que envía el mensaje se queda esperando y no hace nada más hasta que le respondan. Ejemplo, una petición HTTP normal. 
+	- ![324](../recursos/Pasted%20image%2020260826164340.png)
+- **Mensaje Asíncrono (Flecha con Punta Abierta)**, el objeto envía el mensaje y sigue haciendo sus cosas sin esperar respuesta. Ejemplo, mandar un trabajo a una cola de impresión, o enviar un mensaje por un puerto.
+	- ![353](../recursos/Pasted%20image%2020260826164540.png)
+- **Mensaje de Retorno (Flecha Punteada)**, va de regreso al objeto que hizo la petición, devolviendo un dato o un "OK".
+	- ![](../recursos/Pasted%20image%2020260826164738.png)
+
+![392](../recursos/Pasted%20image%2020260826164807.png)
+
+## Atributos de Calidad (Requerimientos No Funcionales)
+En el diseño arquitectónico, el software no solo debe funcionar, debe funcionar bien. Los atributos de calidad son las métricas de ese "bien". Los más críticos en la industria son: 
+1. **Rendimiento**, tiempo de respuesta y procesamiento de transacciones. Responder a una consulta en menos de 200ms. 
+2. **Disponibilidad**, tolerancia a fallos y tiempo de actividad. El servidor de la empresa no debe caerse más de 5 minutos al mes. 
+3. **Seguridad**, confidencialidad, integridad y autenticación. 
+4. **Usabilidad**, qué tan intuitivo es el sistema para el usuario final. 
+
+### Principios y Procesos del Diseño de la Interfaz de Usuario (UI)
+
+**Principios del diseño de la interfaz**
+A la hora de diseñar interfaces se tienen que seguir tres reglas principales: 
+1. **Dar el control al usuario**, el usuario nunca debe sentir que el software lo tiene "atrapado". Por ejemplo: siempre debe existir un botón "Deshacer" (Ctrl + Z), y atajos de teclado para usuarios expertos. El sistema no debe forzar al usuario un flujo rígido si no es estrictamente necesario. 
+2. **Reducir la carga de memoria del usuario**, la memoria a corto plazo del ser humano es limitada (solo retenemos entre 5 y 9 elementos a la vez). El software debe recordar las cosas, no el cerebro. Por ejemplo: autocompletado en campos de búsqueda, mostrar valores por defecto lógicos y proveer ayudas visuales (Tooltips) para no obligarlo a leer un manual. 
+3. **Hacer la interfaz consistente**, el sistema debe comportarse de la misma manera en todas sus pantallas. Por ejemplo: si el botón rojo significa Eliminar en la pantalla de inventario, no puede significar "Guardar" en la pantalla de facturación. La consistencia también aplica a las convenciones externas (ejemplo, el ícono de disquete siempre significa guardar, aunque ya no existan los disquetes).
+
+**Proceso del diseño de interfaz**
+El diseño de interfaz es un proceso iterativo en espiral que consta de 4 etapas técnicas: 
+1. **Análisis del Usuario y la Tarea**, se estudia cómo el usuario hace su trabajo actualmente (las user Persona).
+2. **Diseño de la Interfaz (Prototipado)**, creación de Wireframes (bocetos en blanco y negro) y Mockups (diseño visuales).
+3. **Construcción (Implementación)**, se programa el frontend (HTML/CSS/JS, React).
+4. **Validación de Usabilidad**, pruebas con usuarios reales. 
+	1. Pruebas A/B: hay dos versiones del mismo programa, la versión A es la "original" y se crea una versión B de ese programa con alguna modificación ya sea de estilo o de algún flujo; la versión A se le da a un usuario y la versión B a otro (pueden ser grupos de usuarios también distintos). Entonces se analiza que versión tiene más éxito, cuál versión facilita más la cosas al usuario. 
+	2. Mapas de Calor: son representaciones visuales que usan colores para mostrar dónde se concentra la mayor o menor actividad en una interfaz, un sitio web o un código fuente. 
+
+Dentro de estas 4 etapas se deben diseñar 3 arquitecturas fundamentales: 
+1. **Diseño de Navegación**, definir cómo el usuario se mueve entre pantallas (menús, botones de retroceso, breadcrumbs o migas de pan). _Principio clave_: prevención de errores. El usuario siempre debe saber dónde está y cómo regresar. 
+	1. _La regla de los 3 clics, ninguna función importante debe estar a más de 3 clics de la pantalla de inicio_
+2. **Diseño de Entradas (Inputs)**, cómo el sistema captura datos. _Principio clave_: minimizar la carga cognitiva. En lugar de hacer que el usuario escriba la fecha a mano (donde se puede equivocar de formato) es mejor colocar un calendario seleccionable. 
+	1. Uso de Input Making, guía al usuario a ingresar la información ya con un formato establecido. Por ejemplo, al ingresar un número de teléfono, los guiones se ponen solos. 
+3. **Diseño de Salidas (Outputs)**, cómo el sistema muestra la información procesada (tablas, gráficas, alertas). _Principio clave_: retroalimentación inmediata. Si el usuario guarda algo, el sistema debe mostrar un mensaje de éxito. _Cómo el sistema comunica estados y resultados_
+	1. Si un proceso tarda más de 2 segundos, es obligatorio poner una barra de carga.
+	2. Manejo de errores amigable, no mostrar tal cuál el error técnico al usuario, en vez de eso mostrar una advertencia o un anuncio que pueda comprender. 
+
+## Validación y Verificación del Análisis y Diseño
+
+**Verificación**
+Revisar si el código no tiene bugs, si los diagramas UML están bien dibujados, si la arquitectura cumple los estándares técnicos. Es un proceso altamente técnico y de ingeniería. El cliente no participa aquí. Se divide principalmente en: 
+- **Actividades Estáticas (Sin Ejecutar Código)**
+	- Revisiones de código, un ingeniero revisa el código de otro
+	- Análisis estático, herramientas de software que escanean el código buscando vulnerabilidades de seguridad, malas sintaxis o complejidad ciclomática excesiva antes de compilar. 
+	- Inspección de Documentos, revisar que los diagramas UML estén bien dibujados. 
+- **Actividades Dinámicas (Ejecutando el Código)**
+	- **Pruebas Unitarias**, se prueba una sola clase o método de forma aislada. 
+	- **Pruebas de Integración**, prueba que el módulo A se comunique bien con el módulo B.
+	- **Pruebas de Rendimiento**, miden tiempos de respuesta bajo carga normal.
+	- **Pruebas de Estrés**, llevan el sistema al límite para ver cómo se rompe. 
+	- **Pruebas de Regresión**, se ejecutan cada vez que un programador agrega código nuevo, para asegurar que no haya roto algo que funcionaba bien. 
+	- **Pruebas de seguridad**, ataques éticos para buscar vulnerabilidades
+
+**Validación** 
+Sentarse con el cliente (o el Product Owner) y confirmar si el software realmente resuelve su problema de negocio. Para hacer una correcta validación se recomienda hacer las siguientes pruebas: 
+- **Pruebas Alfa**, realizadas por los desarrolladores simulando ser usuarios reales en un entorno controlado (dentro de la empresa).
+- **Pruebas Beta**, el software se le entrega a un grupo selecto de usuarios reales en su propio entrono de trabajo para que lo usen y reporten fallos antes del lanzamiento oficial. Las pruebas beta recopilan opiniones reales del sistema.
+- **Pruebas de Aceptación del Usuario (UAT)**, el cliente (o Product Owner) se sienta frente al sistema, ejecuta los procesos de negocio reales y firma un documento legal aceptando que el software hace lo que se le prometió en el documento BRS. La pruebas de aceptación del usuario validan que el software cumple con los requisitos del negocio. 
+- **Pruebas de Usabilidad**, mide qué tan intuitivo es el software. 
+
+## Diseño Arquitectónico de Software
+

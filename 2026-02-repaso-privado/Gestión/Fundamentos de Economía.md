@@ -147,3 +147,73 @@ Este es el escenario más agresivo para una empresa, porque no tiene ningún pod
 En esta estructura de mercado solo existe un único vendedor de un producto que no tiene sustitutos cercanos. Esta estructura de mercado se sostiene principalmente por las barreras de entrada. Por ejemplo, las barreras legales que suceden por patentes o derechos de autor. 
 - Monopolio Natural, ocurre cuando los costos fijos de infraestructura son tan absurdamente altos que solo es rentable si una sola empresa da el servicio. 
 
+#### Oligopolio
+Es un mercado dominado por un pequeño grupo de grandes empresas. 
+Pocos vendedores y muchos compradores. Altas barreras de entrada, requieren inversiones masivas de capital que evitan que cualquier empresa pueda competir
+- Interdependencia estratégica, es decir, las empresas sí se vigilan mutuamente. Si una saca un producto más barato, la otra intentará reaccionar bajando sus precios o sacando un producto mejor. Lo que hace uno, afecta directamente al otro. 
+
+#### Competencia Monopolística 
+Este es el mercado más común para servicios profesionales y desarrollo de software. 
+- Tiene bajas barreras de entrada, es relativamente fácil de entrar a competir. 
+- Muchos vendedores y muchos compradores, igual que en la competencia perfecta. 
+- Diferenciación de producto, a diferencia de la competencia perfecta (donde el producto es homogéneo), aquí cada empresa ofrece un producto que es ligeramente diferente al de los demás (por calidad, diseño, atención al cliente o marca).
+
+## Macroeconomía 
+
+## Ciclo Económico y sus Etapas
+La economía no crece en línea recta, se mueve en forma de ondas. Tiene 4 etapas principales: 
+- **Expansión (Recuperación)**, la economía crece. Hay alta demanda de servicios, entonces las empresas contratan más personal y el desempleo baja. 
+- **Auge (Cima)**, el punto máximo. La capacidad productiva está al tope. Aquí suele empezar a generarse inflación (las cosas se encarecen por tanta demanda).
+- **Contracción (Recesión)**, la economía empieza a frenar. Caen los proyectos, hay recortes de presupuesto, aumenta el desempleo (hay despidos). Si dura mucho, se vuelve una Depresión. 
+- **Fondo (Valle)**, el punto más bajo del ciclo. A partir de aquí, las cosas solo pueden empezar a mejorar nuevamente. 
+
+### PIB (Producto Interno Bruto)
+Es el valor total de todos los bienes y servicios finales producidos DENTRO de las fronteras de un país, durante un periodo de tiempo (usualmente un año).
+La clave del PIB es la geografía, no importa si la empresa es guatemalteca, gringa o japonesa. Si la fábrica o la empresa está físicamente operando dentro del territorio de Guatemala, suma al PIB de Guatemala. 
+
+### PNB (Producto Nacional Bruto)
+Es el valor total de todos los bienes y servicios finales producidos por los Ciudadanos/Empresas Nacionales de un país, sin importar en qué parte del mundo se encuentren. 
+La clave de PNB es la nacionalidad, solo cuenta lo que producen los guatemaltecos (ya sea dentro del país o si tienen operaciones en el extranjero) y resta lo que producen los extranjeros dentro de Guatemala. 
+
+### Inflación 
+Es el aumento generalizado y sostenido de los precios de los bienes y servicios en una economía durante un periodo de tiempo. No significa que un producto específico se vuelva más caro, sino que el nivel general sube, lo que se traduce en la pérdida del poder adquisitivo de la moneda local (con el mismo dinero se compra menos, o bien con el mismo dinero se pagan menos horas de programación).
+
+#### Canasta Alimentaria y Ampliada 
+Para medir la inflación real que afecta a la población, el Instituto Nacional de Estadística (INE) utiliza estas dos métricas en Guatemala: 
+- **Canasta Básica Alimentaria (CBA)**, es el conjunto de alimentos mínimos necesarios para satisfacer los requerimientos calóricos diarios de un hogar. 
+	- _Canasta Básica Alimentaria Urbana (CBAU)_, Q945.74 (integra 66 productos)
+	- _Canasta Básica Alimentaria Rural (CBAR)_, Q730.23 (integra 60 productos)
+- **Canasta Ampliada (CA)**,incluye la CBA, pero le suma el costo de servicios esenciales para vivir (vivienda, vestuario, transporte, educación, internet, energía eléctrica).
+	- _Canasta Ampliada Urbana_, Q2,289.65 (incluye gastos de servicios, transporte y vivienda)
+	- _Canasta Ampliada Rural_, Q1,437.08
+
+### Deflactor del PIB
+_Es un índice que mide la variación de los precios de todos los bienes y servicios producidos en un país. Sirve para saber qué parte del crecimiento del PIB se debe a la subida de precios (inflación) y que parte es un aumento real de la producción_.
+Es un índice macroeconómico que mide la variación de precios de todos los bienes y servicios producidos en un país, no solo los que consumen los hogares. La inflación normal (basada en la canasta del consumidor) incluye bienes importados si la gente los consume. El deflactor del PIB solo toma en cuenta los bienes producidos internamente (nacionales), e incluye activos corporativos, exportaciones y construcciones, los cuales no están en la canasta básica de un ciudadano común. 
+
+## El Desempleo 
+En economía pura, no cualquier persona sin trabajo es un "desempleado". Para que las estadísticas oficiales cuenten como desempleado a una persona, esta debe pertenecer a la PEA (Población Económicamente Activa), lo que significa que está en edad de trabajar, no tiene empleo, pero está buscando activamente uno. Existen 3 tipos principales de desempleo: 
+- **Desempleo Friccional**, es el desempleo "sano" o de transición. Ocurre cuando un profesional renuncia para buscar algo mejor, o cuando un recién graduado se toma un par de meses enviando CVs antes de conseguir su primer empleo. Es temporal y voluntario. 
+- **Desempleo Estructural**, es el más peligroso. Ocurre cuando hay un desfase entre lo que saben hacer los trabajadores y lo que el mercado demanda. Por ejemplo, un programador experto en un lenguaje obsoleto que ya ninguna empresa usa, o trabajadores reemplazados por nuevas tecnologías. 
+- **Desempleo Cíclico**: está atado al ciclo económico. Ocurre durante las recesiones, cuando la demanda cae y las empresas se ven obligadas a recortar personal para no quebrar. 
+
+### Índice de Gini y Desigualdad Económica 
+El PIB nos dice cuánto dinero produce el país en total, pero no nos dice cómo se reparte ese dinero. Aquí entra el índice de Gini.
+- Es una métrica que va de 0 a 1 (o de 0 a 100)
+- Gini = 0 (Equidad Perfecta), significa que absolutamente todos los habitantes del país ganan exactamente la misma cantidad de dinero. 
+- Gini = 1 (Desigualdad Absoluta), significa que una sola persona en todo el país tiene el 100% de la riqueza y los demás tienen cero. 
+Guatemala históricamente tiene un índice de Gini muy alto (cercano a 0.5 - 0.6), lo que indica una severa concentración de riqueza. 
+
+### Tasas de Interés
+La tasa de interés es lo que cuesta pedir dinero prestado, o lo que pagan por guardar el dinero en el banco. 
+- **Tasa Líder (Política Monetaria)**, es la tasa de referencia que dicta el banco central. Si la inflación está muy alta, el banco central sube las tasas de interés. ¿Por qué? al ser más caro pedir préstamos, las empresas dejan de endeudarse para crecer y la gente deja de usar tarjetas de crédito; esto "enfría" la economía y frena la inflación. 
+- Si las tasas de interés están bajas (dinero barato), hay un boom de contratación de desarrolladores y creación de empresas. Si las tasas de interés suben, el financiamiento se seca, lo que provoca recortes en la industria. 
+
+### Tipo de Cambio 
+Es el precio de una moneda expresada en otra. En un mercado libre, este precio se define por la oferta y la demanda de dólares, pero en Guatemala se tiene un sistema "flotante administrado" (el BANGUAT intervine comprando o vendiendo dólares si el precio sube o baja de forma muy violenta). Existen dos movimientos principales: 
+- **Depreciación**, se necesita más quetzales para comprar un dólar. 
+	- _A quién perjudica_, a los importadores, si se pagan servicios o se compran laptops, los costos operativos en quetzales se disparan. 
+	- _A quién beneficia_, a los exportadores, si se trabaja remoto para EEUU y me pagan $2,000.00 mensuales, al cambiar ese dinero en el banco voy a recibir muchos más quetzales. 
+- **Apreciación**, necesito menos quetzales para comprar un dólar. 
+	- Beneficia a quienes importan.
+	- Perjudica a lo exportadores. 
