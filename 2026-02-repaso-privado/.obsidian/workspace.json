@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas/Arquitectura del Computador I.md",
+                "file": "Informática/Análisis y Diseño.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Arquitectura del Computador I"
+              "title": "Análisis y Diseño"
             }
           }
         ]
@@ -186,24 +186,25 @@
   },
   "active": "237af7dbf4bfad91",
   "lastOpenFiles": [
+    "Sistemas/Redes I.md",
+    "Sin título.md",
+    "Gestión/Ingeniería Económica.md",
+    "Pogramas de curso/Gestión Industrial/~$ograma Ingeniería Económica 2024 (1).docx",
+    "Gestión/Ingeniería de Costos.md",
+    "Gestión/Fundamentos de Economía.md",
+    "recursos/Pasted image 20260902145848.png",
+    "recursos/Pasted image 20260902145835.png",
+    "Informática/Análisis y Diseño.md",
+    "recursos/Pasted image 20260831165516.png",
+    "recursos/Pasted image 20260831162010.png",
+    "recursos/Pasted image 20260831161607.png",
+    "recursos/Pasted image 20260831160826.png",
+    "recursos/Pasted image 20260831160426.png",
+    "recursos/Pasted image 20260828170405.png",
+    "Sistemas/Arquitectura del Computador I.md",
     "recursos/Pasted image 20260827121527.png",
     "recursos/Pasted image 20260827120754.png",
     "Sistemas/Sistemas Operativos.md",
-    "Informática/Análisis y Diseño.md",
-    "recursos/Pasted image 20260826164807.png",
-    "recursos/Pasted image 20260826164749.png",
-    "recursos/Pasted image 20260826164738.png",
-    "recursos/Pasted image 20260826164641.png",
-    "recursos/Pasted image 20260826164540.png",
-    "recursos/Pasted image 20260826164340.png",
-    "recursos/Pasted image 20260826164218.png",
-    "recursos/Pasted image 20260826164027.png",
-    "recursos/Pasted image 20260826163926.png",
-    "Sistemas/Arquitectura del Computador I.md",
-    "Gestión/Fundamentos de Economía.md",
-    "Sistemas/Redes I.md",
-    "Gestión/Ingeniería de Costos.md",
-    "Gestión/Ingeniería Económica.md",
     "Pogramas de curso/Sistemas/Programa Sistemas Operativos 2024.pdf",
     "Pogramas de curso/Sistemas/Sin confirmar 338107.crdownload",
     "Sistemas",
@@ -212,7 +213,6 @@
     "Informática/Base de Datos I.md",
     "Gestión",
     "Informática",
-    "Sin título.md",
     "Contenidos recomendados/~$Ajuste Enfoque Gestión Industrial.xlsx",
     "Prueba.md"
   ]

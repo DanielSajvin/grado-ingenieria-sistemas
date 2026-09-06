@@ -60,7 +60,7 @@ No es lo mismo que programar. Es la aplicación de un enfoque sistemático, disc
 **Enfoque**, calidad, mantenibilidad, estándares y metodologías
 
 ### Arquitectura de software
-La arquitectura de software se encarga de definir los componentes principales del software, sus propiedades externar y las relaciones (comunicación) entre ellos (entre los componentes).
+La arquitectura de software se encarga de definir los componentes principales del software, sus propiedades externas y las relaciones (comunicación) entre ellos (entre los componentes).
 
 **¿Qué significa en la práctica?**, el arquitecto no programa un botón, por ejemplo, si no que se encarga de decidir si el sistema usará una base de datos relacional o no relacional, si el backend estará separado del frontend, si se usará un servidor monolítico o microservicios, y qué protocolos de seguridad conectarán los nodos. 
 
@@ -95,7 +95,7 @@ El principio de este modelo es que una fase no se puede iniciar hasta que la ant
 3. **Desarrollo o Implementación:** es la fase en la que se codifica y se construye como tal el software
 4. **Pruebas:** unitarias, de integración y de sistema 
 5. **Despliegue y Mantenimiento:** es cuando ya pasa a producción.
-El punto débil de este modelo de desarrollo es la _Gestión del cambio_, ya que si por ejemplo durante la fase de pruebas el cliente quiere cambiar algo, primero se tiene que modificar toda la documentación previa hasta este punto y después de todo eso ya se empieza a tocar el código, todo esto tomando en cuenta el impacto el costos y tiempo. 
+El punto débil de este modelo de desarrollo es la _Gestión del cambio_, ya que si por ejemplo durante la fase de pruebas el cliente quiere cambiar algo, primero se tiene que modificar toda la documentación previa hasta ese punto y después de todo eso ya se empieza a tocar el código, todo esto tomando en cuenta el impacto de costos y tiempo. 
 
 ![](../recursos/Pasted%20image%2020260814152507.png)
 #### Modelo en V
@@ -475,4 +475,161 @@ Sentarse con el cliente (o el Product Owner) y confirmar si el software realment
 - **Pruebas de Usabilidad**, mide qué tan intuitivo es el software. 
 
 ## Diseño Arquitectónico de Software
+
+Para saber si un código es bueno tiene que ser porque tiene **Alta Cohesión y Bajo Acoplamiento**.
+### Modularidad
+Es dividir un sistema complejo en partes más pequeñas (módulos o componentes) que pueden ser creados, probados y modificados de forma independiente. 
+
+### Cohesión (se busca que sea ALTA)
+La cohesión mide qué tan "enfocado" está un módulo. Un módulo con Alta Cohesión hace una sola cosa, pero la hace perfectamente (principio de responsabilidad única). 
+
+### Acoplamiento (se busca que sea BAJO)
+El acoplamiento mide qué tan dependiente es un módulo de los demás. 
+
+### Transición a Componentes 
+Es el proceso arquitectónico de tomar un código espagueti (muy acoplado) y empezar a encapsularlo en "cajas negras" (componentes) donde solo exponerse una API pública. 
+
+### Características Operativas
+El diseño arquitectónico no se trata de elegir lenguajes de programación, sino de soportar las características estructurales del negocio. Estas se dividen en tres familias: 
+- **Características Operativas**, son las que afectan directamente el comportamiento del software mientras está encendido y los usuarios interactúan con el. 
+	- _Rendimiento_, latencia y el tiempo de respuesta
+	- Escalabilidad, la capacidad del sistema de absorber más carga de trabajo tolerancia a fallos, disponibilidad. 
+- **Estructurales**, afectan cómo los programadores trabajan con el código. Modularidad, mantenibilidad, extensibilidad (facilidad para agregar módulos en el futuro).
+- **Transversales**, se les llama así porque atraviesan todas las capas del sistema.  No le pertenecen a un módulo, todas las partes del software  deben cumplirlas. Afectan a todas las capas del sistema por igual. Seguridad, privacidad, accesibilidad. 
+
+Son en esencia, los Atributos de Calidad (Requerimientos No Funcionales) traducidos a decisiones de diseño y topología. 
+
+**Balance arquitectónico**, el trabajo del arquitecto de software es negociar. Nunca se puede tener todas las características al máximo porque compiten entre sí. Si se agrega mucha seguridad se pierde rendimiento. Entonces se debe analizar y elegir que características tiene más peso. 
+
+### Extensión del Dominio y Requerimientos
+El arquitecto debe traducir los documentos de negocio a estas características, dividiéndolas en dos: 
+- **Explícitas**, el cliente las exige directamente en los requerimiento. Por ejemplo, el sistema debe procesar el pago en menos de 2 segundos. 
+- **Implícitas**, el cliente jamás las menciona, pero el arquitecto asume su obligatoriedad. Por ejemplo, el cliente no pedirá explícitamente "privacidad de datos encriptados", pero obviamente se sabe que esto es obligatorio y debe ir. 
+
+### Pensamiento Basado en Componentes
+Antes de programar, se debe dividir el sistema en bloques lógicos o componentes independientes. 
+Pensar en componentes es identificar fronteras de responsabilidad lógica. 
+
+## Estilos de Arquitectura 
+Los estilos de arquitectura definen la topología fundamental de cómo se organizan y comunican los componentes. 
+
+**Arquitectura en Capas**
+Divide el código horizontalmente, típicamente en: 
+1. Presentación 
+2. Lógica de Negocio
+3. Acceso a Datos
+Es monolítica, fácil de desarrollar y probar al inicio, pero si el sistema crece demasiado, hacer un cambio pequeño requiere complicar y desplegar todo el sistema. 
+![398](../recursos/Pasted%20image%2020260831160426.png)
+
+**Microkernel**
+Arquitectura de Pluggins. Tiene un sistema central (core) muy pequeño con la lógica básica, al cual se le conectan módulos independientes. Es el estilo del navegador web (Chorme +Extensiones).
+![384](../recursos/Pasted%20image%2020260831160826.png)
+
+**Basada en Servicios**
+La aplicación se divide en servicios grandes que exponen APIs. Usualmente, todos estos servicios siguen compartiendo una misma base de datos centralizado.
+
+**Microservicios**
+Cada función de negocio es un servicio minúsculo y totalmente independiente, alojado en su propio contenedor, y obligatoriamente, con su propia base de datos aislada. Su disponibilidad y escalabilidad son inigualables, pero la complejidad de mantener la consistencia de datos entre decenas de bases de datos distintas es brutal. 
+![383](../recursos/Pasted%20image%2020260831161607.png)
+
+**Impulsada por Eventos**
+Arquitectura asíncrona. Los componentes no se llaman entre sí directamente. En su lugar, un componente emite un evento hacia un Bus de Mensajes , y cualquier otro componente que esté suscrito a ese evento reacciona. Es muy desacoplada y perfecta para procesamiento en tiempo real. 
+![411](../recursos/Pasted%20image%2020260831162010.png)
+
+### Cómo Elegir el Estilo Arquitectónico 
+
+
+| Estilo Arquitectónico | ¿Cuándo Elegirlo?                                                              | Ventaja Principal                                            | Desventaja Crítica                                                  |
+| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Capas (monolítico)    | Equipos pequeños, presupuestos limitados o cuando se quieren versiones rápidas | Simplicidad de prueba y despliegue inicial                   | Pésima escalabilidad; todo el sistema se despliega junto            |
+| Microkernel           | Productos core que necesiten ser personalizados por terceros                   | Extensibilidad exterma sin alterar el código base            | Complejidad al diseñar los contratos de los plugins                 |
+| Basada en Servicios   | Empresas medianas integrando sistemas heredados (Legacy)                       | Reutilización de lógica; fácil control de transacciones ACID | Cuello de botella y acoplamiento en la base de datos compartida     |
+| Microservicios        | Equipos masivos, despliegue independiente diario                               | Escalabilidad infinita y aislamiento estricto de fallos      | Complejidad operativa brutal (redes, DevOps, consistencia eventual) |
+| Impulsada por Eventos | Flujos asíncronos con picos masivos de concurrencia                            | Rendimiento, respuesta en tiempo real y desacoplamiento      | Dificultad extrema para probar y rastrear errores lógicos           |
+
+## DevOps
+DevOps (Desarrollo + Operaciones) no es un software que se instale, ni es un puesto de trabajo. Es una cultura de ingeniería y un conjunto de prácticas técnicas que destruyen el muro tradicional entre los que escriben el código (Desarrolladores) y los que lo mantienen encendido en los servidores (Operaciones).
+
+Para el diseño arquitectónico, DevOps exige implementar un flujo técnico llamado Pipeline(cadena de pasos ordenados donde el resultado de una etapa se convierte en la entrada de la siguiente para lograr un objetivo de forma automática o estructurada) CI/CD:
+
+**Integración Continua (CI - Continuous Integration)**
+Es la práctica de fusionar todo el código de los desarrolladores en un repositorio central (como Git) varias veces al día, de forma automatizada.
+El proceso técnico, cuando alguien hace un push de su código, un servidor en la nube (por ejemplo, Jenkins o GitHub Actions) lo detecta automáticamente. Este servidor descarga el código, lo compila en un entorno virtual limpio y ejecuta el 100% de las pruebas unitarias y de análisis estático. 
+
+**Despliegue Continuo (CD - Continuous Deployment)**
+Si la fase de CI pasa exitosamente, el servidor de automatización toma ese código validado, lo empaqueta (usualmente en contenedores como Docker) y lo transfiere al servidor de producción por red, reiniciando los servicios sin que un humano tenga que escribir un solo comando. 
+
+**Infraestructura como Código**
+En lugar de que un ingeniero de infraestructura abre la interfaz de AWS o Azure, escribe un script de configuración (usando herramientas como Terraform). El servidor se programa, lo que permite crear copias exactas de la infraestructura en segundos. 
+
+![398](../recursos/Pasted%20image%2020260831165516.png)
+
+### Métricas
+Estándares o medidas cuantitativas que permiten evaluar las propiedades de un sistema, la eficiencia del proceso de desarrollo o el rendimiento de un equipo. Las métricas se dividen de la siguiente manera: 
+- **Métricas de producto**, miden característica internas o externas del código y los componentes (como tamaño en líneas de código, complejidad ciclomática o tasa de defectos).
+- **Métricas de proceso**, evalúan la efectividad de las actividades usadas para crear el software a lo largo del tiempo. 
+- **Métricas de proyecto**, controlan el trabajo administrativo, costos, esfuerzo, plazos y cumplimiento del plan original. 
+- **Métricas ágiles**, rastrean el ritmo de trabajo de los equipos, como la velocidad por sprint, tiempo total de entrega o tiempo de ejecución de una tarea. 
+
+## Patrones de Diseño 
+Los patrones de diseño son soluciones habituales a problemas que ocurren con frecuencia en el diseño de software. Son como planos prefabricados que se pueden personalizar para resolver un problema de diseño recurrente en tu código. El patrón no es una porción específica de código, sino un concepto general para resolver un problema particular. 
+Un patrón de diseño no se tiene que confundir con un algoritmo. Una analogía de un algoritmo sería una receta de cocina: ambos cuentan con pasos claros para alcanzar una meta. Por otro lado un patrón es más similar a un plano, ya que se pueden observar los resultados y sus funciones, pero el orden exacto de la implementación depende de cada uno. 
+
+Los patrones de diseño se dividen en tres familias fundamentales: 
+
+### Creacionales
+Controlan la lógica de creación de objetos, ocultando la lógica de instanciación para no usar la palabra reservada new de forma desordenada. 
+
+#### **Singleton**
+Es un patrón de diseño creacional que permite asegurar de que una clase tenga una única instancia, a la vez que proporciona un punto de acceso global a dicha instancia. Se logra haciendo que el constructor de la clase sea privado (-) y creando un método estático público que devuelva una única instancia. 
+
+**Estructura de Singleton**
+1. La clase Singleton declara el método estático ```obtenerInstancia``` que devuelve la misma instancia de su propia clase. 
+2. El constructor del Singleton debe ocultarse del código cliente. La llamada al método ```obtenerInstancia``` debe ser la única manera de obtener el objeto de Singleton. 
+
+#### **Builder (Constructor)**
+Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso. El patrón permite producir distintos tipos y representaciones de un objeto empleando el mismo código de construcción
+
+**Roles**
+- _Producto_, es la clase compleja que requiere un proceso de inicialización laborioso. Técnicamente, sus atributos suelen representar las distintas partes o configuraciones de un subsistema. No necesita heredar ninguna interfaz base; un patrón builder puede construir objetos de clases completamente dispares si el proceso lógico de ensamblaje es similar. 
+- _Interfaz Builder_, es un contrato (una interface o clase abstracta) que declara métodos para inicializar cada una de las partes del producto. Separa la declaración de la lógica de construcción de su implementación. 
+- _Builder Concreto_, es la clase que implementa la interfaz builder. Sus responsabilidades técnicas son: 
+	- Instanciar un objeto Producto en Blanco
+	- Proveer la lógica específica para cada método de ensamblaje (qué algoritmos o datos inyectar al producto)
+	- Mantener la referencia en memoria del producto mientras se construye 
+	- Exponer un método (getResul()) para retornar la instancia terminada. 
+- _El Director_, es una clase de utilidad que encapsula el algoritmo de construcción (la secuencia de pasos). Recibe una abstracción (la interfaz builder) a través de inyección de dependencias, lo que le permite aplicar el mismo algoritmo de ensamblaje a múltiples builders concretos mediante polimorfismo. 
+- _El Cliente_, es el contexto de ejecución. Es responsable de acoplar el Builder Concreto específico con el Director y extraer el resultado. 
+
+**Estructura de Builder**
+1. La interfaz Constructora declara pasos de construcción de producto que todos los tipos de objetos constructores tienen en común. 
+2. Los Constructores Concretos ofrecen distintas implementaciones de los pasos de construcción. Los constructores concretos pueden crear productos que no siguen la interfaz común. 
+3. Los Productos son los objetos resultantes. Los productos construidos por distintos objetos constructores no tienen que pertenecer a la misma jerarquía de clase o interfaz. 
+4. La clase Directora define el orden en el que se invocarán los pasos de construcción, por lo que puedes crear y reutilizar configuraciones específicas de los productos. 
+5. El Cliente debe asociar uno de los objetos constructores con la clase directora. Normalmente, se hace una sola vez mediante los parámetros del constructor de la clase directora, que utiliza el objeto constructor para el resto de la construcción. No obstante, existe una solución alternativa para cuando el cliente pasa el objeto constructor al método de producción de la clase directora. En este caso, puedes utilizar un constructor diferente ca vez que produzcas algo con la clase directora. 
+
+#### **Prototipo**
+Prototipo es un patrón de diseño creacional que nos permite copiar objetos existentes sin que el código dependa de sus clases. 
+
+Si quiero una copia de un objeto, lo principal sería crear otro objeto nuevo desde cero, el problema es que eso consume muchos recursos y pueden haber métodos privado entonces daría error no se crea la copia o prototipo. Entonces se tiene la clase principal y su constructor principal, que este se encarga de crear todos lo objetos "originales", se tiene otro segundo constructor que recibe como parámetro el objeto original ya creado y copia todos sus valores, tanto los simples como los complejos (copia profunda), y ya devuelve eso como un objeto nuevo que sería el prototipo o copia. 
+
+**Estructura de Prototipo**
+1. La interfaz Prototipo declara los métodos de clonación. En la mayoría de los casos, se trata de un único método _clonar_.
+2. La clase Prototipo Concreto implementa el método de clonación. Además de copiar la información del objeto al clon, este método también puede gestionar algunos casos extremos del proceso de clonación, como, por ejemplo, clonar objetos vinculados, deshacer dependencias recursivas, etc. 
+3. El cliente puede producir una copia de cualquier objeto que siga la interfaz del prototipo. 
+### Estructurales
+Definen cómo componer clases y objetos para formar estructuras más grandes manteniendo el bajo acoplamiento. Explican cómo ensamblar objetos y clases en estructuras más grandes a la vez que se mantiene la flexibilidad y eficiencia de la estructura. 
+
+#### Proxy
+Proxy es un patrón de diseño estructural que permite proporcionar un sustituto o marcador de posición para otro objeto. Un proxy controla el acceso al objeto original, permitiendo hacer algo antes o después de que la solicitud llegue al objeto original. 
+
+**Estructura del Proxy**
+1. Se declara la interfaz de servicio, el proxy debe seguir esta interfaz para poder camuflarse como objeto de servicio. 
+2. Servicio es una clase que proporciona una lógica de negocio útil. 
+3. La clase Proxy tiene un campo de referencia que apunta a un objeto de servicio. Cuando el proxy finaliza su procesamiento, pasa la solicitud al objeto de servicio. 
+	1. Normalmente los proxies gestionan el ciclo de vida completo de sus objetos de servicios
+4. El cliente debe funcionar con servicios y proxies a través de la misma interfaz. De este modo puedes pasar un proxy a cualquier código que espere un objeto de servicio. 
+
+### De Comportamiento
+Gestionan algoritmos, relaciones y el flujo de control entre objetos. Se encarga de una comunicación efectiva y la asignación de responsabilidades entre objetos. 
 
