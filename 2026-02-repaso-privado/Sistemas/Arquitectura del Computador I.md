@@ -29,7 +29,7 @@ La codificación es el acuerdo o estándar que define cómo interpretar un conju
 En la arquitectura de computadoras, existe una jerarquía de abstracción entre el programador y el procesador. 
 - **Lenguajes de Alto Nivel (Python, C++, Java)**, permiten pensar en lógica, estructuras de datos y variables sin preocuparse por cómo se maneja la memoria física o qué registros del procesador se están usando. Están diseñados para la mente humana. 
 - **Lenguaje Ensamblador (Bajo Nivel)**, es una representación legible por humanos del código máquina. Una mnemónicos (como MOV, ADD, SUB) para dar instrucciones directas a la CPU. Depende completamente de la arquitectura (el ensamblador de x86 es distinto al de ARM). 
-- **Lenguaje Máquina**, es el nivel más bajo. Son putos unos y ceros (binarios). Es lo único que la Unidad de Control del procesador puede decodificar y ejecutar físicamente. 
+- **Lenguaje Máquina**, es el nivel más bajo. Son puros unos y ceros (binarios). Es lo único que la Unidad de Control del procesador puede decodificar y ejecutar físicamente. 
 
 Para que el hardware entienda un lenguaje de alto nivel, el código debe traducirse. Esto se hace principalmente de dos formas: mediante un Compilador (traduce todo el código a lenguaje máquina de una sola vez antes de ejecutarlo) o mediante un intérprete (traduce y ejecuta línea por línea entiempo real).
 

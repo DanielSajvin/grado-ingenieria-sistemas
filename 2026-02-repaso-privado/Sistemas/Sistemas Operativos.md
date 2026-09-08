@@ -17,16 +17,16 @@ Para que el sistema no colapse si una aplicación falla, los procesadores modern
 <hr>
 
 ## Sistema Operativo 
-**Perspectivas Top-Down (Máquina Extendida / Máquina Virtual)**, el SO es una capa de abstracción. El hardware desnudo (discos físicos, sectores, transistores) es complejo y propenso a errores de programación. El SO oculta esta complejidad y le presenta al usuario o programados una "máquina extendida" limpia y fácil de usar. Por ejemplo, en lugar de complicarse moviendo el brazo mecánico de un disco magnético, el SO permite la abstracción de "Archivos y Carpetas".
+**Perspectivas Top-Down (Máquina Extendida / Máquina Virtual)**, el SO es una capa de abstracción. El hardware desnudo (discos físicos, sectores, transistores) es complejo y propenso a errores de programación. El SO oculta esta complejidad y le presenta al usuario o programadores una "máquina extendida" limpia y fácil de usar. Por ejemplo, en lugar de complicarse moviendo el brazo mecánico de un disco magnético, el SO permite la abstracción de "Archivos y Carpetas".
 
 **Perspectiva Bottom-Up (Gestor de Recursos)**, el SO es el administrador o gestor de los recursos, ya que en un sistema moderno, múltiples programas compiten por la CPU, la RAM y el almacenamiento, entonces el SO es el que ordena el caos, esto lo hace multiplexando los recursos en el tiempo y en el espacio. 
 
 _Multiplexación en el tiempo, la CPU le da ciertos milisegundos a un proceso y después le da tiempo a otro proceso, es decir, los procesos se van turnando los recursos en el tiempo_
 _Multiplexación en el espacio, para que varios procesos se ejecuten al mismo tiempo, el SO debe dividir la memoria RAM, le asigna ciertos espacios o bloques a cada proceso, para que no se sobrescriban_
 ### Historia de los sistemas operativos 
-1. **Primera Generación - Tubos al vacío (1945-1955)**, no existían los SO, el programador reservaba la máquina entera, introducía código binario mediante interruptores físicos o tarjetas perforadas y esperaba el resultado. Problema, el 90% del tiempo la máquina estaba inactiva esperando que el humano configurara los cables. 
+1. **Primera Generación - Tubos al vacío (1945-1955)**, no existían los SO, el programador reservaba la máquina entera, introducía código binario mediante interruptores físicas o tarjetas perforadas y esperaba el resultado. Problema, el 90% del tiempo la máquina estaba inactiva esperando que el humano configurara los cables. 
 2. **Segunda Generación - Transistores y Sistemas por Lotes (1955-1965)**, nace el primer acercamiento a un SO (como FMS o IBSYS). Para no desperdiciar el tiempo de la CPU, los trabajos (tarjetas perforadas) se agrupaban en lotes. El SO simplemente leía un trabajo de la cinta magnética, lo ejecutaba hasta terminar e inmediatamente cargaba el siguiente. Problema: si un programa pedía leer datos de una cinta, la CPU se quedaba sin hacer nada (ociosa) hasta que el lento dispositivo mecánico terminara. 
-3. **Tercera Generación - Circuitos Integrados y Multiprogramación (1965-1980)**, la memoria se divide en particiones para cargar varios programas a la vez. Si el programa A necesita  esperar al disco duro, el SO le quita la CPU y se la da al programa B. Nace también el tiempo compartido, donde múltiples usuarios se conectan a un mainframe (computadora central, que funciona como un servidor de gran tamaño) mediante terminales, el SO le da a cada uno una fracción de segundos de CPU, creando la ilusión de que cada usuario tiene su propia computadora. En la tercerea generación nada UNIX, que sería como el abuelo de Linux.
+3. **Tercera Generación - Circuitos Integrados y Multiprogramación (1965-1980)**, la memoria se divide en particiones para cargar varios programas a la vez. Si el programa A necesita  esperar al disco duro, el SO le quita la CPU y se la da al programa B. Nace también el tiempo compartido, donde múltiples usuarios se conectan a un mainframe (computadora central, que funciona como un servidor de gran tamaño) mediante terminales, el SO le da a cada uno una fracción de segundos de CPU, creando la ilusión de que cada usuario tiene su propia computadora. En la tercerea generación nace UNIX, que sería como el abuelo de Linux.
 4. **Cuarta Generación (1980-Presente)**, las computadoras se vuelven personales. Nacen las interfaces gráficas. El enfoque pasa de "aprovechar al máximo la CPU" a "hacer la vida mas fácil al usuario". Nacen los SO de red y los SO distribuidos. 
 5. **Quinta Generación**, SO para computación en la Nube, virtualización mediante hipervisores y contenedores donde el SO se abstrae aún más del hardware físico e internet de las cosas (IoT) con sistemas operativos en tiempo real muy limitados en recursos. 
 
@@ -235,7 +235,7 @@ Para el SO, un proceso no es más que una estructura de datos (en lenguaje C si 
 - **Identificación (PID)**, un número único del proceso, el ID del usuario propietario y el ID del proceso padre que lo invocó. 
 - **Estado del Proceso**, el program counter, los registros de la CPU y los punteros de la pila. Esta es la fotografía exacta de cómo estaba el hardware antes de quitarle el control a ese proceso. 
 - **Información de Control y Planificación**, su estado actual (Nuevo, Listo, Ejecución, Bloqueado), su nivel de prioridad y estadística de cuánto tiempo de CPU ha consumido. 
-- **Gestión de Memoria**, punteros estructurales que le indican al hardaware en qué direcciones físicas de la TAM está el código de este proceso. 
+- **Gestión de Memoria**, punteros estructurales que le indican al hardaware en qué direcciones físicas de la RAM está el código de este proceso. 
 - **Estado de E/S**, una lista de todos los archivos y puertos de red abiertos. 
 
 DUDA QUE ES LA "PILA" - Estado del proceso. 

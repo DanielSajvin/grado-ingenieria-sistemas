@@ -1,6 +1,6 @@
 **Contabilidad Financiera (Hacia Afuera)**
 Su objetivo es informar a usuario externos (bancos, la SAT, inversionistas) sobre la salud de la empresa. Es rígida, debe cumplir con las Normas Internacionales de Información Financiera (NIIF) y las leyes tributarias del país. 
-Es histórica, es decir, registra lo que ya pasó, por ejemplo, cuánto se vendó el año pasado. 
+Es histórica, es decir, registra lo que ya pasó, por ejemplo, cuánto se vendió el año pasado. 
 
 Nuevamente el objetivo de la contabilidad financiera es generar información cuantitativa, expresada en unidades monetarias, sobre las transacciones que realiza un entidad. Esto para que sea útil en la toma de decisiones económicas de usuarios externos (inversionistas, bancos, SAT y proveedores). Básicamente, es demostrar de forma transparente cuánto tienes, cuántos debes y si ganaste o perdiste dinero. 
 
@@ -15,7 +15,7 @@ Su objetivo es identifica, medir y acumular cuánto cuesta exactamente producir 
 
 **Partida Doble**, no hay deudor sin acreedor. Toda transacción financiera tiene un doble efecto en la empresa. Si algo entra, algo sale; si se adquiere un derecho, se asume una obligación.
 
-**Libro Diario**, es como un log de eventos. Aquí se registra día a día, en orden cronológico, absolutamente cada transacción que hace la empresa mediante partidas. Sirve para sabe que pasó exactamente en cada fecha. 
+**Libro Diario**, es como un log de eventos. Aquí se registra día a día, en orden cronológico, absolutamente cada transacción que hace la empresa mediante partidas. Sirve para saber que pasó exactamente en cada fecha. 
 
 **Libro Mayor**, toma toda la información revuelta del Libro Diario y la agrupo por Cuentas. 
 
@@ -40,7 +40,7 @@ _Activo = Pasivo + Capital_
 
 **Ciclo Contable Completo**
 1. **Libro Diario**, aquí se registran las transacciones día a día utilizando la regla de la Partida Doble (los Debe y Haber). Cada apunte individual se llama Partida de Diario o Asiento Contable. 
-2. **Libro Mayor**, toma el historial general del Libro Diaria y lo agrupo por categorías individuales. Si en el mes hubo 50 movimientos dispersos en la cuenta "Bancos", en el Libro Mayor se consolidan para obtener un único saldo final. A esta agrupación gráfica también se le llama Mayorización o Cuentas T.
+2. **Libro Mayor**, toma el historial general del Libro Diario y lo agrupa por categorías individuales. Si en el mes hubo 50 movimientos dispersos en la cuenta "Bancos", en el Libro Mayor se consolidan para obtener un único saldo final. A esta agrupación gráfica también se le llama Mayorización o Cuentas T.
 3. **Balance de Comprobación ()**, antes de armar los estados financieros formales, listamos todos los saldos del Libro Mayor. Si la suma total de Debe no es exactamente igual a la del Haber, hay un error estructural en los registros previos que deben depurarse. 
 4. **Estados Financieros**
 	1. _Estado de Resultados (o Estado de Pérdidas y Ganancias)_, resta los gastos a los ingresos generados para obtener la utilidad (o pérdida) neta del período. 
@@ -101,7 +101,7 @@ Utilidad Antes del impuesto (se le saca el porcentaje) = **Utilidad Neta (Utilid
 ![700](../recursos/Pasted%20image%2020260828170405.png)
 
 ### Balance General o Estado de Situación Financiera
-Este reporte demuestra quela ecuación contable _Activo = Pasivo + Capital_ está en equilibrio. 
+Este reporte demuestra que la ecuación contable _Activo = Pasivo + Capital_ está en equilibrio. 
 
 **Reglas Críticas**
 - La utilidad neta y la reserva del estado de resultados se traslada obligatoriamente a la sección de Capital en le balance general. 

@@ -78,7 +78,7 @@ La elasticidad mide la sensibilidad.
 - Bienes Inferiores, si se gana más, se compra menos. Por ejemplo, transporte público o comida rápida también artículos de segunda mano; porque ahora se tiene más dinero para pedir Uber o comprar mejor comida. 
 
 **Elasticidad Cruzada**
-¿Qué pasa con demanda del bien X si cambia el precio del bien Y?
+¿Qué pasa con la demanda del bien X si cambia el precio del bien Y?
 - Bienes Sustitutos, tienen una elasticidad cruzada positiva, es decir, si sube el precio de la carne de res, aumenta la demanda de pollo. 
 - Bienes Complementarios, tiene elasticidad cruzada negativa, es decir, si sube el precio el precio de las computadoras, baja la demanda de los periféricos. 
 

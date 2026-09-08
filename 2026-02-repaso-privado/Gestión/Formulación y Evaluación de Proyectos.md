@@ -14,7 +14,7 @@ Todo proyecto tiene que pasar por tres grandes fases:
 	3. Prefactibilidad: se usa información primaria y secundaria; aquí ya se realiza un estudio más formal e incluso se puede llegar a invertir dinero en los diferentes estudios. El objetivo en la prefactibilidad es evaluar y descartar alternativas, ya se hacen estudios y proyecciones formales y al final de esta etapa se decide y se queda con la mejor opción
 	4. Factibilidad: es el diseño final del proyecto. En esta etapa ya solo se usa información primaria y exacta. Acá ya se presenta todo terminado, infraestructura, tecnologías y todo lo que se vaya usar para el proyecto, ya en este punto el proyecto está listo para pasar a la inversión y posteriormente llevarlo a ejecutar. 
 2. **Inversión**, el diseño final y la ejecución. (programar la app o comprar licencias)
-3. **Operación**, la puesta en marcha, cuando el proyecto empieza a funciona y esperamos a generar retorno. 
+3. **Operación**, la puesta en marcha, cuando el proyecto empieza a funcionar y esperamos a generar retorno. 
 
 #### Fuentes de Financiamiento 
 1. Financiado por endeudamiento (préstamo al banco)
