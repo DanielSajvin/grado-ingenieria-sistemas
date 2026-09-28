@@ -255,7 +255,7 @@ Definen cómo fluye la información en un canal físico. Existen tres modos fund
 <hr>
 
 ### Capa 2: Enlace de Datos
-Toma los paquetes que vienen de la capa superior (Red) y los encapsula agregándoles un encabezado (Header) y un final (Trailer). Su función es entregar de manera confiable esta información de un nodo a otro directamente conectando dentro de la misma red loca (LAN). 
+Toma los paquetes que vienen de la capa superior (Red) y los encapsula agregándoles un encabezado (Header) y un final (Trailer). Su función es entregar de manera confiable esta información de un nodo a otro directamente conectando dentro de la misma red local (LAN). 
 - **Direccionamiento Físico (MAC)**, utiliza direcciones MAC (Media Access Control), que son códigos hexadecimales únicos de 48 bits grabados de fábrica en cada tarjeta de red (NIC). 
 - **Acceso al Medio**, define las reglas de quién puede transmitir y cuándo. En redes Ethernet antiguas compartidas se usaba un algoritmo llamado CSMA/CD (Acceso Múltiple por Detección de Portadora con Detección de Colisiones), que básicamente dictaba: "escucha el cable, si nadie habla envía; si chocas con otro, espera un tiempo aleatorio y reintenta". 
 - **Detección de Errores**, en el tráiler de la trama se incluye un campo llamado FCS (Frame Chechk Sequence). Es un cálculo matemático (generalmente CRC). El equipo que envía hace el cálculo y lo anota. El que recibe hace el mismo cálculo con los bits que le llegaron; si el resultado no coincide, significa que el cable corrompió los datos y la trama se descarta inmediatamente. 
@@ -275,7 +275,7 @@ Trama
 
 **¿Cómo funciona internamente la Capa 2: Capa Enlace de Datos?**
 Cuando la capa de red (capa 3) termina de armar su paquete (que ya trae la IP de quién envió la información y la IP de destino), se lo entrega a la tarjeta de red (NIC). La NIC es la que "fabrica" la trama envolviendo ese paquete. Lo hace agregando campos muy específicos: 
-- **Encabezado**, la NIC escribe al principio de lo bits la MAC de destino y luego la MAC de origen. Después, añade un campo llamado "EtherType" que dice "el paquete que llevo adentro es de tipo IPv4". 
+- **Encabezado**, la NIC escribe al principio de los bits la MAC de destino y luego la MAC de origen. Después, añade un campo llamado "EtherType" que dice "el paquete que llevo adentro es de tipo IPv4". 
 - **Payload**, aquí va metida la información o paquete intacto que venía de la capa de red (capa 3).
 - **Trailer (FCS)**, la NIC pasa todos los bits anteriores por una fórmula matemática y anota el resultado final.
 El switch recibe esta trama eléctrica en el puerto. El microprocesador del switch lee únicamente la MAC de destino en el encabezado. Busca esa MAC en su Tabla CAM, descubre que está en tal puerto y envía la trama eléctricamente solo por ahí. El equipo receptor lee el trailer, hace la misma fórmula matemática; si el resultado cuadra, quita el encabezado y el trailer (desencapsula) y sube el paquete limpio a su propia capa de red. 
@@ -293,7 +293,7 @@ Paquete
 **Protocolos**
 - **IPv4 (Internet Protcol v4)**, direcciones lógicas de 32 bits. 
 - **IPv6 (Internet Protocol v6)**, direcciones de 128 bits en formato hexadecimal. Soluciona la escasez de direcciones de IPv4 e incorporan seguridad nativa. 
-- **ICMP (Internet Control Message Protocol**, no lleva datos de usuario; lleva mensajes de control de la red. Es un protocolo que los dispositivos utilizan para enviar mensajes de error e información operativa sobre la transmisión de datos. 
+- **ICMP (Internet Control Message Protocol)**, no lleva datos de usuario; lleva mensajes de control de la red. Es un protocolo que los dispositivos utilizan para enviar mensajes de error e información operativa sobre la transmisión de datos. 
 - **ARP (Address Resolution Protocol)**, es el puente entre la capa 3 y la capa 2. Es un protocolo de red fundamental que traduce una dirección IP en una dirección MAC dentro de una red local. Funciona de la siguiente manera: 
 	- Revisión de caché, el equipo origen consulta su tabla ARP para ver si ya conoce la dirección MAC asociada a esa IP. Si la encuentra envía el dato de inmediato. 
 	- Solicitud ARP, si no está en la tabla, el dispositivo emite un mensaje de tipo broadcast (difusión) a toda la red, preguntando quien tiene la IP tal que me envíe su dirección MAC.
@@ -357,7 +357,7 @@ A partir de esta capa hacia arriba, la unidad de información deja de tener enca
 **Protocolos**
 - **NetBIOS (Network Basic Input/Output System)**, permite que aplicaciones en computadoras distintas se comuniquen dentro de una red de área local. Funciona enviado mensajes de registro; cuando un nuevo dispositivo entra a la red, NetBIOS transmite un aviso porque se le asigna un nombre a ese dispositivo y para que no se repita avisa de inmediato, y así los otros equipos también tienen conocimiento sobre este equipo. 
 - **RPC (Remote Procedure Call)**, permite a un programa ejecutar código en una máquina remota como si fuera local. Si estoy en mi PC y envío una consulta SQL a un servidor externo, RPC empaqueta los parámetros de la consulta, establece la sesión, hace que el servidor la procese y devuelve el resultado. 
-- **PAP**, protocolo básico de control de acceso. Antes de permitir que la sesión de datos se abra completamente, PAP exige usuario y contraseña (enviados en texto plano) para validad que el host remoto tiene permiso para iniciar el diálogo. 
+- **PAP**, protocolo básico de control de acceso. Antes de permitir que la sesión de datos se abra completamente, PAP exige usuario y contraseña (enviados en texto plano) para validar que el host remoto tiene permiso para iniciar el diálogo. 
 
 **Dispositivos y Hardware**
 A diferencia de las capas inferiores, no existe como tal un switch de capa 5 o un cable específico. Esta capa es más de software: 
@@ -410,3 +410,136 @@ Suponiendo que se quiere entrar al sitio web de la universidad.
 - **DNS (Domain Name System)**, traduce nombres legibles por humanos a direcciones IP. Sin la capa de aplicación (capa 7) haciendo esta consulta silenciosa, tendríamos que memorizar secuencias numéricas para cada página web. 
 - **HTTP/HTTPS**, protocolo de la World Wide Web. Funciona bajo un modelo de "Petición-Respuesta" (Request-Response). Un cliente pide un recurso y un servidor lo entrega junto con un código de estado. 
 - **SMTP, FTP, P2P: SMTP**, se encarga de rutear y empujar los correos electrónicos hacia los servidores de destino. FTP permite la transferencia y gestión estructurada de archivos. P2P (Peer-to-Peer) permite a los clientes compartir recursos directamente entre ellos sin un servidor central. 
+
+## Modelo TCP/IP
+
+| Modelo OSI                                    | Modelo TCP/IP      | Función                                                                                                   |
+| --------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
+| 7. Aplicación<br>6. Presentación<br>5. Sesión | 4. Aplicación      | Maneja la representación, el control de diálogo y servicio final al usuario en un solo bloque de software |
+| 4. Transporte                                 | 3. Transporte      | Gestiona puertos, segmentación y fiabilidad. (TCP/UDP)                                                    |
+| 3. Red                                        | 2. Internet        | Define el enrutamiento y direccionamiento lógico global (IP)                                              |
+| 2. Enlace de Datos<br>1. Física               | 1. Acceso a la Red | Controla la señal eléctrica y el direccionamiento MAC del hardware local.                                 |
+
+## VLANs
+Una VLAN (Virtual Local Area Network) divide un único switch físico en múltiples switches lógicos completamente aislados. Su objetivo principal es reducir los "dominios de broadcast" y garantizar la seguridad. Por defecto todos los dispositivos conectados a un switch se pueden ver; al crear una VLAN, se separa lógicamente a los departamentos; aunque estén conectados al mismo switch físico un departamento no puede conectarse con otro. 
+_Los switches gestionables_, tienen los siguientes puertos que hay que tomar en cuenta: 
+- **Puertos de Acceso**, en estos puertos se conectan los dispositivos finales. 
+- **Puertos Troncales**, permiten el paso de múltiples VLANs al mismo tiempo. Se configuran únicamente en los cables que conectan a un switch con otro switch, o un switch con un router. 
+Una VLAN es un dominio de broadcast aislado; es decir, es una red local independiente. 
+_VLAN = Subred IP_.
+
+## IPv4
+Está compuesta por 32 bits. De la siguiente manera: 
+``` 00000000.00000000.00000000.00000000. ```
+Está dividida en 4 bloques de 8 bits (que se llaman octetos), cada bloque se convierte a un número decimal, resultando en 192.168.1.10.
+Si se tienen 32 bits (cada 0 y 1 posible), el total de combinaciones posibles es 2^32
+
+Una dirección IP por si sola no sirve. La máscara de sub red (255.255.255.0 o también /24) la máscara de subred es la que corta los 32 bits en dos partes, los primeros bits identifican a la Red y los bits restantes identifican al Host. 
+
+Se compone de lo siguiente: 
+- **Porción de Red (Identificador de Red)**, agrupa a todos los dispositivos que están conectados al mismo switch o infraestructura local. Los router e internet solo leen esta parte para saber a qué país, empresa o edificio enviar el paquete.
+- **Porción de Host (Identificador de Host)**, identifica al dispositivo final, servidor o smartphone específico dentro de esa red local.
+#### Máscara de Subred
+Su utilidad es indicarle al hardware exactamente dónde está la porción de red y donde está la porción de host. 
+Ejemplo de una máscara de subred: ```255.255.255.0```. 
+- Donde la máscara tiene unos (1) en binario ( los 255), le dice a la computadora, esa parte es la porción de red.
+- Donde la máscara tiene ceros (0) en binario, le dice esta parte es la hosts. 
+
+El problema era que al tener clases y rangos ya definidos y si mis necesidades no se adaptaban a esos rangos solía pasar que o me faltaran IPs o desperdiciara demasiado. Entonces se optó por el subneteo que este lo que hace es cortar la porción de host y de red en partes no definidas y por eso los dispositivos ya no saben dónde se encuentra la porción de red y dónde está la porción de host. Entonces la máscara de subred es quien indica ahora a los dispositivos cuál es la porción de red y cuál es la porción de host. 
+
+Un octeto tiene 8 bits. Si se encienden todos los 8 bits (11111111), su valor decimal es 255.
+- Los unos (1) bloquean la red, cada bit 1 consecutivo en la máscara de subred le dice a al dispositivo, esto está ocupado y pertenece a la red.
+- Los ceros (0) liberan al host, cada bit 0 le dice a la computadora este espacio está libre para que lo asignes a una computadora. 
+Entonces si se tiene la máscara de subred ```255.255.255.0```. En la memoria de la computadora se vería de la siguiente manera: ```11111111.11111111.11111111.00000000```.
+Esos primeros 24 bits encendidos actúan como una pared, le dicen al sistema que los primeros tres octetos de la IP no se pueden tocar, y los 8 ceros finales significan que se tienen 256 combinaciones disponibles para asignar a los equipos. 
+#### Clases de Direcciones IPv4
+
+| Clase | Rango Total                 | Rango para IPs privadas       | Máscara de Subred por Defecto | Estructura         | Uso                 |
+| ----- | --------------------------- | ----------------------------- | ----------------------------- | ------------------ | ------------------- |
+| A     | 11.0.0.0 a 126.255.255.255  | 10.0.0.0 a 10.255.255.255     | 255.0.0.0                     | Red.Host.Host.Host | 16 millones de host |
+| B     | 128.0.0.0 a 191.255.255.255 | 172.16.0.0 a 172.31.255.255   | 255.255.0.0                   | Red.Red.Host.Host  | 65,534 hosts        |
+| C     | 192.0.0.0 a 223.255.255.255 | 192.168.0.0 a 192.168.255.255 | 255.255.255.0                 | Red.Red.Red.Host   | 254 host            |
+| D     | 224.0.0.0 a 239.255.255.255 |                               |                               |                    |                     |
+| E     | 240.0.0.0 a 255.255.255.255 |                               |                               |                    |                     |
+_La red 127.0.0.1 se reservó para Loopback, esto permite que un dispositivo se comunique consigo mismo._
+
+_169.254.0.0 a 169.254.255.255, si el dispositivo muestra una IP en este rango, significa que no se pudo conectar al router (o que el router no le asignó IP por DHCP) y el sistema operativo se inventó esa IP temporal para no quedarse en blanco. Básicamente entonces significa que no se tiene internet._
+
+## IPv6
+Está compuesta por 128 bits. 
+Se utilizan 8 bloques de 16 bits en formato hexadecimal. Por ejemplo: ```2001:0db8:85a3:0000:0000:8a2e:0370:7334```
+En IPv6 entonces soporta 2^128 direcciones (340 sextillones).
+Acá ya no se usa la máscara de subred. En IPv6 los primeros 64 bits identifican el prefijo de la red global, y los últimos 64 bits se autogeneran usando la dirección MAC física del equipo, eliminando la necesidad de servidores DHCP en muchos casos. 
+
+## NAT (Network Address Translation)
+Es un protocolo que utilizan los router para convertir las direcciones IP privadas de una red local en una única dirección IP pública para navegar en internet. 
+Existe NAT estático y dinámico, pero el que se usa normalmente en las casas es la variante de NAT que se llama PAT (Port Address Translation). 
+
+## Dual Stack 
+Es una tecnología de transición que permite a un dispositivo de red o a un sistema operativo ejecutar los protocolos IPv4 e IPv6 al mismo tiempo. 
+Su objetivo principal es facilitar la migración global de IPv4 a IPv6 sin interrumpir las comunicaciones en internet. 
+
+## Enrutamiento 
+Es el proceso de buscar y seleccionar el camino más eficiente para que los paquetes de datos viajen desde un dispositivo de origen hasta su destino final a través de una red. 
+
+**Cómo Funciona**:
+- La información se divide en pequeños bloques llamados paquetes. 
+- Los Routers son los dispositivos encargados de recibir estos paquetes y decidir por qué ruta enviarlos. 
+- Las tablas de enrutamiento, son mapas o bases de datos internas que guardan los routers para conocer las rutas disponibles hacia otros destinos. 
+
+_**Enrutamiento**, su objetivo es conectar redes diferentes. **Conmutación**, su objetivo es conectar dispositivos dentro de una misma red_.
+En conmutación actúa el Switch, su ámbito por lo tanto es en trabajar en LAN, trabaja en la capa 2 (enlace de datos) del modelo OSI y por lo tanto usa las direcciones MAC. 
+En enrutamiento actúa el Router, su ámbito es trabajar en WAN/internet, trabaja en la capa 3 del modelo OSI (capa de red) y por lo tanto trabaja también con direcciones IP. 
+_La comunicación en la conmutación es más rápida porque actúa de forma directa y con hardware más básico, por otra parte en enrutamiento la comunicación es más lenta, debido a que debe analizar rutas globales y decidir cuál es mejor_. 
+*Los Switch de capa 3 o Switch multicapa pueden hacer ambas cosas a la vez, es decir, puede conmutar y enrutar*.
+#### Tipos de Enrutamiento 
+
+##### Enrutamiento Estático
+Es un método en el que se configura manualmente cada router con las rutas exactas que deben seguir los paquetes de datos para llegar a su destino. 
+Su objetivo principal es proporcionar control total, predecible y de bajo consumo sobre el flujo del tráfico de una red. Al eliminar la comunicación automática entre routers, busca ahorrar recursos de hardware por donde el administrador quiere. 
+
+**Cómo Funciona**
+1. El técnico analiza la topología de la red y decide qué camino debe tomar el tráfico. 
+2. El administrador entra a la consola de comandos del router y escribe una regla con tres datos clave: _Red de destino, máscara de subred, siguiente salto (la dirección IP del próximo router en el camino)_.
+3. Cuando un paquete llega al router, este busca en su tabla y lo envía por la ruta exacta que se le indicó. Si ese camino físico se corta o el cable se daña, el router no buscará otro camino, simplemente se descarta el paquete y la conexión fallará; y esto seguirá siendo así hasta qué manualmente se arregle el cable o se conecte otro y se configure manualmente otra vez. 
+
+**Enrutamientos Estáticos**
+- **Ruta Estática Estándar**, es la ruta tradicional hacia una red específica. Se usa para conectar una red local con otra red local remota muy concreta, se configura indicando la IP destino exacta (la dirección IP de la red de destino y su máscara de subred) y la IP del router de la otra red local. 
+- **Ruta Estática Predeterminada (Por Defecto)**, se utiliza cuando el router no conoce el destino específico de un paquete. Se presenta técnicamente como ```0.0.0.0.0.0.0.0``` (ruta cuádruple cero). Esta ruta funciona de la siguiente manera: si un usuario intenta entrar a una página web desconocida, el router busca en su tabla de enrutamiento, y al no encontrar una ruta exacta, se activa esta ruta por defecto y envía el paquete hacia el ISP (ya el ISP se encargará de buscar esa página web). Es el tipo de ruta estática que utilizan todos los routers residenciales del mundo. 
+- **Ruta Estática Flotante**, es una ruta de respaldo que permanece oculta mientras la conexión principal funcione. El administrador configura dos rutas estáticas hacia el mismo destino. A la ruta principal le asigna una prioridad alta (una Distancia Administrativa-AD menor) y a la de respaldo una prioridad baja (una AD mayor). El router usará siempre la principal. Si el enlace principal falla, la ruta de respaldo "flota" hacia la tabla de enrutamiento y se activa automáticamente para mantener la conexión a través del enlace secundario (que se recomienda sea por un enlace mas lento que el principal). En resumen funciona modificando manualmente la AD.
+
+##### Distancia Administrativa - AD
+Es un número entero positivo que usan los routers para medir la confiabilidad o credibilidad de la fuente que le está enseñando una ruta hacia un destino. El sentido de la Distancia Administrativa es resolver empates de información entre diferentes fuentes. A los enlaces estáticos o realizados manualmente por un administrador de redes el router le asignará una AD menor, porque el trabajo manual del ingeniero siempre va a ser más confiable que lo que el router descubra automáticamente, por lo tanto al enrutamiento dinámico le asignará un valor más alto de AD.
+
+##### Enrutamiento Dinámico 
+Es un proceso mediante el cual los routers se comunican entre sí de forma automática para descubrir redes, compartir información sobre el estado de las conexiones y elegir la mejor ruta para enviar los datos en tiempo real. Aquí los routers aprenden y se adaptan solos, sin intervención de un humano. 
+Su objetivo principal es garantizar la continuidad y eficiencia del tráfico de datos en redes medianas y grandes de forma automatizada. Busca también que la red sea tolerante a fallos (redundante) y que no requiera la intervención constante de un administrador para solucionar problemas de conectividad. 
+
+En el enrutamiento dinámico existen tres familias principales, y cada familia es según la lógica que utilizan sus algoritmos para mapear la red y calcular la mejor ruta: 
+
+**Algoritmo de Vector de Distancia**
+Funciona bajo el principio de "enrutamiento por rumor". Un router confía ciegamente en lo que le dicen los routers que tiene conectados de forma directa, sin conocer el mapa completo de la red. La métrica para decidir que ruta es la mejor son los saltos, cada router o línea de red en el camino cuanta como 1 salto. La mejor ruta es la que tenga menos saltos. 
+
+**Algoritmo de Estado de Enlace**
+A diferencia del algoritmo de vector de distancia, aquí cada router tiene un mapa idéntico y perfecto de toda la red. No le creen a ciegas a ningún router; ellos mismos calculan el mapa completo. Utilizan el algoritmo Dijkstra (también conocido como la ruta más corta). Y funciona de la siguiente manera: en lugar de enviarse tablas enteras, los routers se envían pequeños paquetes llamados LSA (Link-State Advertisements) que el contenido de estos paquetes es información con la identificación del router, a qué routers está conectado y la capacidad del cable o fibra con el que está conectado a esos routers. Para estos algoritmos de estado de enlace su métrica es el COSTO, el cual está basado directamente en el ancho de banda (velocidad) del enlace. 
+
+Algoritmos de enrutamientos mas usados actualmente: 
+**OSPF (Open Shortest Path First)**
+Es un protocolo de estado de enlace de código abierto, esto significa que cualquier marca de router lo entiende perfectamente. Utiliza el COSTO como métrica, el cual se calcula dividiendo una ancho de banda de referencia entre el ancho de banda real de la interfaz. Un cable rápido tiene un costo menor que un cable lento. Cada router comparte el estado de sus cables con los demás, todos los routers arman un mapa idéntico de la red y usan el algoritmo Dijkstra para calcular el camino más rápido basándose en la velocidad (ancho de banda del enlace). 
+
+**EIGRP (Enhanced Interior Gateway Protocol - Protocolo de puerta de enlace interior mejorado)**
+Es un protocolo de vector de distancia avanzado (o Híbrido), ya que reúne lo mejor de ambos mundos. No tiene una única métrica como tal, no se basa en saltos ni costos. Tiene un algoritmo DUAL, inserta en una fórmula matemática el ancho de banda de la conexión o línea de red, el retraso (Delay), la confiabilidad y la carga en tiempo real. Mientras que OSPF tiene que usar su CPU para recalcular el mapa si un cable se corta, EIGRP ya tiene pre-calculada una ruta de respaldo libre de bucles guardada en su tabla de topología, entonces el cambio es instantáneo.
+
+Es un protocolo diseñado para operar dentro de una misma empresa (un único sistema autónomo). No se enfoca en contar cuantos routers tiene que pasar para llegar al destino, usa una métrica compuesta, que es básicamente un puntaje que calcula combinando el ancho de banda del cable y el retraso o delay que le toma al hardware procesar los datos. Su objetivo es evitar la caída de la red mediante una recuperación instantánea. Esto lo logra mediante el algoritmo DUAL (Algoritmo de actualización por difusión), mientras la red funciona normalmente, EIGRP calcula la mejor ruta y la guarda en la tabla de enrutamiento, pero al mismo tiempo, calcula una segunda mejor ruta y la deja guardada en una tabla de respaldo, entonces si el cable de la ruta principal falla no pierde tiempo re calculando nuevas rutas, si no que entra en funcionamiento la ruta secundaria de inmediato. 
+
+**BGP (Border Gatway Protocol - Protocolo de Puerta de Enlace Fronteriza)**
+No es un protocolo para redes internar empresariales. 
+Es un vector de distancia. Exterior Gateway Protocol - EGP.
+No toma decisiones basadas en la velocidad del cable físico. BGP toma decisiones basadas en "Atributos" de políticas corporativas, priorizando saltar por la menor cantidad posible de "Sistemas Autónomos" (sistemas autónomos son infraestructuras completas manejadas por un ISP).
+Es lento por diseño para priorizar la estabilidad sobre la velocidad, maneja tablas de enrutamiento globales con más de 900,000 rutas activas. 
+
+Internet es una confederación de más de 100,000 redes independientes llamadas Sistemas Autónomos. 
+- Cada ISP es un sistema autónomo (claro, tigo, movistar)
+- Google es un sistema autónomo 
+- Un banco es un sistema autónomo 
+BGP es un protocolo de Vector de Ruta. A BGP no le interesan los router individuales, ni si el cable tiene más ancho de banda o no. A BGP solo le interesa saber que caminos posibles hay para llegar de un destino a otro y qué sistemas autónomos puede y no debe pasar. Se basa más en reglas de negocio y políticas de cada sistema autónomo. 

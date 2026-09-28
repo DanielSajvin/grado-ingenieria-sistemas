@@ -32,9 +32,9 @@ Son estructuras más complejas, a veces compuestas de múltiples datos primitivo
 **Sistema Gestor de Bases de Datos**, es el software o conjunto de programas que me permite definir, manipular, recuperar y administrar los datos de forma segura. Por ejemplo: MySQL, Oracle, SQL Server.
 
 ## Arquitectura de 3 Niveles (ANSI/SPARC)
-**Nivel Interno (Físico)**, es el nivel más bajo. En este nivel se describe cómo se guardan físicamente los datos en el disco duro, los bloques de memoria, los índices y las rutas de acceso. 
-**Nivel Conceptual (Lógico)**, es el nivel intermedio. Describe qué datos se almacenan en la base de datos y qué relaciones existen entre ellos (tablas, llaves primarias, tipos de datos). Aquí es donde trabaja el diseñador de la base de datos. 
 **Nivel Externo (Vistas)**, es el nivel más alto. Describe solo la parte de la base de datos que es relevante para un usuario común, y oculta todo lo demás. 
+**Nivel Conceptual (Lógico)**, es el nivel intermedio. Describe qué datos se almacenan en la base de datos y qué relaciones existen entre ellos (tablas, llaves primarias, tipos de datos). Aquí es donde trabaja el diseñador de la base de datos. 
+**Nivel Interno (Físico)**, es el nivel más bajo. En este nivel se describe cómo se guardan físicamente los datos en el disco duro, los bloques de memoria, los índices y las rutas de acceso. 
 
 _Independencia física, el hardware no afecta al esquema lógico
 Independencia lógica, se pueden añadir nuevas tablas o columnas sin que las vistas o programas (nivel externo) dejen de funcionar, siempre y cuando no se elimine algo que se esté usando_
@@ -107,7 +107,6 @@ En el modelo relacional cambian los términos y sus significados:
 **Atributo**, sigue siendo la columna o la característica de una entidad. 
 **Grado**, es el número de columnas o atributos que tiene la tabla. 
 **Cardinalidad**, para el contexto del modelo relacional se refiere al número de filas que tiene la tabla. 
-
 ### Diseño y Dibujado: Notación Pata de Gallo
 UNO, obligatorio
 ![](../recursos/Pasted%20image%2020260809211800.png)
@@ -152,7 +151,7 @@ Primero se tiene que estar en 2FN. Segundo, no deben existir dependencia transit
 <hr>
 
 ## Lenguajes de Bases de Datos
-**DDL (Data Definition Language / Lenguaje de Definición de Datos)**, sirven para construir, modificar o destruir las estructuras (las tablas, las bases de datos).
+**DDL (Data Definition Language / Lenguaje de Definición de Datos)**, sirven para crear, modificar o destruir la tablas, no los registros o la información en sí, si no las puras tablas es decir, alteran la estructura de la base de datos.  (las tablas, las bases de datos).
 Comandos: _CREATE, ALTER, DROP, TRUNCATE_
 
 **DML (Data Manipulation Language / Lenguaje de Manipulación de Datos)**, sirven para interactuar con la información que está adentro de las tablas.
@@ -220,5 +219,21 @@ _Las consultas se hacen en bloque, es decir, se hacen varias al mismo tiempo_
 
 ## Cursores - Cursor 
 Un cursor equivale a un ciclo FOR o WHILE, es decir, toma un SELECT, lo guarda en memoria y permite avanzar registro por registro obteniendo sus datos para procesarlos.
+### DQL - Lenguaje de Consulta de Datos
+Comandos: _SELECT, WHERE, GRUOP BY, ORDER BY, JOIN_, y funciones como _SUM, COUNT_
 
+#### JOIN
+- **INNER JOIN**, es la intersección de conjuntos (AnB). El resultado solo va a incluir los elementos que pertenecen estrictamente a ambos conjuntos o tablas. Solo incluirá entonces dónde la llave primaria de la tabla A coincide o tiene su pareja con la llave foránea de la tabla B. 
+- **LEFT JOIN**, representan al conjunto A en su totalidad, incluyendo la parte que comparte con B {Au(AnB)}. Devuelve el 100% de las filas de la tabla izquierda (la que se pone con el FROM). Si encuentra coincidencia en la tabla de la derecha, llena los datos; si no encuentra coincidencia, rellena las columnas de la derecha con valores NULL. 
+- **RIGHT JOIN**, incluye al conjunto B en su totalidad, pero también incluye la intersección con A {Bu(AnB)}. Trae el 100% de las filas de la tabla de la derecha (la que se pone con el RIGHT JOIN). Si no hay coincidencias en la tabla izquierda, rellena esos huecos con NULL. 
+- **FULL JOIN**, representa la unión de conjuntos (AuB). Combina el comportamiento de LEFT JOIN y RIGHT JOIN, traerá todos los registros de ambas tablas. Cuando coincidan, los unirá en la misma fila; cuando no, rellenará con NULL en el lado donde falte información. 
 
+#### GROUP BY
+Se utiliza para agrupar filas que tienen los mismos valores en columnas específicas. Su principal función es permitir el uso de funciones de agregación (como COUNT, SUM, AVG, MAX, MIN) para cálculos sobre un conjunto de datos y devolver un solo resultado por cada grupo. Cualquier columna que se ponga en el SELECT y no está dentro de una función de agregación, debe ser obligatoriamente la cláusula del GRUOP BY. 
+- **WHERE**, filtra filas antes de que se realice la agrupación. No permite usar funciones de agregación. No permite usar alias creados en el SELECT. Se usa para descartar datos desde el principio antes de hacer cálculos
+- **HAVING**, filtra los resultados después de haber agrupado. Sí permite usar alias y también funciones de agregación. Se usa cuando se necesite evaluar el resultado de una función matemática que calculó el GRUOP BY. 
+
+#### ORDER BY
+Se utiliza para ordenar el resultado de la consulta. Mientras que el GRUOP BY junta y resume los datos, el ORDER BY simplemente decide en qué orden van a aparecer en pantalla. Funciones del ORDER BY: 
+- **ASC**, ascendente, de la A a la Z, de menor a mayor o de la fecha más antigua a la más reciente. Este es el orden por defecto si no se escribe nada. 
+- **DESC**, descendente, de la Z a la A, de mayor a menor o de la fecha más reciente a la más antigua. 

@@ -143,7 +143,7 @@ Se caracteriza por ser programación en parejas. La programación extrema indica
 1. **Desarrollo Guiado por Pruebas**, primero se escribe el código de la prueba unitaria (que lógicamente va a fallar) y después se escribe el código para que pase la prueba.
 2. **Programación en parejas**, dos desarrolladores en un solo teclado/monitor, uno escribe el código y el otro revisa en tiempo real si ese código es el mejor o no. Esto evita demasiado los bugs. 
 3. **Integración Continua**, el código se integra al repositorio principal varias veces al día y se compila automáticamente. 
-4. Solo se programa lo que se necesita hoy. Está prohibido hacer funcionalidades "por si acoso" en el futuro.
+4. Solo se programa lo que se necesita hoy. Está prohibido hacer funcionalidades "por si acaso" en el futuro.
 
 ### Modelos Evolutivos 
 Son el puente entre lo tradicional y lo ágil. La premisa de los modelos evolutivos es que _en el software, los requisitos nunca están claros al principio y van a cambiar_. Entonces en lugar de forzar al cliente a adivinar el futuro o de obligarlo a recibir piezas terminadas cada cierto tiempo, el modelo evolutivo funciona en base a la experiencia real del cliente. 
@@ -211,7 +211,7 @@ Este documento no contiene especificaciones de software (no hay diagramas UML, n
 2. Objetivos de negocio, metas medibles, cuantificables y con fecha límite. Estas metas se deben redactar con el formato SMART. 
 3. Alcance y Fuera de Alcance, los límites de lo que el software va afectar, para evitar que nos pidan hacer algo que no estaba pactado en el futuro. 
 4. Restricciones de negocio, limitaciones de tiempo, presupuesto o regulaciones legales que no se pueden cambiar. 
-Esto documento define el Por qué y para qué del negocio. 
+Esto documento define el Por qué y para qué del software a desarrollar. 
 
 ## Flujos de Trabajo y Técnicas de Recolección de Datos
 
@@ -294,7 +294,7 @@ Es una línea simple (sin flecha, o con flecha simple) que conecta al Actor con 
 - _Cómo se dibuja_, una línea continua con una flecha en forma de triángulo vacío apuntando al padre. 
 
 ### Diagrama de Flujo 
-El diagrama de flujo no maneja concurrencia (procesos paralelos) ni calles. Es puramente lineal, pensado para un solo hijo de ejecución de la computadora. Su simbología es la siguiente: 
+El diagrama de flujo no maneja concurrencia (procesos paralelos) ni calles. Es puramente lineal, pensado para un solo hilo de ejecución de la computadora. Su simbología es la siguiente: 
 
 **Terminal (Óvalo o Elipse)**, marca exclusivamente el Inicio y el Fin del algoritmo. 
 ![258](../recursos/Pasted%20image%2020260822143925.png)
@@ -419,7 +419,7 @@ Muestra cómo los objetos se envían mensajes (llamadas a funciones) a lo largo 
 ![392](../recursos/Pasted%20image%2020260826164807.png)
 
 ## Atributos de Calidad (Requerimientos No Funcionales)
-En el diseño arquitectónico, el software no solo debe funcionar, debe funcionar bien. Los atributos de calidad son las métricas de ese "bien". Los más críticos en la industria son: 
+En el diseño arquitectónico, el software no solo debe funcionar bien. Los atributos de calidad son las métricas de ese "bien". Los más críticos en la industria son: 
 1. **Rendimiento**, tiempo de respuesta y procesamiento de transacciones. Responder a una consulta en menos de 200ms. 
 2. **Disponibilidad**, tolerancia a fallos y tiempo de actividad. El servidor de la empresa no debe caerse más de 5 minutos al mes. 
 3. **Seguridad**, confidencialidad, integridad y autenticación. 
@@ -587,6 +587,12 @@ Es un patrón de diseño creacional que permite asegurar de que una clase tenga 
 1. La clase Singleton declara el método estático ```obtenerInstancia``` que devuelve la misma instancia de su propia clase. 
 2. El constructor del Singleton debe ocultarse del código cliente. La llamada al método ```obtenerInstancia``` debe ser la única manera de obtener el objeto de Singleton. 
 
+_Su objetivo es asegurar que una clase tenga únicamente una instancia en toda la memoria del programa y proporcionar un punto de acceso global y controlado hacia esa única instancia. Funciona de la siguiente manera: 
+1. _Se declara el constructor como privado para impedir el uso libre del operador new fuera de la clase.
+2. _Se almacena la referencia del único objeto en una variable estática privada dentro de la clase.
+3. _Se expone un método público y estático (usualmente getInstance()) que evalúa si la variable es nula: si lo es, instancia el objeto; si no, retorna la instancia previamente creada.
+4. _En entornos multihilo, se aplica Cierre Doblemente Verificado con la variable marca como volatile para evitar condiciones de carrera sin degradar el rendimiento con bloqueos continuos._
+
 #### **Builder (Constructor)**
 Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso. El patrón permite producir distintos tipos y representaciones de un objeto empleando el mismo código de construcción
 
@@ -608,6 +614,10 @@ Builder es un patrón de diseño creacional que permite construir objetos comple
 4. La clase Directora define el orden en el que se invocarán los pasos de construcción, por lo que puedes crear y reutilizar configuraciones específicas de los productos. 
 5. El Cliente debe asociar uno de los objetos constructores con la clase directora. Normalmente, se hace una sola vez mediante los parámetros del constructor de la clase directora, que utiliza el objeto constructor para el resto de la construcción. No obstante, existe una solución alternativa para cuando el cliente pasa el objeto constructor al método de producción de la clase directora. En este caso, puedes utilizar un constructor diferente ca vez que produzcas algo con la clase directora. 
 
+_Su objetivo principal es separar la construcción paso a paso de un objeto complejo de su representación final, eliminando el anti patrón del "Constructor Telescópico" (métodos constructores con decenas de parámetros nulos o booleanos confusos). Funciona de la siguiente manera: 
+1. _Enfoque clásico: una interfaz Builder declara los pasos de construcción. Varios Builders Concretos implementan los pasos con materiales específicos. Una clase Director opcional ejecuta los pasos en un orden estricto para ensamblar "recetas" predefinidas.
+2. _Enfoque Moderno: un único Builder estático anidado dentro de la clase del producto. Contiene valores por defecto, métodos de configuración encadenables que retornan this, y un método final build() que retorna el producto validado._
+
 #### **Prototipo**
 Prototipo es un patrón de diseño creacional que nos permite copiar objetos existentes sin que el código dependa de sus clases. 
 
@@ -617,6 +627,12 @@ Si quiero una copia de un objeto, lo principal sería crear otro objeto nuevo de
 1. La interfaz Prototipo declara los métodos de clonación. En la mayoría de los casos, se trata de un único método _clonar_.
 2. La clase Prototipo Concreto implementa el método de clonación. Además de copiar la información del objeto al clon, este método también puede gestionar algunos casos extremos del proceso de clonación, como, por ejemplo, clonar objetos vinculados, deshacer dependencias recursivas, etc. 
 3. El cliente puede producir una copia de cualquier objeto que siga la interfaz del prototipo. 
+
+_Su objetivo principal es producir copias exactas e independientes de objetos ya existentes en memoria RAM sin acoplarse al código de sus clases concretas ni repetir inicializaciones pesadas (como lecturas de disco, texturas o consultas de red). Funciona de la siguiente manera: 
+1. _Una interfaz declara un método de clonación.
+2. _La clase concreta implementa un constructor privado que recibe una instancia de sí misma y copia sus campos (incluidos los privados). 
+3. _Si el objeto contiene otro objetos complejos dentro de sí (como un inventario o una dirección), el constructor de copia debe forzar la clonación de esas dependencias internas para no compartir direcciones físicas en RAM entre la original y el clon. _
+
 ### Estructurales
 Definen cómo componer clases y objetos para formar estructuras más grandes manteniendo el bajo acoplamiento. Explican cómo ensamblar objetos y clases en estructuras más grandes a la vez que se mantiene la flexibilidad y eficiencia de la estructura. 
 
@@ -630,6 +646,46 @@ Proxy es un patrón de diseño estructural que permite proporcionar un sustituto
 	1. Normalmente los proxies gestionan el ciclo de vida completo de sus objetos de servicios
 4. El cliente debe funcionar con servicios y proxies a través de la misma interfaz. De este modo puedes pasar un proxy a cualquier código que espere un objeto de servicio. 
 
+#### Decorador
+Su misión es añadir responsabilidades o comportamientos adicionales a un objeto de forma dinámica en tiempo de ejecución, sin modificar su código original y sin recurrir a la herencia masiva. 
+
+Su objetivo es extender o enriquecer el comportamiento del objeto dinámicamente en tiempo de ejecución. El cliente es quien decide qué decoradores apilar y en qué orden. 
+
+**Actores Principales**
+- **Componente (Interfaz)**, el contrato común que comparten tanto el objeto básico como los decoradores. 
+- **Componente Concreto**, el objeto básico que realiza el trabajo esencial original. 
+- **Decorador Base**, es una clase abstracta que implementa la interfaz del Componente y mantiene un referencia (puntero) a un objeto del tipo de esa misma interfaz. Su único trabajo es delegar la llamada al objeto que tiene envuelto. 
+- **Decoradores Concretos**, clases que extienden el decorador base. Añaden su propio comportamiento (la decoración) antes o después de delegar la llamada al siguiente objeto envuelto. 
+
+Envuelve a un objeto, es decir, recibe la información que trae la petición la pasa al decorador o decoradores necesarios y primeramente hacen lo que el componente concreto hace y ya después de eso, cada decorador le agrega sus propias funciones. 
 ### De Comportamiento
 Gestionan algoritmos, relaciones y el flujo de control entre objetos. Se encarga de una comunicación efectiva y la asignación de responsabilidades entre objetos. 
+
+#### Cadena de Responsabilidad 
+Permite pasar solicitudes a lo largo de una cadena de manejadores. Al recibir una solicitud, cada manejador decide si la procesa o si la pasa al siguiente manejador de la cadena. 
+
+**Actores Principales**
+- **Manejador Base**, clase abstracta que define la interfaz común. Guarda una referencia al siguiente manejador de la lista y provee el método para encadenar. 
+- **Manejadores Concretos**, contienen la lógica específica de validación o procesamiento. Una vez hacen su parte llaman al siguiente eslabón y de esa forma se avanza hasta terminar la cadena. 
+- **Cliente**, ensambla la cadena en el orden en que considere oportuno y le entrega la petición únicamente al primer eslabón.
+
+#### Command - Dominio
+Convierte una solicitud o acción en un objeto independiente que contiene toda la información necesaria para ejecutarla: el método a llamar, los argumentos y el objeto destino. 
+
+En programación cuando se quiere hacer algo, pues lo que se haces llamar a una función que haga justo lo que quiero hacer. Pero esto genera dos problemas: 
+1. Quien da la orden tiene que conocer íntimamente a quien la ejecuta
+2. La orden debe realizarse inmediatamente en ese milisegundo. 
+Al transformar la orden en un objeto independiente (ficha o caja), esa acción adquiere existencia propia: ahora se puede guardar en una lista, pausarla, mandarla por internet. 
+
+**Cómo funciona a nivel de código**
+- Se crear una interfaz común llamada Comando con un único método: ejecutar()
+- Cada acción concreta se convierte en una clase separada. Dentro de esas clases se guardan los datos necesarios y una referencia al objeto que realmente saber hacer el trabajo
+- El botón o disparador (Invocador) solo guarda una variable de tipo Comando y llama a comando.ejecutar(). El botón no sabe si está mandado a imprimir un PDF o formateando un disco; solo dispara el método. 
+
+**Actores Técnicos**
+- **Interfaz Comando**, contrato que declara la operación básica, usualmente llamada ejecutar(), y opcionalmente deshacer() para revertir cambios. 
+- **Comando Concreto**, implementa la interfaz. Conoce qué método del receptor debe disparar y almacenar los parámetros y el estado previo necesario para revertir la acción. 
+- **Receptor**, sabe cómo realizar el trabajo pesado real (manipular el búfer de texto, guardar en disco, entre otros). 
+- **Invocador**, es el disparador. Mantiene una referencia a la interfaz Comando y llama a su ejecutar(). Nunca interactúa directamente con el receptor. 
+- **Cliente**, crea los receptores, instancia los comandos concretos pasándoles su receptor correspondiente y los asigna a los invocadores. 
 

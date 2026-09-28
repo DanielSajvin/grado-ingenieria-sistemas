@@ -199,3 +199,121 @@ Ventajas:
 - Suaviza el impacto de los cambios bruscos en los precios de los proveedores 
 - Funciona muy bien con productos homogéneos y masivos (ferreterías o abarrotes).
 
+### Mano de Obra Directa
+Es el trabajo realizado por los empleados que participan de forma física o intelectual y directa en la transformación de materias primas o en la prestación de un servicio. 
+
+**Características**:
+- Trazabilidad, se puede medir, cuantificar y atribuir fácilmente a un producto, lote o proyecto específico. 
+- Sus sueldos, salarios y prestaciones cambian o escalan según el nivel de producción de la empresa. 
+- Se registra como un costo directo del bien creado, a diferencia del personal administrativo. 
+
+Un cálculo básico puede ser: _horas trabajadas en el producto o servicio X * tarifa por hora del trabajador._
+
+### Mano de Obra Indirecta 
+Es el esfuerzo humano que asiste, supervisa o da mantenimiento al área productiva, pero cuyo tiempo es imposible, ilógico o muy costoso de rastrear hacia una unidad de producto específico. 
+
+**Características**
+- Su costo no se puede asignar fácilmente a un producto, lote o proyecto específico. 
+- Sus salarios suelen mantenerse estables, sin importar si la producción sube o baja ligeramente. 
+- En contabilidad, sus sueldos se clasifican dentro de los costos indirectos de fabricación y no en el costo directo del producto. 
+
+_Costo de ventas: es la medida exacta del sacrificio financiero que hizo la empresa para poder generar un ingreso. En el costo de ventas se incluye principalmente: _
+- _Materia prima directa_
+- _Mano de obra directa_
+- _Gastos indirectos de fabricación_
+
+### ¿Qué pasa con un modelo financieramente y contablemente con un SaaS?
+1. **Balance General**, durante el tiempo que tome desarrollar el software, los salarios se capitalizan (se van agregando al activo corriente en el balance general). Pero cuando termine el desarrollo, ese valor de salarios (mano de obra directa e indirecta) ya nos será inventario, porque no se creo un producto cómo tal que se va a vender, si no lo que se van a vender son suscripciones. Entonces no pasa a ser inventario si no que pasa a ser activo no corriente, bajo la cuenta **_Activos Intangibles_**. 
+2. **Estado de Resultados**, como el cliente solo paga por el acceso y nunca se entrega la propiedad o el código fuente del software, los salarios que se fueron acumulando no salen de golpe al estado de Resultado. Pero el software también tiene un desgaste, ya que por tiempo se vuelve obsoleto o puede que necesite versiones completamente nuevas con el tiempo. Entonces para poder reflejar ese desgaste en las finanzas, se utiliza lo que es **_Amortización_**, que es el equivalente a la depreciación, pero para activos que no se pueden tocar. 
+	1. Para calcular la amortización de un software se estima la vida útil del software y se dividen los costos de ventas dentro de la vida útil estimada del software (en meses); el resultado de esto es lo que se irá restando cada mes al activo intangible y será la cuenta _Gasto por Amortización de Software_.
+3. **Costo de Ventas**, si el desarrollo inicial se vuelve una amortización a largo plazo, entonces lo que se registra en el estado de resultados cómo costo de ventas es: todos los desembolsos del mes en curso necesario para mantener el servicio activo y disponible para el cliente. Por ejemplo: 
+	1. Pago mensual de los servidores en la nube
+	2. Ancho de banda consumido 
+	3. Comisiones por transacciones de la pasarela de pagos 
+	4. Mano de obra directa del servicio, pago mensual de los ingenieros de soporte técnico o infraestructura que mantienen los servidores funcionando. 
+
+#### Depreciación y Amortización 
+La depreciación y la amortización funcionan bajo el mismo principio contable: reconocen el desgaste o la pérdida de valor de un activo con el paso del tiempo. La diferencia es qué la _Depreciación_ aplica a activos físicos tangibles, mientras que la _Amortización_ aplica a activos intangibles. 
+
+**Estado de Resultados**
+Tanto la depreciación y la amortización se anotan en la sección de gastos operativos, y se pueden registrar cómo: Gasto por Depreciación o Gasto por Amortización. 
+**Efecto financiero**: disminuye la utilidad operativa. Al ser un gasto reconocido por la ley, reduce la base sobre la cual se calcula el pago de impuestos. Al igual que los demás gastos, estas cuentas se reinician a cero al comenzar un nuevo año contable. 
+
+**Balance General**
+Se anotan dentro del activo no corriente utilizando cuentas llamadas: _Depreciación Acumulada_ o _Amortizaciones Acumuladas_. Se les llama también como cuentas _Contra-activo_, porque, a pesar de estar en la columna de activos, tienen saldo negativo, es decir, restan. 
+**Efecto financiero**: nunca se altera el valor original de compra del activo. La cuenta acumulada se coloca exactamente debajo del nombre del activo, restándolo visiblemente para mostrar el "Valor Neto en Libros". Esta cuenta nunca reinicia, sigue creciendo hasta consumir el 100% del valor del activo. 
+
+Cuando un activo alcanza el 100% de su depreciación o amortización, su "Valor Neto en Libros" llega a cero. Entonces pasa los siguiente: 
+1. **Estado de Resultados**, el gasto por depreciación de ese activo desaparece por completo. Entonces ya no se registra en el _Estado de Resultados_. 
+2. **Balance General**, el activo no se borra. Aunque su valor matemático sea cero, debe permanecer registrado con su valor histórico original y su depreciación acumulada al tope, demostrando que sigue existiendo. Cómo buena práctica a estos activos se les asigna un valor residual de Q 1.00 o también Q0.01 para no perder el rastro en los inventarios físicos y auditorías. 
+
+CUENTAS PARA PAGAR MENOS IMPUESTOS
+#### Depreciaciones Valores
+
+| Cuenta              | Porcentaje   | Tiempo (vida útil) |
+| ------------------- | ------------ | ------------------ |
+| Equipo de cómputo   | 33.33% anual | 3 años             |
+| Herramientas        | 25% anual    | 4 años             |
+| Mobiliario y equipo | 20% anual    | 5 años             |
+| Maquinaria          | 20% anual    | 5 años             |
+| Vehículos           | 20% anual    | 5 años             |
+| Edificios           | 5% anual     | 20 años            |
+
+#### Cálculo de la Amortización
+Para activos intangibles como Marcas, Patentes, Derechos de Autor y Software de uso propietario, la ley guatemalteca establece lo siguiente: como tal no hay un porcentaje establecido, sin embargo, se establece un límite; el límite dice que se tiene que amortizar utilizando el método de línea recta (partes iguales cada mes) es un período no menor de 5 años. Esto se traduce entonces  a un porcentaje máximo de 20% anual. 
+
+_Para la depreciación se maneja un "Auxiliar de Activos Fijos (no corrientes)" donde se calcula la depreciación a cada equipo individualmente._
+
+**Ganancia de capital**
+Es cuando se vende el activo no corriente que ya tiene un 100% de depreciación. O también cuando se vende algo que no corresponde a la actividad principal de la empresa. En el caso de vender algo que ya se depreció al 100% se debe dar de baja definitivamente del balance general y también se elimina la depreciación que acumuló ese equipo; después de eliminar el activo de los estados de financieros se debe registrar el ingreso de esa venta, por ejemplo, registrar un ingreso en la cuenta bancos. Y este ingreso en el estado de resultados no es "Ventas" si no que se registran como "Otros Ingresos" o también "Ganancia en Venta de Activos".
+
+_La SAT exige que se pague un impuesto del 10% sobre la ganancia que se obtuvo al vender ese activo (Impuesto de Rentas de Capital)._
+
+#### Escudo Fiscal 
+Es la reducción en la cantidad total de dinero sobre la cual se va a calcular los impuestos que hay que pagar (ISR). Dicho de otra manera es el ahorro que se consigue cuando un gasto realizado hace que el gobierno cobre impuestos sobre una cantidad de dinero más pequeña, por lo tanto, el calculo lanzará una cantidad menor a pagar de impuestos. 
+
+Entonces básicamente consiste en registrar gastos que hace la empresa y esto hace que entonces en el estado de resultados la "Utilidad antes de impuestos" como se le están restando estos gastos será una cantidad más pequeña, entonces entre menor sea esta cantidad menor será lo que se tendrá que pagar en impuestos. 
+
+_La ley tributaria permite que todos los gastos necesarios para mantener el negocio operando se resten de los ingresos antes de calcular el pago de impuestos._
+
+Cuentas que generan escudo fiscal: 
+- **Depreciaciones**, es el escudo fiscal por excelencia, no requiere sacar dinero de la cuenta bancaria mes a mes, pero permite registrar un gasto constante por el desgaste de los activos no corrientes, reduciendo con esto la utilidad artificialmente ante la SAT. 
+- **Amortizaciones**, es lo mismo que la depreciación pero con activos intangibles. 
+- **Intereses**, (gastos financieros) si la empresa pide un préstamo bancario para financiar un proyecto, los intereses pagados son deducibles de impuestos. (por eso muchas veces las empresas prefieren endeudarse con los bancos antes de usar dinero propio de los socios).
+- **Cuentas Incobrables**, la SAT permite registrar un gasto anual de hasta el 3% sobre los saldos por cobrar, asumiendo que ese dinero se perderá. Este gasto reduce la utilidad y los impuestos hoy, sin que haya salido un solo centavo de la cuenta de bancos. 
+- **Reserva para indemnizaciones**, en lugar de registrar un gasto muy grande el día que se despide a un empleado, la ley permite registrar un gasto mensual equivalente al 8.33% de la planilla bajo el concepto de "Provisión para Indemnización". Esto genera un escudo fiscal mes a mes, reduciendo el pago de ISR y creando un "guardadito" en el balance generar para cuando ocurra el despido. 
+- **Leasing (Arrendamiento)**, se rentan un bien (por ejemplo computadoras o una flota de vehículos para la empresa) y al final del contrato se devuelve para que den un bien nuevo. Y genera escudo fiscal porque el gobierno considera que el 100% de la renta mensual que se paga es un **_Gato Operativo_** necesario para que la empresa funcione. Entonces todo lo que se se pague en el año por ese alquiler de los bienes se resta directamente a las ganancias antes de calcular los impuestos. 
+- **Donaciones**
+	- Primero se tiene que estar inscrito en el **_Régimen Sobre las Utilidades_**, es decir, dónde se calculan los impuestos sobre las ganancias netas.
+	- **Donaciones SIN LÍMITE de escudo fiscal**, aplica a Universidades, entidades culturales o científicas (es decir, que estas entidades van a recibir la donación). Y básicamente el gobierno permite deducir de impuestos hasta el 100% del monto que se done. 
+	- **Donaciones CON LÍMITE de escudo fiscal**, aplica a asociaciones y fundaciones sin fines de lucro, iglesias, entidades religiosas y partidos políticos (son las entidades que van a recibir la donación). Aquí solo permite deducir de impuestos el 5% de la utilidad bruta, es decir, de los ingresos totales del año. O también un tope máximo de Q500,000. 
+	- **Empresa Privada (S.A.)**, la empresa debe estar inscrita en el **_Régimen Sobre las Utilidades_**
+
+![433](../recursos/Pasted%20image%2020260919232432.png)
+
+## Cálculo de Costo de Mano de Obra
+
+### Planilla
+Una planilla es una estructura financiera y legal que se divide principalmente en tres partes: 
+1. **_Devengado_**, _lo que el trabajador gana_, incluye el salario, el pago por horas extras, comisiones por metas y la bonificación incentivo. Todo esto suma a favor del trabajador. 
+2. **_Descuentos_**, _lo que se le quita por ley al trabajador_, principalmente la cuota laboral IGSS, también se puede incluir retenciones del ISR (si el salario del trabajador supera el límite exento de la ley), pago de préstamos internos, penalizaciones o embargos judiciales por pensión alimenticia. 
+3. **_Líquido a recibir_**, es la resta entre el devengado y los descuentos. Este es el dinero real y exacto que llega  al cuenta bancaria del trabajador a fin de mes o cada quincena. 
+
+### Salarios Mínimos 
+
+#### Sector 1 (Departamento de Guatemala)
+- **No Agrícola**, 4,002.28 - con bono 4,252.38
+- **Agrícola**, 3,791.20 - con bono 4,041.20 
+- **Maquila**, 3,409.73 - con bono 3,659.73
+
+#### Sector 2 (Interior del País - resto de los departamentos)
+- **No Agrícola**, 3,816.90 - con bono 4,066.90
+- **Agrícola**, 3,625.89 - con bono  3,875.89
+- **Maquila**, 3,221.10 - con bono 3,471.10 
+
+### Beneficios de Ley para el Trabajador
+_Salario ordinario es el salario base sin bonificación de 250_.
+
+**_Aguinaldo_**
+Es un beneficio económico anula obligatorio, corresponde al 100% de un salario mensual ordinario. Se calcula del 1 de diciembre del año anterior al 30 de noviembre del año en curso. Entonces este beneficio se genera desde el primer día de trabajo, y se paga solo lo proporcional al tiempo que se lleve trabajando. 
+El pago normalmente se divide en dos partes: la primera mitad se paga en la primera mitad de diciembre y la segunda mitad se paga en la primera quincena de enero. 

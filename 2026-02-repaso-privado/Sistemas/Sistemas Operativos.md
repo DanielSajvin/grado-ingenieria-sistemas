@@ -238,8 +238,6 @@ Para el SO, un proceso no es más que una estructura de datos (en lenguaje C si 
 - **Gestión de Memoria**, punteros estructurales que le indican al hardaware en qué direcciones físicas de la RAM está el código de este proceso. 
 - **Estado de E/S**, una lista de todos los archivos y puertos de red abiertos. 
 
-DUDA QUE ES LA "PILA" - Estado del proceso. 
-
 ### Estados y Transiciones de un Proceso
 Como la CPU salta de un proceso a otro, un proceso no está ejecutándose todo el tiempo. Atraviesa un ciclo de vida estrictamente controlado: 
 1. **Nuevo**, el proceso se está creado (asignando memoria). Aún no está listo para competir por la CPU. 
@@ -255,3 +253,93 @@ En ejecución -> Bloqueado, el proceso decide detenerse porque solicitó una ope
 
 Bloqueado -> Listo, ocurre cuando el evento externo finaliza (el disco entrega el dato). Nunca se pasa de Bloqueado a En ejecución, siempre debe volver a formarse en la cola de Listos. 
 
+_Un programa es código estático (entidad pasiva), cuando se abre un programa se convierte en un proceso, este proceso ya es lo que se dice como un programa en ejecución._
+
+### Bloque de Control de Proceso (Process Control Block - PCB)
+El PCB no es una lista de muchos procesos. El PCB es la ficha de identidad de UN SOLO proceso. Cada proceso tiene su propio y único PCB. El SO interpreta que un programa está en ejecución en el instante exacto en que se crea un PCB para ese proceso. Si el PCB no existe, el proceso no existe. El PCB no es una pila de ejecución, el PCB es una estructura de datos de tipo registro (como una ficha técnica) que contiene datos, que son los siguientes:
+- **PID - Process ID (Identificador de Proceso)**, es un número único que el SO asigna a cada programa o tarea que se encuentra en ejecución (el PID le pertenece al proceso completo, es decir, a su PCB). Este ID o PID incluye el ID del usuario propietario y el ID del proceso padre que lo invocó. 
+- **Program Counter - PC (Contador de Programa)**, también se le llama _Instruction Pointer_ o _Puntero de Instrucción_, es un registro de la CPU que apunta a la dirección de memoria de la próxima instrucción que se va a ejecutar, es decir, el Program Counter como tal es una pieza física real que está soldada en la CPU, que es básicamente un chip muy rápido que le dice a la CPU: "Ejecuta la dirección de memoria que tengo cargada en este instante". Entonces cuando un proceso se está ejecutando, en el momento en el que la CPU pasa a la siguiente instrucción del proceso que se está ejecutando, adicional a ejecutar como tal la instrucción también guarda el puntero a la dirección de memoria (RAM) de la siguiente instrucción el Program Counter físico que está soldado en la CPU, entonces cuando la CPU va a ejecutar otro proceso para no perder la pista de la siguiente instrucción del proceso actual, guarda este puntero en el PCB del proceso que se estaba ejecutando, así cuando entre el otro proceso no importa que borre el Program Counter para escribir el suyo. Entonces cuando la CPU vuelve a ejecutar el proceso anterior lee el PCB, saca su Program Counter (la dirección de memoria que apunta a la siguiente instrucción, es decir, dónde se había quedado y la mete al PC físico real de la CPU) y así continua. 
+- **Estado Actual**, una etiqueta que le dice al SO si el proceso está: 
+	- _Listo_, esperando a que la CPU se libere para entrar en ejecución
+	- _En ejecución_, se encuentra usando la CPU
+	- _Bloqueado_, se encuentra pausado porque está esperando que el usuario presione una tecla, que se descargue un archivo o que la unidad de estado sólido responda. 
+- **Gestión de Memoria**, puntero estructurales que le indican al hardware en qué direcciones físicas de la RAM está el código de ese proceso. 
+- **Estado de E/S**, una lista de todos los archivos y puertos de red abiertos. 
+- **Prioridad**, es información de planificación, y es un número que le dice al SO qué tan urgente es este proceso. 
+
+### La Pila (stack) y el Puntero de Pila (Stack Pointer - SP)
+
+#### Pila (Stack)
+La pila es una zona dedicada de la memoria RAM asignada a cada proceso, es decir, cuando se abre un programa se crea un proceso, en ese justo momento se le crea tanto su PCB como también el SO le asigna una Pila. Funciona como una pila, es decir, funciona con UEPS último en entrar primero en salir (LIFO). El objetivo de la pila es guardar variables locales y el control de funciones, por ejemplo: cuando un programa llama a una función el SO guarda las variables locales de esa función (las globales van a otro lado), cuando la función termina, las variables locales de esa función desaparecen porque se sacan de la pila; adicional a esto la pila también guarda la dirección de retorno (para saber a qué instrucción del Program Counter regresar).
+Si un proceso se queda sin espacio en su pila (por ejemplo si una función se llama a sí misma infinitamente por error), ocurre un desbordamiento de pila. A esto se le conoce como _Stack Overflow_, lo que hace que el SO destruya inmediatamente el proceso para proteger al resto del sistema. 
+
+#### Stack Pointer (Puntero de Pila)
+Es un registro que reside físicamente dentro de la CPU, es decir, es un mini-chip por lo tanto es una pieza de hardware real que vive dentro de la CPU (al igual que el Program Counter). Su función es almacenar la dirección de memoria RAM del último dato que se metió en la pila (es decir, apunta a la cima de la pila; no importando la pila de que proceso sea, porque como es una pieza de hardware real siempre apuntará a la cima de la pila del proceso que se encuentre en ejecución). Cada vez que un programa mete datos a la pila el Stack Pointer se actualiza automáticamente para apuntar más arriba. Como siempre está apuntando a la cima de la pila del proceso que está en ejecución, antes de que se realice un cambio de contexto la CPU guarda el valor actual del stack pointer en el PCB del proceso que se encuentra en ejecución, esto con el objetivo de no perder la cima de la pila del proceso actual, entonces cuando regresa la CPU a este mismo proceso lee el PCB de su proceso saca tanto el Program Counter como el Stack Pointer y se los pasa a los registros físicos reales de la CPU. 
+
+### Aclaraciones
+#### CPU
+La CPU es tonta pero demasiado rápida. La CPU no sabe qué es un programa en sí. La CPU solo sabe ejecutar la instrucción que le diga el Program Counter, y sabe ejecutar muy rápido. La CPU no decide cuándo cambiar de proceso por sí misma. 
+
+#### Sistema Operativo
+Es el encargado de administrar todo, es decir, el SO es el que decide cuánto tiempo usa la CPU cada proceso, que proceso va primero, segundo y así. El SO es el que toma la "foto" de los registros de la CPU, como guardar en el PCB el Program Counter y el Stack Pointer y es quién le dice a la CPU "ejecuta esto". 
+
+#### ¿Dónde se guarda el proceso como tal y sus instrucciones?
+Cuando se abre un programa (que está guardado de forma estática en la unidad de estado sólido), el SO reserva un bloque grande de memoria RAM para ese proceso que se acaba de crear (a esto se le llama _Espacio de Direccionamiento del Proceso_), este bloque se divide en 4 zonas principales: 
+- _Sección de código_, aquí viven las instrucciones del proceso 
+- _Sección de Datos_, variables globales y estáticas
+- _Heap (Montículo)_, memoria dinámica para datos grandes
+- _Pila (Stack)_, variables locales, funciones, stack pointer
+
+Esto entonces es el proceso en ejecución como tal, es decir, es el programa estático que estaba en la unidad de estado sólido. Porque entonces se convierte a una copia en RAM del programa que estaba estático. 
+
+## Hilos (Threads)
+También es conocido como proceso ligero. Un hilo es la unidad más pequeña de ejecución que un sistema operativo puede planificar y ejecutar dentro de un procesador. Un proceso se puede ver como un contenedor que el sistema operativo construye para que corra un programa, los hilos se encuentran dentro de ese contenedor. Todos los procesos tienen como mínimo un hilo (el hilo principal), pero pueden crear muchos mas. 
+
+El objetivo de los hilos es permitir la concurrencia y el paralelismo eficiente. Sirve para que un mismo programa pueda hacer varias tareas al mismo tiempo sin necesidad de crear procesos separados, lo cual consumiría demasiada memoria RAM y esto terminaría en ralentizar la computadora. 
+
+**Diferencia y similitudes con los procesos**
+
+| Caraterística    | Proceso                                                             | Hilo                                                                                                                                                                                                                                                               |
+| ---------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Memoria**      | Tiene su propio espacio aislado de memoria RAM.                     | Comparte el mismo espacio de memoria RAM que el del proceso padre que lo creo.                                                                                                                                                                                     |
+| **Creación**     | Es pesado y lento de crear por el SO                                | Es ligero y ultra rápido de crear.                                                                                                                                                                                                                                 |
+| **Comunicación** | Es muy difícil lograr que un proceso se comunique con otro proceso. | Es mucho más fácil que un hilo se comunique con otro hilo y lo puede hacer de forma directa, y esto se logra porque al final todos los hilos se encuentran dentro de un proceso y comparten el mismo espacio de memoria RAM, es decir, comparten la misma memoria. |
+| **Aislamiento**  | Si el proceso A falla, el proceso B sigue vivo.                     | Si un hilo falla, todo el proceso muere.                                                                                                                                                                                                                           |
+En común tienen lo siguiente: 
+- Tanto un proceso como un hilo representa código en ejecución. 
+- Tanto un proceso como un hilo pasan por los mismo estados (Listo, En Ejecución, Bloqueado).
+- Ambos un proceso y un hilo necesitan que el sistema operativo guarde su contexto, es decir, su Program Counter cuando la CPU cambia de proceso. 
+
+#### Partes de un Hilo (individual cada hilo)
+Un hilo no tiene su propia sección de código ni su propio Heap, él hilo usa los de su proceso padre. Y las partes exclusivas de cada hilo son: 
+- **Thread ID - TID**, es un número que identifica a cada hilo dentro de su proceso padre, similar al PID, solo que este es el identificador único para cada hilo. 
+- **Program Counter - PC**, cada hilo necesita saber qué línea de código se ejecutará. 
+- **Conjunto de Registros de la CPU**, para guardar los cálculos matemáticos temporales del procesador. 
+- **Pila (Stack)**, cada hilo tiene su propia pila también para poder guardar sus variables locales y el control de sus propias funciones.
+- **Stack Pointer - SP**, lo guarda dentro de su TCB para no perder el control de su propia pila. 
+- **Thread Control Block - TCP**, es el equivalente al PCB, pero este es más pequeño. Es la ficha técnica donde el SO anota el TID, el estado del hilo, copia de su Program Counter y sus registros.
+
+#### Tipos de Hilos
+Se dividen principalmente en dos tipos y es según quién los administre: 
+1. **Hilos a nivel de usuario**, son creado y gestionados por el propio código del programador mediante librerías de programación (sin que el SO se entere). Son rápidos de crear, pero si un hilo se bloquea todo el proceso se bloquea, porque el SO piensa que es solo un mismo proceso o bloque. 
+2. **Hilos a nivel de núcleo (kernel)**, son creados y gestionados por el SO, el SO sabe exactamente cuántos hilos tiene el programa. Si un hilo se bloquea, el SO es lo suficientemente inteligente como para dejar que los demás hilos sigan corriendo en otro núcleo del procesador. Son los que usan los sistemas modernos hoy en día. 
+3. **Hilos híbridos**, su objetivo es combinar lo mejor de los hilos a nivel de usuario y a nivel de kernel, de los de nivel de usuario su velocidad y la potencia de los hilos de kernel. Entonces por ejemplo el programador puede crear 20 hilos a nivel de usuario, pero el SO los mapea de forma dinámica a una cantidad menor de hilos a nivel kernel, es decir, tengo los 20 hilos a nivel de usuario y este proceso solo tiene 5 hilos disponibles a nivel de kernel, entonces el SO se encarga de ir conectando dinámicamente los 20 hilos a nivel de usuario con los 5 disponibles a nivel de kernel conforme se vayan liberando. Así entonces no se requiere de 20 hilos a nivel de kernel (que es más pesado). 
+
+### Concurrencia vs Paralelismo 
+- **Concurrencia**, es la capacidad de un SO para administrar y procesar múltiples procesos o hilos, intercalando su tiempo de ejecución en un solo núcleo de CPU. La concurrencia sirve para la capacidad de respuesta, evita que la computadora se congele, si se está descargando un archivo pesado por ejemplo. 
+- **Paralelismo**, es la capacidad de ejecutar múltiples tareas físicamente al mismo tiempo, pero esto requiere obligatoriamente múltiples núcleos de CPU. El paralelismo sirve para la velocidad, permite resolver problemas complejos mucho más rápido. 
+
+## Multihilo 
+Es la capacidad que tiene un SO, un procesador o una aplicación de ejecutar múltiples hilos de forma concurrente o paralela dentro de un mismo proceso. El objetivo del multihilo es maximizar el uso de la CPU y mejorar la capacidad de respuesta de los programas. 
+
+Cuando un proceso es multihilo, el PID sigue siendo único para ese proceso (que dentro tiene todos sus hilos), pero ahora el PCB de este proceso es mas complejo, porque ya no solo guarda los datos de un solo hilo (hilo principal) si no que ahora va a guardar los datos de todos los hilos que tenga este proceso, entonces el PCB del proceso padre (que ahora tiene múltiples hilos) tendrá una lista con todos los TCB de todos los hilos que existan, porque pues cada hilo tiene su propio TCB. 
+
+Cada hilo tiene su propio TCB y su propia pila, también la copia de su stack pointer, es decir, por cada hilo se crea una de estas. Comparten el mismo Heap (espacio para variables globales y memoria dinámica para archivos grandes). 
+
+Si se tiene solo un núcleo entonces el program counter y stack pointer físicos de la CPU van a estar cambiando de manera muy rápida entre cada pila de cada proceso e hilo de forma concurrente. 
+Si se tienen múltiples núcleos, pues en cada núcleo se estará ejecutando cada hilo. 
+
+### Modelos de Multihilo 
+- **Modelo Muchos a Uno**, múltiples hilos a nivel de usuario se mapean a un solo hilo del kernel. El cambio de contexto es rápido porque el SO no interviene, todo lo gestiona una librería de usuario. 
+- **Modelo Uno a Uno**, cada hilo de usuario se mapea exactamente a un hilo del kernel. Esta implementación es la que usa Windows y Linux. Si un hilo se bloquea, los demás hilos del mismo proceso siguen ejecutándose sin problema en otros núcleos del procesador. Verdadera concurrencia. 
+- **Muchos a Muchos**, se multiplexan N hilos de usuario a un número igual o menor M de hilos de kernel. 
