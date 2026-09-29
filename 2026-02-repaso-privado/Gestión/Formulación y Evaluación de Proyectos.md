@@ -115,3 +115,35 @@ Antes de poder calcular estos, se tiene que tener ya preparado el _Flujo de Caja
 _Es la técnica de preguntarse ¿Qué pasa si...?_
 Se trata básicamente de tomar el modelo financiero y cambiar una sola variable a la vez, esto para ver cómo se comporta el VAN ante esos cambios. 
 - **Variable Sensible**, es aquella que, con un cambio pequeñito, hace que el VAN se vuelva negativo (genera pérdidas).
+
+<hr>
+
+
+## Estudio Legal
+Determina la viabilidad jurídica de un proyecto al establecer restricciones normativas, los costos de cumplimiento y las figuras legales óptimas para operar en el país.
+
+**Propiedad Intelectual en Software**
+- **Protección como Obra Literaria**, el software no se patenta, se protege bajo la figura de Derechos de Autor (equivalente a una obra literaria). Lo que se protege es la expresión original del código, arquitectura y los manuales técnicos, no la idea o el algoritmo abstracto. 
+- _Derechos Morales_, son irrenunciables. Garantizan que el programador sea reconocido como el autor original (derecho de paternidad) y protegen la integridad de la obra contra modificaciones que dañen su reputación. 
+- _Derechos Patrimoniales_, son los derechos de explotación económica exclusiva (reproducir, distribuir, comercializar, modificar y licenciar el software). En proyectos de desarrollo. estos derechos deben cederse explícitamente y por escrito a favor de la empresa para que esta pueda vender el producto sin reclamos de los desarrolladores. 
+
+### Formas de Contratación 
+
+#### Relación de Dependencia 
+Regido por el código de trabajo. Se configura cuando existen tres elementos: subordinación continua (jefatura y órdenes claras), horario obligatorio de trabajo y remuneración periódica. 
+
+**Pasivo Laboral y Prestaciones de Ley**
+- _Aguinaldo_, un salario ordinario (sin bonificación) mensual adicional al año (se paga el 50% en la primera quincena de diciembre y el otro 50% en la primera quincena de enero)
+- _Bono 14_, un salario ordinario mensual adicional que se paga en la primera quincena de julio. 
+- _Vacaciones_, 15 días hábiles por cada año continuo de labores. 
+- _Bonificación Incentivo_, mínimo de Q 250.00 mensuales obligatorios (exento de cuotas patronales). 
+- _Cuota Patronal_, aporte mensual obligatorio de la empresa a entidades de seguridad social: 
+	- _IGSS_, 10.67%
+	- _IRTRA_, 1%
+	- _INTECAP_, 1%
+	- _Total de carga cuota patronal_, 12.67% sobre el salario base (sin la bonificación). El empleado paga o se le descuenta el 4.83% de IGSS. 
+- _Indemnización_, un mes de salario por cada año de servicios continuos. 
+
+#### Contrato de Servicios Profesionales
+Regido por el Código Civil. Aplica cuando el profesional trabaja con total autonomía técnica, sin horario impuesto, utilizando sus propias herramientas y cobrando contra entrega de hitos o entregables mediante facturación electrónica. 
+La ventaja de esto es que la empresa no asume pasivo laboral ni cuotas patronales. 

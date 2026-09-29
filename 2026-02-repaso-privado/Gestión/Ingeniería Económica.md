@@ -172,3 +172,55 @@ Los Pasivos y el Capital NO son cosas materiales. Son simplemente etiquetas de p
 El Capital es el valor real con el que se quedarían los dueños si hoy cerraran la empresa, vendieran todo y pagaran todas las deudas. Es decir, el patrimonio es lo que los dueños o socios han aportado._ 
 
 <hr>
+
+
+## Interés
+Siempre se expresa en dinero. Es la cantidad absoluta de dinero que se paga o se gana. 
+
+**Tasa de Interés** 
+Se evalúa desde la perspectiva del deudor (quien pide prestado). Es el costo de usar dinero ajeno. 
+$$\text{Interés Pagado}= \text{Monto Final - Monto Original Recibido}$$
+
+**Tasa de Retorno - Rendimiento**
+Se evalúa desde la perspectiva del prestamista (quien da el dinero). Es la ganancia o rendimiento generado por poner a trabajar un capital propio. 
+$$\text{Rendimiento}=\frac{\text{Ganancia Neta}}{\text{Inversión Original}} * 100$$
+
+**Terminología**
+- **Capital Principal (P)**, es la cantidad inicial de dinero prestada o invertida en el momento presente (t=0), antes de que empiece a ganar o cobrar intereses. 
+- **Monto Futuro o Valor Futuro (F)**, es la suma final acumulada al cabo del tiempo. Incluye el capital principal original más todos los intereses que se hayan generado. 
+	- $$F = P + I $$
+- **Capitalización**, es el momento en que los intereses ganados se transforman en capital. Cuando un interés se capitaliza, se suma a la cuenta para que en el siguiente período él también genere nuevos intereses. 
+
+### Interés Simple
+Los intereses se calculan únicamente sobre el capital principal original durante todo el tiempo que dura la operación. Los intereses ganados no se acumulan al capital; es decir, los intereses NO generan nuevos intereses. 
+En el interés simple, los intereses NO se capitalizan. Esto significa que los intereses se calculan únicamente sobre el capital original (P) en cada período. Los intereses devengados se apartan y nunca generan nuevos intereses. 
+
+**Fórmula para calcular únicamente el dinero de los intereses (lo que se pagará únicamente de intereses**
+$$\text{Interés Total Acumulado} = P*i*n$$
+- **P**, capital principal o valor presente (la cantidad de dinero inicial)
+- **i**, tasa de interés por período (se introduce en formato decimal en la fórmula)
+- **n**, número de períodos (años, meses, semestres. Debe estar en la misma unidad de tiempo que la i)
+
+**Fórmula para calcular el monto total a pagar/cobrar al final (F)**
+$$\text{Monto Total a Pagar al final (F)} = P(1+i*n)$$
+- **F**, valor futuro o monto final 
+- **P**, capital principal
+- **i**, tasa de interés
+- **n**, número de períodos
+
+### Interés Compuesto 
+El interés devengado (el interés que se ha ido acumulando desde el último pago, es una deuda real que ya se tiene, pero que la fecha de pago es a fin de mes por ejemplo) al final de cada período se suma al capital anterior (se capitaliza). En el siguiente período, los intereses se calculan sobre ese nuevo total acumulado. Es el concepto de interés sobre interés.  
+En el interés compuesto, los intereses devengados al final de cada período SÍ se capitalizan (se suman al capital). En el siguiente período, la tasa de interés se aplica sobre el nuevo total acumulado. 
+
+**Fórmula para calcular el monto futuro total acumulado (F)**
+$$\text{Monto Total o Valor Futuro (F)} = P(1+i)^n$$
+- **F**, monto final o valor futuro
+- **P**, capital principal o valor presente 
+- **i**, tasa de interés por período
+- **n**, número de períodos
+
+**Fórmula para calcular únicamente los intereses generado**
+$$I = F - P = P[(1+i)^n - 1]$$
+- **I**, interés total compuesto 
+- **F**, valor futuro 
+- **P**, capital inicial
