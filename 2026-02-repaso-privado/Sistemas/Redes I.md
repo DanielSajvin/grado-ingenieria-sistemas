@@ -543,3 +543,9 @@ Internet es una confederación de más de 100,000 redes independientes llamadas 
 - Google es un sistema autónomo 
 - Un banco es un sistema autónomo 
 BGP es un protocolo de Vector de Ruta. A BGP no le interesan los router individuales, ni si el cable tiene más ancho de banda o no. A BGP solo le interesa saber que caminos posibles hay para llegar de un destino a otro y qué sistemas autónomos puede y no debe pasar. Se basa más en reglas de negocio y políticas de cada sistema autónomo. 
+
+![](../recursos/Pasted%20image%2020261001102020.png)
+
+![](../recursos/Pasted%20image%2020261001102135.png)
+
+![](../recursos/Pasted%20image%2020261001102203.png)

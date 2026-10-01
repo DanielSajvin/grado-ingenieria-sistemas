@@ -343,3 +343,51 @@ Si se tienen múltiples núcleos, pues en cada núcleo se estará ejecutando cad
 - **Modelo Muchos a Uno**, múltiples hilos a nivel de usuario se mapean a un solo hilo del kernel. El cambio de contexto es rápido porque el SO no interviene, todo lo gestiona una librería de usuario. 
 - **Modelo Uno a Uno**, cada hilo de usuario se mapea exactamente a un hilo del kernel. Esta implementación es la que usa Windows y Linux. Si un hilo se bloquea, los demás hilos del mismo proceso siguen ejecutándose sin problema en otros núcleos del procesador. Verdadera concurrencia. 
 - **Muchos a Muchos**, se multiplexan N hilos de usuario a un número igual o menor M de hilos de kernel. 
+
+
+## 3.4 Planificación 
+
+### Planificador de Procesos
+Todos los SO admiten la multiprogramación (la multiprogramación es una técnica de los SO que permiten cargar y almacenar múltiples programas en la memoria principal de la computadora para que la CPU los ejecute de forma concurrente), lo que supone una planificación de procesos ya sea en tiempo compartido o con varios procesadores a la vez. El tiempo compartido consiste en dividir el tiempo de ejecución del procesador en pequeños intervalos de tiempo y asignarle a cada intervalo un fragmento de los procesos que se están ejecutando; para de este modo poder ejecutarlos, poco a poco, de forma paralela.
+
+Cundo se tienen varios procesos listos para ejecutarse, el SO debe decidir cuál ejecutar y cuándo pasarlo de un estado a otro. 
+El módulo encargado de esta tarea es el _Planificador de Procesos_, para realizarlo utiliza un Algoritmo de Planificación. 
+
+### Tipos de Algoritmos de Planificación 
+
+#### No Apropiativos 
+Una vez que el proceso toma el control de la CPU, nadie lo puede interrumpir. El proceso se queda con el procesador hasta que termina voluntariamente o se bloque (por ejemplo, porque se puso a esperar que el usuario presione una tecla). 
+- **FIFO (FCFS -  First to Come First to Serve - Primero en Entrar Primero en Servir)**
+	- _Ventaja_, implementación simple, sin sobrecarga por cambios de contexto forzados y libre de inanición. 
+	- _Desventaja_, sufre del "efecto convoy", donde procesos cortos quedan bloqueados detrás de uno muy largo, elevando drásticamente el tiempo de espera promedio. 
+- **SJF (Shortest Job First - Primero el Trabajo más Corto)**
+	- _Ventaja_, minimiza matemáticamente el tiempo de espera medio entre todos los algoritmos no apropiativos. 
+	- _Desventaja_, provoca inanición en procesos largos si llegan procesos cortos de forma continua, y es difícil conocer de antemano la duración real de cada proceso. 
+- **Por Prioridad** 
+	- _Ventaja_, permite garantizar que los procesos vitales del sistema o de negocio se ejecuten antes que tareas secundarias o de fondo. 
+	- _Desventaja_, los procesos con menor prioridad pueden quedar esperando indefinidamente si el flujo de entrada de procesos con mayor prioridad es continuo. 
+
+#### Apropiativos 
+El SO tiene el poder de interrumpir y pausar un proceso a mitad de su ejecución para darle la CPU a otro proceso que considera más importante o al que le toca el turno. El proceso pausado guarda su progreso y regresa a la fila a esperar. 
+- **Round Robin - RR (Turno Circular)**
+	- _Ventaja_, equidad, predecible y óptimo para sistemas interactivos multiusuario. 
+	- _Desventaja_, su rendimiento depende del tamaño del quatum; un valor muy pequeño produce demasiada sobrecarga por cambios de contexto, mientras que uno muy grande genera un algoritmo **FCFS**. 
+- **Menor tiempo restante a continuación SRTF (Shortest Remaining Time First)**
+	- _Ventaja_, reduce aún más los tiempos medios de retorno y respuesta que el SJF clásico. 
+	- _Desventaja_, inanición severa para procesos largos y sobrecarga constante al evaluar tiempos en cada nueva llegada. 
+
+**_Inanición_**, _es un problema en el que un proceso espera de forma indefinida los recursos o el tiempo de CPU necesarios para ejecutarse porque otros procesos de mayor prioridad los monopolizan._
+
+#### Parámetro y Medidas a Evaluar 
+**Quatum (q)**, intervalo de tiempo de ejecución. Cuánto tiempo se va a ejecutar el proceso. 
+
+**Tiempo de Creación (C)**, tiempo que tarda un proceso en pasar de Nuevo a Listo. 
+
+**Tiempo o Ráfaga de CPU (t)**, tiempo que un proceso está "en Ejecución".
+
+**Tiempo de Respuesta o Finalización (F)**, tiempo total necesario para completar el proceso, incluyendo el tiempo en estado "Listo". **F = t + E**
+
+**Tiempo de Espera (E)**, tiempo que un proceso permanece en estado "Listo". **E = F - t**.
+
+**Penalización (P)**, proporción del tiempo de respuesta en que el proceso estuvo en "Listo". **P = F/t**.
+
