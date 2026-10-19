@@ -549,3 +549,74 @@ BGP es un protocolo de Vector de Ruta. A BGP no le interesan los router individu
 ![](../recursos/Pasted%20image%2020261001102135.png)
 
 ![](../recursos/Pasted%20image%2020261001102203.png)
+
+
+## VLAN's y Comunicación entre ellas 
+
+### VLAN
+VLAN - Virtual Local Area Network (Red de Área Local Virtual), es una tecnología que permite dividir un única red física de computadoras o dispositivos en varias redes lógicas independientes. Aunque los dispositivos estén conectados al mismo conmutador (switch) o cable físico, una VLAN los separa en grupos diferentes que no pueden comunicarse entre sí de forma directa. 
+
+**¿Cómo Funciona?**
+- La red se divide usando configuración por software, en vez de comprar cables o aparatos físicos. 
+- Los paquetes de datos llevan una etiqueta especial que indica a qué VLAN pertenecen cuando viajan por la red. 
+- Los equipos de una VLAN no ven el tráfico de otra, lo que reduce el tamaño de los dominios de difusión o broadcast. 
+- Si dos VLAN necesitan comunicarse entre sí, se deben utilizar un router o un conmutador de capa 3. 
+
+**¿Para qué Sirve?**
+- Seguridad
+- Rendimiento 
+- Organización
+
+### Comunicación a Nivel Macro
+Ver cómo se comunica un edificio o campus con otro edificio o campus. Es decir, cómo se logra la comunicación entre varios edificios o sedes, y existen dos métodos principales: 
+
+#### Enrutamiento en Capa 3 (Método 1)
+La idea acá es que cada edificio es totalmente independiente. Por ejemplo, el edificio A tiene sus propias subredes y sus propias VLANs, y el edificio B también tiene sus propias subredes y sus propias VLANs. Ambos edificios (o la cantidad n de edificios que existan) se conectan a través  de un enlace enrutado punto a punto, dónde la comunicación se logra mediante protcolos de enrutamiento dinámico, por ejemplo OSPF. El paso a paso sería de la siguiente manera: 
+1. Una pc quiere enviar información de una VLAN del edificio A al edificio B. La pc origen compara la IP destino con su propia máscara de subred y determina que el destino no se encuentra en su propia red, por lo tanto no puede llegar al destino.
+2. La pc origen empaqueta los datos y busca la dirección MAC de su puerta de enlace (subinterfaz o interfaz virtual) para entregar el paquete a esa puerta de enlace. 
+3. La trama entra al switch de acceso y este le pone la etiqueta de la VLAN de dónde está saliendo el mensaje (VLAN de origen) y ya lo manda por el enlace troncal hacia el switch core o el router. 
+4. El switch core o router recibe la trama, le quita la etiqueta de la VLAN origen, lee la IP destino (capa 3) y consulta su tabla de enrutamiento. La tabla le indica que esa subred se alcanza saltando hacia el switch core B o router B. 
+5. El paquete viaja por la fibra óptica entre edificios como un paquete enrutado puro. 
+6. El switch core B o el router B recibe el paquete, reconoce que esa IP pertenece a su VLAN local, le pone la etiqueta de su propia VLAN y envía la trama hacía el switch de acceso del edificio B, el cual le quita la etiqueta y le entra los datos limpios a la computadora destino en el edificio B. 
+
+#### Listas de Control de Acceso en Método 1 - ACL 
+Es un filtro de seguridad secuencial configurado en el router o switch de capa 3. No descubre rutas ni conecta equipos; se coloca sobre el camino que OSPF ya abrió para decidir qué paquetes tiene permiso de pasa y cuáles deben destruirse. 
+
+**¿Cómo Funciona?**
+1. Evalúa la IP de origen, la IP de destino, el protocolo (TCP, UDP, ICMP) y el número de puertos de servicio. 
+2. Revisa las reglas de arriba hacia abajo. 
+3. En el instante en que un paquete cumple los criterios de una línea, el switch ejecuta la orden (permit o deny) y no sigue leyendo el resto de la lista. 
+4. Al final de toca ACL existe una regla de deny ip any any. Si un paquete no coincidió explícitamente con ningún permiso previo, es descartado de inmediato. 
+
+_Es bidireccional, el tráfico de red consta de una petición (ida) y una respuesta (vuelta). Como  las ACL no recuerdan sesiones, se tiene que permitir la ida en el core A y la respuesta en el core B._
+_Se aplica en la interfaz virtual o subinterfaz virtual de entrada de cada departamento. De este modo, si alguien intenta enviar tráfico prohibido, el switch core lo destruye en el origen antes de permitir que consuma ancho de banda en la fibra inter edificios._
+
+#### Extensión de Capa 2 (Método 2)
+La idea aquí es que ambos edificios se configuran como si fueran una sola sala grande. Por ejemplo el departamento A en el edifico A comparten exactamente la misma subred IP y el mismo número de VLAN. El cable de fibra óptica se configura como un enlace troncal de capa 2 que deja pasar esa VLAN de un edificio al otro. El paso a paso sería de la siguiente manera: 
+1. La pc origen en el edificio A compara la IP destino con su propia máscara de subred. Se da cuenta que la pc destino se encuentra dentro de su misma red. Entonces no llama a su puerta de enlace. 
+2. Como no conoce la MAC de la pc destino, lanza una trama de difusión o broadcast. 
+3. Este broadcast llega al switch de acceso y lo manda a todos los puertos que pertenece a la VLAN en la que está la pc de origen, incluyendo al enlace troncal que conecta con el switch core A.
+4. El switch core A le pone la etiqueta de la VLAN de origen y también manda el broadcast por la fibra óptica hacía el switch core B. 
+5. El core B recibe la trama, lee la etiqueta de VLAN 10 y propaga el broadcast únicamente por los enlaces y puertos de esa misma VLAN origen. 
+6. La computadora destino en el edificio B escucha la petición, reconoce su IP y responde con su dirección MA. 
+7. Ya con la respuesta cada switch aprende la MAC de la PC y la guarda. 
+
+### Comunicación a Nivel Micro 
+
+#### Inter-VLAN Routing 
+Es una técnica de diseño. Es la arquitectura o método que se aplica para conectar dos islas que de otro modo no podrían hablarse. 
+Es el proceso de reenviar el tráfico de red desde una VLAN hacia otra utilizando un dispositivo de capa 3 (un router o un switch multicapa).  Existen tres principales métodos: 
+
+**Enrutamiento Heredado - Legacy**
+Consiste en conectar un cable de red físico independiente desde un puerto del switch hacia un interfaz física del router por cada VLAN que exista en la empresa. 
+
+**Router on a Stick**
+Se conecta un único cable físico entre un puerto del switch y una sola interfaz física del router. Ese cable se configura como un enlace Troncal. 
+En la interfaz física del router, no se asigna una dirección IP. En lugar de eso, el sistema operativo del router divide esa interfaz física en múltiples **subinterfaces lógicas virtuales**. 
+
+Se utiliza en redes pequeñas o sucursales de empresas medianas donde no se cuenta con el presupuesto para adquirir switch multicapa. Su limitante es que todo el tráfico de ida y vuelta compite por el ancho de banda de ese único cable físico (cuello de botella). 
+
+**Conmutador Multicapa Mediante Interfaces Virtuales de Switch**
+No existe ningún router externo para el tráfico local. Todo el enrutamiento ocurre internamente dentro de un Switch de capa 3. En la memoria del switch multicapa se crean interfaces virutales de software llamadas **Interfaces Virtuales**, utilizando el comando *interface vlan 10*, asignándole a cada una la dirección IP de la puerta de enlace. 
+
+Se utiliza en cualquier red empresarial. Elimina por completo los cuellos de botella porque el enrutamiento se realiza por hardware a velocidad de cable, alcanzando decenas de Gigabits por segundo sin saturar procesadores externos. 

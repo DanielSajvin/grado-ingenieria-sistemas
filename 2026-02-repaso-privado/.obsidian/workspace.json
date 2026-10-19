@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sistemas/Redes I.md",
+                "file": "Informática/Lenguajes Formales y Autómatas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Redes I"
+              "title": "Lenguajes Formales y Autómatas"
             }
           }
         ]
@@ -80,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "b4e926af179cb7f3",
@@ -186,29 +185,33 @@
   },
   "active": "237af7dbf4bfad91",
   "lastOpenFiles": [
-    "recursos/Pasted image 20261001102203.png",
-    "recursos/Pasted image 20261001102135.png",
-    "recursos/Pasted image 20261001102020.png",
-    "Sistemas/Sistemas Operativos.md",
-    "recursos/Pasted image 20260930114717.png",
-    "Gestión/Ingeniería Económica.md",
-    "Gestión/Formulación y Evaluación de Proyectos.md",
-    "Sin título.md",
-    "Informática/Base de Datos I.md",
-    "Informática/Análisis y Diseño.md",
     "Informática/Compiladores.md",
-    "Gestión/Ingeniería de Costos.md",
-    "recursos/Pasted image 20260923163930.png",
-    "recursos/Pasted image 20260923163751.png",
-    "recursos/Pasted image 20260923161342.png",
-    "Pogramas de curso/Gestión Industrial/~$ograma Ingeniería Económica 2024 (1).docx",
-    "Sistemas/Redes I.md",
-    "recursos/Pasted image 20260919232432.png",
+    "Informática/Base de Datos I.md",
+    "Informática/Lenguajes Formales y Autómatas.md",
+    "recursos/Pasted image 20261018130326.png",
+    "recursos/Pasted image 20261018130017.png",
+    "recursos/Pasted image 20261018125929.png",
+    "recursos/Pasted image 20261018125901.png",
+    "Sistemas/Seguridad Informática.md",
     "Sistemas/Arquitectura del Computador I.md",
+    "recursos/Pasted image 20261015124411.png",
+    "recursos/Pasted image 20261015124403.png",
+    "recursos/Pasted image 20261015121543.png",
+    "Sistemas/Virtualización.md",
+    "recursos/Pasted image 20261014155214.png",
+    "Gestión/Ingeniería Económica.md",
+    "Sin título.md",
+    "Pogramas de curso/Gestión Industrial/~$ograma Ingeniería Económica 2024 (1).docx",
+    "Gestión/Probabilidad y Estadística.md",
+    "Gestión/Formulación y Evaluación de Proyectos.md",
     "Gestión/Fundamentos de Economía.md",
-    "recursos/Pasted image 20260902145848.png",
-    "recursos/Pasted image 20260902145835.png",
-    "recursos/Pasted image 20260831165516.png",
+    "Gestión/Ingeniería de Costos.md",
+    "recursos/Pasted image 20261009175131.png",
+    "Sin título 1.md",
+    "Sistemas/Sistemas Operativos.md",
+    "Sistemas/Redes I.md",
+    "recursos/Pasted image 20261001102203.png",
+    "Informática/Análisis y Diseño.md",
     "Pogramas de curso/Sistemas/Programa Sistemas Operativos 2024.pdf",
     "Pogramas de curso/Sistemas/Sin confirmar 338107.crdownload",
     "Sistemas",

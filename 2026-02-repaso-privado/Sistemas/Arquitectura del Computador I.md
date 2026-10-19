@@ -103,8 +103,84 @@ En este diseño las instrucciones del programa y los datos comparten la misma me
 ![361](../recursos/Pasted%20image%2020260827120754.png) 
 El problema de esta arquitectura (Cuello de Botella) es que como el bus es compartido, el procesador (que es más rápido) pasa la mayor parte del tiempo de ciclo de reloj inactivo, esperando a que la memoria (que es más lenta) le entregue las instrucciones o los datos. Se forma un "embotellamiento". 
 
+**Componentes en Von Neumann**
+- **CPU Unificada**, contiene el program counter, la unidad de control (UC) y la ALU. 
+- **Único Espacio de Memoria**, un mapa lineal continuo donde las direcciones iniciales pueden contener código de programa y las direcciones superiores contienen variables de la pila o el montículo. 
+- **Un único conjunto de buses del sistema**
+	- 1 bus de direcciones 
+	- 1 bus de datos 
+	- 1 bus de control 
+
 ### Arquitectura Harvard 
 Para solucionar el cuello de botella, Harvard separa físicamente la memoria de datos y la memoria de instrucciones, dotando a cada una de sus proprios buses independientes. Y funciona de la siguiente manera: el CPU puede estar leyendo la siguiente instrucción del programa en el bus de instrucciones, exactamente al mismo tiempo que está leyendo o guardando una variable en el bus de datos. La ventaja es que es mucho más rápido y eficiente por cada ciclo de reloj, pero el diseño del motherboard y del chip de silicio se vuelve complejo y costos porque necesita el doble de pistas de cobre (buses) y pines en el procesador. 
 
 ![571](../recursos/Pasted%20image%2020260827121527.png)
 
+**Componentes en Harvard**
+- **CPU con canales duales**, la unidad de control tiene líneas de búsqueda de código totalmente desacopladas de la etapa de ejecución/acceso a datos de la ALU.
+- **Memoria de Instrucciones Independiente**, solo almacena el código máquina del programa (generalmente memoria no volátil, como ROM o Flash).
+- **Memoria de Datos Independiente**, solo almacena variables volátiles SRAM.
+- **Dos Conjuntos completos de Buses**
+	- Bus de direcciones de instrucciones + bus de datos de instrucciones 
+	- Bus de direcciones de datos + bus de datos de datos
+
+**¿Qué arquitectura usan las computadoras hoy en día?**
+Utilizan una arquitectura Harvard modificada, un híbrido entre von neuma y harvard. Conviven las arquitecturas de la siguiente manera: 
+Un procesador moderno opera en dos niveles: 
+1. **Hacia el exterior (Nivel Placa Madre/Sistema Operativo) -> Parece Von Neumann**, en la placa madre se tienen ranuras de memoria RAM. El sistema operativo carga en esa misma memoria tanto los archivos ejecutables como los datos de los programas (documentos). El procesador se comunica con la memoria principal a través de un bus común administrado por el controlador de memoria. Esto otorga la flexibilidad total de Von Neumann. 
+2. **Hacia el interior (Nivel microarquitectura del núcleo del CPU) -> Parece Harvard**, para evitar el cuello de botella de Von Neumann y ejecutar miles de millones de instrucciones por segundo, los diseñadores integraron memoria caché dentro del núcleo del procesador. 
+	1. **Caché de instrucciones**, almacena únicamente el código a ejecutar.
+	2. **Caché de Datos**, almacena únicamente los datos a operar. 
+	Dentro del núcleo existen buses independientes de ultra-velocidad que conectan la unidad de control con el caché de instrucciones y la ALU con el caché de datos al mismo tiempo. 
+	Por lo tanto, en su núcleo de ejecución trabajar como Harvard, pero hacia la memoria principal se comporta como Von Neumann. 
+
+
+<hr>
+
+## Aclaraciones 
+
+![](../recursos/Pasted%20image%2020261015121543.png)
+
+## Clasificación de procesadores por el set de instrucciones
+
+### CISC - Computadoras con Set de Instrucciones Complejas, Arquitectura del procesador
+- El tamaño del código (ensamblador) es más pequeño. 
+- Facilita al compilador para traducir código, lo que sucede es que como el procesador es más complejo ayuda al compilador a poder traducir el código de alto nivel a lenguaje ensamblador, de una manera más eficiente y rápida porque el compilador recibe más ayuda del procesador (hardware).
+- Las instrucciones pueden tardar varios ciclos de reloj. 
+- Mayor hardware y el procesador en sí es más complejo. 
+- Mayor consumo de energía. 
+- Utiliza menor cantidad de memoria. 
+- Se usa más en computadoras y servidores. 
+- Mayor capacidad de procesamiento. 
+
+**Procesadores con arquitectura CISC**
+- x86, interl y amd ryzen.
+
+### RISC - Computadoras con Set de Instrucciones Reducidas, Arquitectura del procesador
+- Ciclo único para cada instrucción 
+- El procesador internamente tienen varios registros, que se pueden usar para almacenamiento. 
+- Menor consumo de energía. 
+- Como una instrucción se descompone en partes más simples, el hardware no es tan complejo y por lo tanto es más barato de construir. 
+- Se usa más en micro-controladores y dispositivos móviles (celulares).
+
+**Procesadores con Arquitectura RISC**
+- ESP 32
+- Arduino 
+- ARM, móviles Qualcom
+
+_Actualmente ya existen dispositivos que son por fuera una arquitectura CISC pero que internamente descomponen las instrucciones complejas y lo hacen porque internamente tienen arquitectura RISC._
+
+## Clasificación de procesadores por el tamaño de palabra 
+El origen de esto es qué, la CPU necesita comunicarse con una memoria (por ejemplo la RAM), esta comunicación se logra por medio de un bus de datos. Entonces el tamaño de palabra se refiere a la cantidad de bits que pueden enviarse por el bus de datos a la vez, es decir, por ejemplo si se tiene un bus de datos de 8 bits (11001110) solo se podrán enviar 8 justamente y en este caso de 8 bits, si se quiere enviar un número por ejemplo de 16 bits entonces le tomarán dos viajes enviar el número completo, porque enviará primero los 8 más significativos y después los 8 restantes menos significativos. Entonces entre mayor sea el bus de datos más información se podrá enviar (64 bits). Y esto pues depende del procesador, es decir, según el procesador que tenga ese será el tamaño del bus de datos. 
+
+Dentro de la CPU existe la ALU (unidad aritmética lógica), la ALU también será del mismo tamaño o va a tener la misma capacidad de procesamiento que la del bus de datos, es decir, si el bus de datos es de 64 bits pues la ALU también será de 64 bits. 
+
+![489](../recursos/Pasted%20image%2020261015124411.png)
+### 8 bit
+- Un teclado necesita un procesador de 8 bits
+
+### 16 bit
+
+### 32 bit
+
+### 64 bit

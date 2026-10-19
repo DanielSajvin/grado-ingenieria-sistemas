@@ -224,3 +224,123 @@ $$I = F - P = P[(1+i)^n - 1]$$
 - **I**, interés total compuesto 
 - **F**, valor futuro 
 - **P**, capital inicial
+
+## Tasa de Interés Efectiva Anual (TEA) y Tasa Nominal 
+
+**Tasa de Interés Nominal (r)**
+Es una tasa de interés de referencia que se expresa para un período largo (habitualmente un año), pero que ignora el efeto de la capitalización compuesta dentro de ese período. 
+Se calcula multiplicando la tasa del período por el número de períodos:  $$\text{r = tasa por subperíodo * m}$$
+Ejemplo: si una tarjeta de crédito cobra el 2% mensual, la tasa nominal anual es 2% x 12 = 24% anual. No refleja la realidad económica final porque no toma en cuenta los intereses sobre intereses. 
+
+**Tasa de Interés Efectiva (i)**
+Es la tasa que sí toma en cuenta la reinversión y capitalización real de los intereses durante el período de tiempo considerado. 
+**Tasa de Interés Efectiva Anual - TEA**, es la tasa efectiva calculada para un horizonte exacto de un año. Representa el costo o rendimiento financiero real que experimenta el dinero anualmente. 
+$$\text{TEA - i}= (1 + \frac{\text{r}}{\text{m}})^m - 1$$
+- **i**, tasa de interés efectiva anual, en formato decimal; al final se multiplica por 100 para dar el porcentaje. 
+- **r**, tasa de interés nominal anual (en formato decimal)
+- **m**, frecuencia de capitalización anual, es decir, el número de veces que los intereses se componen o capitalizan en un año. 
+
+Cuánto vale m:
+- si se capitaliza anualmente: m=1 (en este caso único i=r)
+- Si se capitaliza semestralmente: m=2 (hay dos semestres en un año)
+
+**De tasa nominal a Tasa Efectiva del subperíodo**
+Si dan una tasa nominal anual r capitalizable m veces al año, la tasa efectiva de cada uno de esos subperíodos individuales es: $$\text{i-subperíodo}= \frac{\text{r }}{\text{m}}$$
+**De tasa efectiva de un período a tasa efectiva de otro período**
+Si ya se tiene una tasa efectiva para un período y se necesita convertir esa tasa efectiva a una tasa efectiva semestral o mensual sin pasar por una tasa nominal, se utiliza la ecuación de equivalencia fundamental: 
+$$i_{\text{período menor}} = (1 + i_{\text{período mayor}})^{1/k} - 1$$
+Dónde k es el número de períodos menores que caben en le período mayor. 
+- Para pasar de efectiva anual a efectiva mensual:  $$k = 12 \rightarrow i_{\text{mensual}} = (1 + \text{TEA})^{1/12} - 1$$
+- Para pasar de efectiva anual a efectiva semestral: k=2
+- Para pasar de efectiva anual a efectiva trimestral: k=4
+
+Si se tiene el siguiente ejemplo: 
+_Se ofrece un préstamo (financiamiento) para equipo con las siguientes condiciones: tasa del 24% anual capitalizable trimestralmente_
+_Para saber la tasa efectiva trimestral (es decir, lo que se va a capitalizar cada trimestre) se usa la fórmula **Tasa Nominal a Tasa Efectiva del Subperíodo**_
+_Para saber la Tasa Efectiva Anual (TEA - lo que verdaderamente se terminará pagando al finalizar el año en este caso), se usa la fórmula **Tasa de Interés Efectiva (i)**_
+
+## Período de Pago (PP) y Período de Capitalización (PC)
+
+**Período de Pago (PP)**
+Es la frecuencia temporal con la que ocurren los flujos de efectivo, cuotas, depósitos o desembolsos. Por ejemplo: si una empresa paga la cuota de una máquina cada mes, el período de pago = 1 mes. Si paga dividendos cada año el período de pago = 1 año. 
+
+**Período de Capitalización (PC)**
+Es la frecuencia temporal con la que los intereses se calculan y se suman al saldo de la deuda o inversión según el contrato. Viene dictado por la tasa de interés. Por ejemplo: si el banco cobra una tasa "nominal anual capitalizable trimestralmente" el período de capitalización = 1 trimestre (los intereses se liquidan cada 3 meses). 
+
+### Relaciones de Equivalencia entre Período de Pago y Período de Cobro
+Para poder utilizar cualquier fórmula o factor de series uniformes, la tasa de interés efectiva (i) y el número de períodos deben estar expresados obligatoriamente en la misma unidad de tiempo que el período de pago. Entonces al cruzar el período de pago con el período de capitalización surgen tres casos posibles: 
+1. Período de Pago = Período de Cobro
+2. Período de Pago > Período de Cobro (pago espaciados, capitalización frecuente)
+3. Período de Pago < Período de Cobro (pagos frecuentes, capitalización espaciada)
+
+**Período de Pago = Período de Cobro**
+Es la situación ideal y la más común en préstamos comerciales estándar. 
+Ejemplo: pagos mensuales (PP = mensual) con una tasa del 18% anual con capitalización mensual (PC = mensual). 
+Se calcularía de la siguiente manera: 
+La tasa efectiva por período (i) se calcula dividiendo la tasa nominal entre el número de períodos: 
+$$i(subperíodo) = \frac{r}{m} = \frac{18\%}{12} = 1.5\% \text{ mensual efectivo}$$
+En los bancos se maneja esta modalidad, pero con la diferencia de que se maneja una **cuota nivelada**, que esto hace que por ejemplo mensualmente sigamos pagando la misma cantidad y el banco se encarga de esa cuota fija que se paga, destinar una parte del pago a los intereses y la otra parte a capital, así cada mes se cubre el interés y poco a poco se va disminuyendo el capital para que los intereses vayan bajando también; al principio como el capital es el total del préstamo pues los intereses serán altos, pero ya al final como de capital ya casi no habrá los intereses serán menos, y la cuota fija que se pague la mayor parte de esa pago irá a capital y una parte pequeña irá a intereses. 
+
+## Tasa de Interés Efectiva para Capitalización Continua
+¿Qué sucede si los períodos de capitalización se hacen cada vez más pequeños?
+- En lugar de calcular los intereses cada mes (m=12), se calculan cada día (m=365)
+- Luego cada hora (m=8,760)
+- Luego cada segundo 
+
+
+<hr>
+
+
+## Aclaraciones 
+
+**_Diagnóstico Financiero_**
+Se analiza una empresa en marcha o el rendimiento también de la empresa ya funcionando. Mira el pasado y el presente. Usa Estados financieros (que son históricos), Balance General y Estado de Resultados. Las herramientas que utiliza son: 
+- Análisis Vertical 
+- Análisis Horizontal 
+- Razones Financieras 
+
+**_Evaluación de Proyectos_**
+Se analiza la viabilidad de Inversiones y tiene una visión a futuro. Usa flujo de efectivo proyectados. Usa las siguientes herramientas: 
+- VPN (Valor Presente Neto)
+- TIR (Tasa Interna de Retorno)
+- Payback (Período de Recuperación)
+
+### Herramientas de Rendimiento y Diagnóstico 
+
+**Análisis Vertical (Estructura y Composición)**
+Analiza un solo período o año a la vez. Consiste en calcular qué porcentaje representa cada cuenta respecto a una "cuenta base" del 100%. 
+- En el **Estado de resultados** la base del 100% son las **Ventas Netas**. Cada renglón (Costo de ventas, gastos operativos, utilidad neta) se divide entre las Ventas Netas. 
+	- _Objetivo_, ver la estructura de costos y márgenes (ejemplo: el costo de ventas absorbe el 55% de los ingresos)
+- En el **Balance General** la base del 100% es el **Total Activo**. 
+	- _Objetivo_, ver la estructura de inversión financiamiento (ejemplo: el 60% de los activos de la empresa está concentrado en maquinaria pesada y solo el 10% en caja)
+Se usa para saber cómo está distribuido el dinero de la empresa internamente y comparar la estructura de la empresa contra el promedio del sector o competidores. 
+
+**Análisis Horizontal (Tendencia y Evolución Temporal)**
+Compara dos o más períodos sucesivos (2024 vs 2025). Mide la variación absoluta (en dinero) y la variación relativa (en porcentaje) de cada cuenta de un año al otro. 
+Sirve para detectar tendencias de crecimiento o alarmas operativas (que haya decrecimiento en alguna cuenta). Por ejemplo: las ventas aumentaron un 10%, pero los gastos administrativos subieron un 45%, el análisis horizontal pone en evidencia que la administración se está volviendo ineficiente 
+
+**Razones Financieras**
+Son un pilar importante para el diagnóstico financiero. Mientras que el análisis vertical y horizontal analizan cuentas aisladas o renglones individuales, las razones financieras cruzan cuentas del balance con cuentas del estado de resultados para medir: 
+- **Liquidez**, capacidad de pagar deudas a corto plazo (razón corriente, prueba de ácido). 
+- **Actividad**, velocidad con la que el negocio rota su inventario y cobra sus facturas. (Período Medio de Cobro, Rotación de activos). 
+- **Endeudamiento**, quién financia los activos y si la empresa soporta pagar intereses (apalancamiento, cobertura de intereses). 
+- **Rentabilidad**, rendimiento porcentual sobre la inversión de los socios y los activos. (Margen neto, ROA, ROE).
+
+### Herramientas de Viabilidad de Inversiones (Visón al Futuro)
+Estas herramientas NO usan datos contables históricos. Para evaluar una inversión no sirve saber lo que pasó en 2023; se necesita proyectar lo que va a pasar en los años 1, 2, 3, ..., n y construir el flujo de caja proyectado (flujo de efectivo). 
+
+Son los llamados **Parámetros o Criterios de Aceptación de un Proyecto: **
+
+**Valor Presente Neto (VPN - VAN)**
+Su objetivo principal es medir la generación de riqueza o valor absoluto que un proyecto le suma a la empresa, descontando todos los flujos futuros al costo de capital (TMAR). 
+El criterio de aceptación es: _VPN >= 0_ se acepta. 
+
+**Tasa Interna de Retorno (TIR)**
+El objetivo es medir la rentabilidad porcentual intrínseca anual que genera el dinero que se mantiene invertido en el proyecto. Es la tasa matemática exacta que hace que el VPN = 0. El criterio de aceptación es: _TIR >= TMAR_, se acepta, la rentabilidad del proyecto supera o igual al costo mínimo de oportunidad de dinero, cubre todo y genera ganancia o por lo menos alcanzó a cubrir sus costos. 
+
+**Período de Recuperación (Payback)**
+Se encarga de medir el tiempo exacto (años, meses) que tarda el proyecto en devolver el capital invertido en el año 0 a través de sus flujos de efectivo. 
+- **Payback simple**, suma los flujos nominales sin descontar (ignora el valor del dinero en el tiempo).
+- **Payback descontado**, suma los flujos futuros ya descontados a la TMAR (mucho más riguroso).
+Su criterio de aceptación es: _Payback <= Plazo máximo exigido por la gerencia_ se acepta. 
+

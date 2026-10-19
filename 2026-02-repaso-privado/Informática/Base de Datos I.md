@@ -237,3 +237,103 @@ Se utiliza para agrupar filas que tienen los mismos valores en columnas específ
 Se utiliza para ordenar el resultado de la consulta. Mientras que el GRUOP BY junta y resume los datos, el ORDER BY simplemente decide en qué orden van a aparecer en pantalla. Funciones del ORDER BY: 
 - **ASC**, ascendente, de la A a la Z, de menor a mayor o de la fecha más antigua a la más reciente. Este es el orden por defecto si no se escribe nada. 
 - **DESC**, descendente, de la Z a la A, de mayor a menor o de la fecha más reciente a la más antigua. 
+
+## Pasar de Entidad-Relación a Relacional 
+#### Paso 1: Los Rectángulos Normales (Entidades Fuertes)
+- **La Regla:** Cada rectángulo simple del ER se convierte en una tabla independiente en el Relacional.
+- **Tip mental:** El atributo que está subrayado en el óvalo se convierte inmediatamente en tu _Primary Key_ (PK). Los óvalos normales se convierten en columnas normales.
+#### Paso 2: Los Óvalos Especiales (La trampa de la 1FN)
+Aquí es donde aplicas la Primera Forma Normal (Atomicidad) directamente viendo el dibujo:
+- **Óvalo Compuesto (Un óvalo del que salen otros óvalos):** Por ejemplo, el atributo `Dirección` que se divide en `Calle`, `Ciudad` y `País`.
+    - _Traducción:_ El óvalo principal (`Dirección`) **desaparece**. En tu tabla relacional solo creas columnas separadas para `Calle`, `Ciudad` y `País`. Así aseguras la atomicidad.
+- **Óvalo Multivaluado (Doble Óvalo):** Por ejemplo, los `Teléfonos` de un estudiante.
+    - _Traducción:_ ¡Alerta de 1FN! No puedes meter varios teléfonos en una columna. Creas una **NUEVA TABLA** llamada `Telefonos_Estudiante`. Esa tabla tendrá dos columnas: el teléfono y una Llave Foránea (FK) apuntando al estudiante dueño de ese teléfono.
+- **Óvalo Punteado (Atributo Derivado):** Por ejemplo, la `Edad` (calculada a partir de la fecha de nacimiento).
+    - _Traducción:_ **Se ignora por completo**. Los atributos derivados no se guardan en la base de datos relacional para evitar inconsistencias. Los calcularás después con consultas SQL.
+#### Paso 3: El Doble Rectángulo (Entidades Débiles)
+- **La Regla:** También se convierte en una tabla. Pero como es "débil", no puede sobrevivir sola.
+- **Traducción:** Le agregas obligatoriamente la Llave Foránea (FK) de la entidad de la que depende.
+- **Tip mental:** La Llave Primaria (PK) de esta nueva tabla _casi siempre_ será una **Llave Compuesta**, formada por la FK de la entidad fuerte + el identificador parcial de la entidad débil (ej. `ID_Cuenta` + `ID_Personaje`).
+#### Paso 4: Los Rombos de 1:N (Relaciones de Uno a Muchos)
+- **La Regla:** El rombo desaparece. ¡No creas tablas para relaciones 1:N!
+- **Traducción (Regla de Oro):** La entidad que tiene el lado "N" (Muchos) es la que "absorbe" a la otra. Le inyectas la Llave Foránea (FK) del que tiene el "1".
+- **Ejemplo mental:** Entre `Gimnasio` (1) y `Atletas` (N). El rombo "Entrena en" desaparece. Vas a la tabla `Atletas` y le agregas una columna llamada `ID_Gimnasio` (FK). Así sabes a qué gimnasio va cada atleta.
+#### Paso 5: Los Rombos de N:M (Relaciones de Muchos a Muchos)
+- **La Regla:** Aquí es donde nace la famosa **Tabla Intermedia**.
+- **Traducción:** El rombo en sí mismo se convierte en una **NUEVA TABLA**. Su Llave Primaria estará compuesta por las dos Llaves Foráneas de las entidades que está uniendo.
+- **Tip mental:** Si el rombo en el dibujo ER tenía óvalos pegados a él (ejemplo, la `nota` o la `fecha_asignacion`), esos atributos van a parar como columnas _exclusivamente_ a esta nueva tabla intermedia.
+#### Paso 6: Los Rombos de 1:1 (Relaciones de Uno a Uno)
+- **La Regla:** No se crean tablas nuevas.
+- **Traducción:** Simplemente tomas la Llave Primaria de cualquiera de las dos tablas y la metes como Llave Foránea en la otra.
+- **Tip mental:** Para ser más eficientes, los arquitectos ponen la FK en la tabla que tiene participación total (la rayita de "Obligatorio" que vimos antes).
+
+### DDL - Data Definition Language
+Manipula la estructura, no los datos. Comandos mas utilizados: 
+```CREATE DATABASE``` sirve para crear una base de datos y después de este comando va el nombre de la base de datos. 
+```CREATE TABLE``` define y crea una tabla desde cero con sus tipos y llaves. 
+```ALTER TABLE ... ADD``` agrega una columna a una tabla existente. 
+
+```ALTER TABLE cliente ADD COLUMN direccion VARCHAR(100);```
+
+```ALTER TABLE ... MODIFY``` cambia el tipo de dato o restricción de una columna existente. 
+```ALTER TABLE producto MODIFY COLUMN descripcion VARCHAR(50) NOT NULL;```
+
+```ALTER TABLE ... DROP COLUMN``` elimina una columna de la estructura. 
+```DROP TABLE``` elimina la tabla entera de disco, borrando estructura y datos. 
+```TRUNCATE TABLE``` vacía todos los datos de la tabla de forma instantánea y resetea los contadores, conservando la estructura intacta. 
+
+### DML - Data Manipulation Language - Manipulación de Datos
+DML opera sobre los registros dentro de las tablas. Comandos principales: 
+
+```INSERT INTO ``` inserta filas en una tabla.
+```
+-- Sintaxis estándar indicando columnas
+INSERT INTO producto (cod_producto, precio_venta, descripcion, existencia)
+VALUES (5, 80.00, 'Botella de Agua 1L', 30);
+```
+
+```UPDATE``` modifica datos existentes. Siempre debe llevar ```WHERE```. 
+```
+-- Sintaxis: tabla -> columnas con nuevo valor -> filtro estricto
+UPDATE producto 
+SET precio_venta = 95.00, existencia = 25 
+WHERE cod_producto = 5;
+```
+
+```DELETE FROM ``` borra registros específicos. Siempre debe llevar ```WHERE```
+```
+-- Sintaxis: tabla -> condición de fila a borrar
+DELETE FROM telefono 
+WHERE no_telefono = '7777-2222' AND dpi = 1010;
+```
+
+![508](../recursos/Pasted%20image%2020261009175131.png)
+### DQL - Data Query Language - Consulta de Datos 
+DQL se enfoca en extraer y filtrar información con ```SELECT```. 
+
+Filtros con ordenamiento (```WHERE, ORDER BY```)
+```
+-- Obtiene artículos que cuestan más de 50, ordenados del más caro al más barato
+SELECT descripcion, precio_venta 
+FROM producto 
+WHERE precio_venta > 50.00 
+ORDER BY precio_venta DESC;
+```
+
+Cruce de tablas maestras con intermedias (```INNER JOIN```)
+```
+-- Muestra el ID de factura y el nombre del cliente que la pagó
+SELECT factura.id_factura, cliente.nombre, cliente.apellido
+FROM factura
+INNER JOIN cliente ON factura.dpi = cliente.dpi;
+```
+
+Agrupaciones y métricas calculadas (```GROUP BY, HAVING```)
+```
+-- Total de artículos vendidos por producto, solo mostrando productos con más de 1 unidad vendida
+SELECT cod_producto, SUM(cantidad) AS total_vendido
+FROM detalle_factura
+GROUP BY cod_producto
+HAVING total_vendido > 1;
+```
+

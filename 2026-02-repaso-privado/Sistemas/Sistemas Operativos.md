@@ -391,3 +391,72 @@ El SO tiene el poder de interrumpir y pausar un proceso a mitad de su ejecución
 
 **Penalización (P)**, proporción del tiempo de respuesta en que el proceso estuvo en "Listo". **P = F/t**.
 
+## Comunicación Entre Procesos
+
+### Condiciones de Carrera
+Una condición de carrera es un situación extraña en la cual dos o más procesos o hilos leen y escriben sobre un espacio de memoria compartido al mismo tiempo, y el resultado final de la ejecución depende estrictamente del orden relativo o del momento exacto en el que el planificador de la CPU alterna entre ellos. 
+Es un fallo de sincronización que ocurre cuando dos o más procesos o hilos acceden a un recurso compartido al mismo tiempo (de forma concurrente e intercalada)y el resultado final depende del orden imprevisto en que se ejecutan. 
+Se llama "carrera" porque los hilos compiten entre sí para ver quién llega primero a modificar el dato. Si el hilo A gana la carrera, el resultado es uno; si el hilo B gana la carrera, el resultado es totalmente distinto y generalmente erróneo. 
+
+**Ejemplo Sencillo**
+1. Una variable global tiene el valor de 10
+2. El proceso A lee el valor 10 para sumarle 5
+3. El proceso B lee el mismo valor 10 para restarle 2 antes de que A guarde su resultado 
+4. El proceso A guarda 15. Luego el proceso B guarda 8. 
+5. El resultado final es 8 en lugar de 13
+
+La CPU ejecuta instrucciones a nivel de hardware de forma atómica (cada instrucción de ensamblador individual se completa), pero la secuencia de instrucciones de alto nivel no es atómica. 
+Las condiciones de carrera son el efecto secundario directo de tener un sistema apropiativo. Como el SO puede quitarle la CPU a un hilo en cualquier microsegundo mediante una interrupción de reloj, si le hilo es interrumpido a la mitad de una actualización compartida, deja la memoria en un estado inconsistente. 
+
+Para evitar este caos, el SO y el software necesitan identificar y proteger esos fragmentos de código donde se tocan datos compartidos. Ese fragmento se denomina **Región Crítica** y la regla para protegerlo se llama **Exclusión Mutua**. 
+
+_**Paralelismo real**, ocurre únicamente si se tiene múltiples núcleos de CPU físicos ejecutando instrucciones en el mismo nanosegundo._
+_**Concurrencia**, es la ilusión de simultaneidad creada por el SO al intercalar la ejecución de tareas mediante cambios de contexto._
+
+La condición de carrera no requiere dos núcleos físicos. Requiere únicamente que la ventana temporal de una operación lógica se solape con otra, dejando los datos en un estado inconsistente debido a la falta de atomicidad. 
+### Región Crítica 
+Una variable global no es la región crítica; una variable global, un búfer de red o un archivo compartido es un _Recurso Compartido_. 
+
+La región crítica es el bloque específico de instrucciones de código dentro del programa donde se accede, lee o modifica dicho recurso compartido. 
+No es un lugar físico en la memoria, sino un fragmento de instrucciones delicadas (como leer, escribir o actualizar una variable, un archivo o una base de datos) donde el acceso debe ser estrictamente controlado. 
+Estructuralmente, el ciclo de vida de un hilo que maneja concurrencia se divide en cuatro secciones: 
+1. **Sección de entrada**, solicita permiso para acceder al recurso protegido
+2. **Sección crítica (Región Crítica)**, se manipulan variables compartidas
+3. **Sección de salida**, libera el recurso y avisa a los demás que ya terminó 
+4. **Sección remanente**, código normal que no toca memoria compartida
+
+### Exclusión Mutua 
+Es la propiedad o principio de diseño que garantiza que solo un proceso o hilo a la vez pueda estar ejecutando código dentro de su región crítica para un recurso determinado. Si el hilo A está dentro de la sección crítica, todos los demás hilos que intenten entrar deben ser detenidos o puestos en espera hasta que el hilo A salga. 
+
+Para que un algoritmo o mecanismo de exclusión mutua se considere arquitectónicamente correcto, debe cumplir obligatoriamente con cuatro condiciones fundamentales: 
+1. No pueden existir dos o más procesos al mismo tiempo dentro de sus regiones críticas compartidas. 
+2. La solución debe funcionar sin importar que tan rápida sea la CPU, cuántos núcleos físicos tenga la máquina o el orden relativo en que el planificador despache los hilos. 
+3. Ningún proceso que se esté ejecutando en su sección remanente (fuera de la región crítica) puede bloquear a otros procesos que sí deseen entrar a la región crítica. 
+4. Ningún proceso debe esperar indefinidamente para entrar a su región crítica. Debe existir un límite estricto en el número de veces que otros procesos pueden entrar a la sección critica antes de que se conceda la entrada al proceso que está esperando. Si un hilo espera para siempre, ocurre inanición. 
+
+### Algoritmo de Dekker (Sincronización clásica por software)
+Dekker descubrió que para lograr una exclusión mutua puramente por software para dos procesos (sin ayuda del hardware ni del kernel), se requiere combinar las siguiente ideas: 
+- **Banderas de Intención (Arreglo Booleano)**, cada proceso indica si tiene ganas de entrar a la región crítica. 
+- **Variable de Turno (Árbitro)**, solo se consulta para desempatar cuando ambos procesos tienen la intención de entrar a la región crítica al mismo tiempo. 
+Este algoritmo funciona únicamente si se tienen dos procesos o hilos, Proceso 0 y Proceso 1. 
+Beneficia al proceso el cual la variable turno tiene su número, es decir, si turno = 0 le toca al proceso 0, pero si turno = 1 le toca al proceso 1. 
+
+**Cómo funciona el algoritmo de Dekker**
+Se tienen dos procesos, proceso A y proceso B, ambos ejecutándose sobre el SO y compartiendo una estructura de datos en memoria (Región Crítica). 
+
+### Problema del Productor Consumidor
+Ocurre cuando dos o más procesos (o hilos) comparten un área de memoria o almacenamiento común llamada búfer. 
+
+_Un búfer es un espacio de memoria temporal que se utiliza para almacenar datos mientras se trasladan de un lugar a otro. No existe un búfer como un componente único. Lo que existe son muchos búferes diferentes creados dinámicamente por el sistema operativo o lo programas según se necesiten. La función principal de un búfer es sincronizar dos componentes o procesos que funcionan a velocidades diferentes (por ejemplo, una CPU muy rápida y un disco duro o una impresora más lentos.)_
+
+**El productor**, genera datos o elementos y los coloca en el búfer. 
+**El consumidor**, extrae esos datos o elementos del búfer uno a uno para procesarlo. 
+
+Condiciones del problema: 
+- Si el búfer está completamente lleno, el productor no puede insertar nada más. Debe suspenderse hasta que el consumidor extraiga al menos un elemento. 
+- Si el búfer está completamente vacío, el consumidor no puede procesar nada. Debe suspenderse hasta que el productor genere y deposite al menos un elemento. 
+
+Para evitar la espera activa, el SO introduce dos llamadas al sistema fundamentales: 
+- **Sleep()**, el proceso que la invoca le indica voluntariamente al Kernel: "no puedo continuar". A nivel interno, el SO toma el PCB/TCB del proceso, cambia su estado de En Ejecución a Bloqueado, lo retira de la cola de Listos del planificador y lo coloca en una cola de procesos bloqueados. El planificador toma la CPU y despacha a otro proceso. El proceso dormido consume cero ciclos de procesador. 
+- **Wakeup**, una llamada al sistema que recibe como parámetro la referencia o identificador de un proceso dormido. El Kernel busca el PCB/TCB en la cola de los proceso Bloqueados, cambia su estado de Bloqueado a Listo y lo inserta nuevamente en la cola del planificador de la CPU para que vuelva a competir por tiempo de procesamiento o CPU. 
+

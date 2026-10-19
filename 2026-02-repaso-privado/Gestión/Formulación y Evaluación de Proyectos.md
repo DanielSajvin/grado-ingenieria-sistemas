@@ -127,6 +127,60 @@ Determina la viabilidad jurídica de un proyecto al establecer restricciones nor
 - _Derechos Morales_, son irrenunciables. Garantizan que el programador sea reconocido como el autor original (derecho de paternidad) y protegen la integridad de la obra contra modificaciones que dañen su reputación. 
 - _Derechos Patrimoniales_, son los derechos de explotación económica exclusiva (reproducir, distribuir, comercializar, modificar y licenciar el software). En proyectos de desarrollo. estos derechos deben cederse explícitamente y por escrito a favor de la empresa para que esta pueda vender el producto sin reclamos de los desarrolladores. 
 
+Acá también tenemos que ver la forma de inscripción de la empresa y bajo que régimen tributario pagará impuestos.
+
+**Forma de inscripción (Identidad Legal en el Registro Mercantil)**,  define qué tipo de persona o entidad eres ante la ley. Determina quién responde legal y económicamente por el negocio (si se responde con los bienes propios y personales o solo con el dinero aportado), cuántos dueños hay y quién firma como representante legal. Acá nos dan una patente de comercio ya sea como empresa o como sociedad. 
+**Régimen tributario (Obligación fiscal ante la SAT)**, define cómo, cuándo y qué porcentaje de impuestos se deben pagar al Estado sobre las ventas o ganancias. Acá nos dan un Número de Identificación Tributaria.
+
+#### Formas de Inscripción de una empresa 
+El código de comercio contempla principalmente las siguientes figuras para operar un negocio: 
+
+**Comerciante Individual (Empresa Individual)**
+- La titularidad la tiene una sola persona física. 
+- **Responsabilidad Ilimitada**, si el negocio contrae deudas o demandas, se responde con todo el patrimonio comercial (cuentas bancarias personales, vehículos, inmuebles personales). 
+- **Uso Ideal**, negocios pequeños, consultorías unipersonales, tiendas locales o profesionales independientes que arrancan con poco riesgo.
+
+**Sociedad Anónima** 
+- Titularidad dos o mas accionistas (personas individuales o jurídicas).
+- **Responsabilidad Limitada**, el patrimonio personal de los socios está protegido; ante quiebra o contingencias, únicamente responde el capital aportado a la sociedad. 
+- **Estructura**, requiere escritura pública constituida ante Notario, nombramiento de Representante Lega inscrito y emisión de acciones. 
+- **Uso Ideal**, empresas medianas a grandes, negocios con socios inversionistas, o actividades comerciales con contratos corporativos. 
+
+**Sociedad de Emprendimiento**
+- **Titularidad**, puede constituirse con uno o más socios. 
+- **Responsabilidad**, limitada al patrimonio aportado. 
+- **Ventajas**, no requiere escritura pública notarial para constitución inicial (se gestiona mediante estatutos en la plataforma del Registro Mercantil) y capital mínimo desde Q 1.00. 
+- **Limite Legal**, si los ingresos brutos superan los Q 5,000,000 anuales, la ley obliga a transformarse en otra sociedad mercantil tradicional (como S.A.). 
+
+#### Regímenes Tributarios ante la SAT
+La SAT divide el camino en dos opciones: _Régimen de Pequeño Contribuyente_ o _Régimen General_.
+
+**Régimen de Pequeño Contribuyente**
+Diseñado para negocios pequeños o personas individuales. 
+- **Límite de facturación**, hasta Q 150,000 en un año calendario (del 1 de enero al 31 de diciembre). Si se pasa este límite la SAT pasará en automático el negocio a Régimen General. 
+- **Modalidad Tradicional**, se paga el 5% mensual sobre el total facturado. 
+- **Modalidad Electrónica**, se paga el 4% mensual sobre todas las facturas electrónicas en línea (FEL) emitidas, en esta modalidad se autoriza a la SAT a hacer le débito en automático de nuestra cuenta bancaria. 
+- **Ventaja**, no se paga ISR ni ISO. El 5% o 4% es un pago definitivo. 
+- **Desventaja**, las facturas que se emitan no generan crédito fiscal de IVA para los clientes y tampoco nosotros podemos reclamar IVAS por nuestras compras. 
+
+**Régimen General (IVA + ISR)**
+Este régimen aplica de forma obligatoria si se factura más de Q 150,000 al año, o voluntariamente si los clientes corporativos exigen facturas con derecho a crédito fiscal. 
+
+_IVA en Régimen General_
+Se paga el 12% sobre el valor neto de las ventas o servicios.
+Funciona por compensación: se resta el IVA pagado en las compras (crédito fiscal) del IVA cobrado a los clientes (débito fiscal). Solo se paga la diferencia a la SAT a fin de mes. 
+El IVA es fijo el 12% ahora para el ISR están las siguiente opciones: 
+
+**_ISR - Impuesto Sobre la Renta_**
+- **Régimen Opcional Simplificado Sobre Ingresos**, la base para determinar cuánto se debe pagar es la facturación bruta mensual (ingresos sin IVA), sin importar si se tuvieron gastos o no. 
+	- 5% sobre los primeros Q 30,000 facturados al mes. 
+	- 7% sobre el excedente arriba de los Q 30,000 (más una cuota fija de Q 1,500)
+	- **Mecanismo**, nuestros clientes agentes de retención retienen este impuesto en la factura, o se paga directamente con declaración mensual. 
+- **Régimen Sobre las Utilidades**, la base para determinar cuánto se debe pagar son las ganancias reales (la utilidad neta fiscal). 
+	- Se paga 25% anual sobre la ganancia o utilidad neta. 
+	- _Pagos anticipados_, se presentan pagos trimestrales y una liquidación anual definitiva. 
+	- Requiere contabilidad formal completa llevada por un perito contador registrado. 
+
 ### Formas de Contratación 
 
 #### Relación de Dependencia 
