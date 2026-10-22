@@ -301,7 +301,7 @@ Se analiza una empresa en marcha o el rendimiento también de la empresa ya func
 
 **_Evaluación de Proyectos_**
 Se analiza la viabilidad de Inversiones y tiene una visión a futuro. Usa flujo de efectivo proyectados. Usa las siguientes herramientas: 
-- VPN (Valor Presente Neto)
+- VAN (Valor Actual Neto)
 - TIR (Tasa Interna de Retorno)
 - Payback (Período de Recuperación)
 
@@ -331,12 +331,12 @@ Estas herramientas NO usan datos contables históricos. Para evaluar una inversi
 
 Son los llamados **Parámetros o Criterios de Aceptación de un Proyecto: **
 
-**Valor Presente Neto (VPN - VAN)**
+**Valor Actual Neto (VPN - VAN)**
 Su objetivo principal es medir la generación de riqueza o valor absoluto que un proyecto le suma a la empresa, descontando todos los flujos futuros al costo de capital (TMAR). 
-El criterio de aceptación es: _VPN >= 0_ se acepta. 
+El criterio de aceptación es: _VAN >= 0_ se acepta. 
 
 **Tasa Interna de Retorno (TIR)**
-El objetivo es medir la rentabilidad porcentual intrínseca anual que genera el dinero que se mantiene invertido en el proyecto. Es la tasa matemática exacta que hace que el VPN = 0. El criterio de aceptación es: _TIR >= TMAR_, se acepta, la rentabilidad del proyecto supera o igual al costo mínimo de oportunidad de dinero, cubre todo y genera ganancia o por lo menos alcanzó a cubrir sus costos. 
+El objetivo es medir la rentabilidad porcentual intrínseca anual que genera el dinero que se mantiene invertido en el proyecto. Es la tasa matemática exacta que hace que el VAN = 0. El criterio de aceptación es: _TIR >= TMAR_, se acepta, la rentabilidad del proyecto supera o iguala al costo mínimo de oportunidad de dinero, cubre todo y genera ganancia o por lo menos alcanzó a cubrir sus costos. 
 
 **Período de Recuperación (Payback)**
 Se encarga de medir el tiempo exacto (años, meses) que tarda el proyecto en devolver el capital invertido en el año 0 a través de sus flujos de efectivo. 

@@ -608,7 +608,7 @@ Es una técnica de diseño. Es la arquitectura o método que se aplica para cone
 Es el proceso de reenviar el tráfico de red desde una VLAN hacia otra utilizando un dispositivo de capa 3 (un router o un switch multicapa).  Existen tres principales métodos: 
 
 **Enrutamiento Heredado - Legacy**
-Consiste en conectar un cable de red físico independiente desde un puerto del switch hacia un interfaz física del router por cada VLAN que exista en la empresa. 
+Consiste en conectar un cable de red físico independiente desde un puerto del switch hacia una interfaz física del router por cada VLAN que exista en la empresa. 
 
 **Router on a Stick**
 Se conecta un único cable físico entre un puerto del switch y una sola interfaz física del router. Ese cable se configura como un enlace Troncal. 

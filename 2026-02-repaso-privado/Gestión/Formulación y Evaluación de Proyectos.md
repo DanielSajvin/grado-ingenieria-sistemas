@@ -6,6 +6,8 @@ Las empresas no hacen un proyecto porque sí; los hacen con dos fines principale
 	1. Reemplazo
 	2. Ampliación
 	3. Abandono 
+
+![561](../recursos/Pasted%20image%2020261020170910.png)
 ## Etapas de los proyectos de inversión
 Todo proyecto tiene que pasar por tres grandes fases: 
 1. **Pre-inversión**, aquí es donde se formula y evalúa el proyecto, de la siguiente forma: 
@@ -99,6 +101,7 @@ De dónde se puede obtener el dinero para el año 0, es decir, para iniciar la i
 Antes de poder calcular estos, se tiene que tener ya preparado el _Flujo de Caja Proyectado_ (Ingresos - Egresos, pagando impuestos, sumando depreciaciones). Entonces ya con los flujos netos futuros se le aplican los siguiente criterios: 
 
 **Tasa Mínima Aceptable de Rendimiento (TMAR)**, es la tasa de interés mínima que se le exige al proyecto. Es decir, es lo mínimo que voy aceptar de ganancias que genere el proyecto. 
+![465](../recursos/Pasted%20image%2020261020211319.png)
 
 **Valor Actual Neto (VAN)**, se tiene que traer todo el dinero proyectado que se va a ganar en el futuro (año 1, 2, 3, ...) al valor del dinero de hoy y se le tiene que restar o descontar la _Tasa Mínima Aceptable de Rendimiento_.
 - Si VAN > 0, el proyecto genera ganancias. **Se Acepta**
@@ -143,7 +146,7 @@ El código de comercio contempla principalmente las siguientes figuras para oper
 **Sociedad Anónima** 
 - Titularidad dos o mas accionistas (personas individuales o jurídicas).
 - **Responsabilidad Limitada**, el patrimonio personal de los socios está protegido; ante quiebra o contingencias, únicamente responde el capital aportado a la sociedad. 
-- **Estructura**, requiere escritura pública constituida ante Notario, nombramiento de Representante Lega inscrito y emisión de acciones. 
+- **Estructura**, requiere escritura pública constituida ante Notario, nombramiento de Representante Legal inscrito y emisión de acciones. 
 - **Uso Ideal**, empresas medianas a grandes, negocios con socios inversionistas, o actividades comerciales con contratos corporativos. 
 
 **Sociedad de Emprendimiento**
@@ -157,9 +160,9 @@ La SAT divide el camino en dos opciones: _Régimen de Pequeño Contribuyente_ o 
 
 **Régimen de Pequeño Contribuyente**
 Diseñado para negocios pequeños o personas individuales. 
-- **Límite de facturación**, hasta Q 150,000 en un año calendario (del 1 de enero al 31 de diciembre). Si se pasa este límite la SAT pasará en automático el negocio a Régimen General. 
+- **Límite de facturación**, hasta Q 500,285 en un año calendario (del 1 de enero al 31 de diciembre). Si se pasa este límite la SAT pasará en automático el negocio a Régimen General. 
 - **Modalidad Tradicional**, se paga el 5% mensual sobre el total facturado. 
-- **Modalidad Electrónica**, se paga el 4% mensual sobre todas las facturas electrónicas en línea (FEL) emitidas, en esta modalidad se autoriza a la SAT a hacer le débito en automático de nuestra cuenta bancaria. 
+- **Modalidad Electrónica**, se paga el 4% mensual sobre todas las facturas electrónicas en línea (FEL) emitidas, en esta modalidad se autoriza a la SAT a hacer el débito en automático de nuestra cuenta bancaria. 
 - **Ventaja**, no se paga ISR ni ISO. El 5% o 4% es un pago definitivo. 
 - **Desventaja**, las facturas que se emitan no generan crédito fiscal de IVA para los clientes y tampoco nosotros podemos reclamar IVAS por nuestras compras. 
 
@@ -201,3 +204,41 @@ Regido por el código de trabajo. Se configura cuando existen tres elementos: su
 #### Contrato de Servicios Profesionales
 Regido por el Código Civil. Aplica cuando el profesional trabaja con total autonomía técnica, sin horario impuesto, utilizando sus propias herramientas y cobrando contra entrega de hitos o entregables mediante facturación electrónica. 
 La ventaja de esto es que la empresa no asume pasivo laboral ni cuotas patronales. 
+
+<hr>
+### Pre Inversión a detalle 
+1.1 **Idea**
+- **Objetivo:** Identificar un problema, una necesidad insatisfecha o una oportunidad de negocio, y proponer una alternativa preliminar de solución.
+- **Qué se hace:**
+    - Se realiza un diagnóstico muy rápido de la situación actual.
+    - Se define de forma general qué se quiere lograr.
+    - Se recopila información preliminar o intuitiva (experiencias previas, datos numéricos básicos).
+    - No se hacen cálculos profundos; solo se justifica si vale la pena o no dedicar tiempo a estudiar la idea.
+
+1.2 **Perfil**
+- **Objetivo:** Evaluar la viabilidad técnica y económica de la idea a grandes rasgos, utilizando información de fuentes secundarias (estadísticas existentes, internet, expertos) para descartar opciones no viables.
+- **Qué se hace:**
+    - Se analiza el mercado de forma superficial (¿hay demanda para esto?).
+    - Se estiman a "groso modo" los costos de inversión y operativos.
+    - Se identifican los posibles riesgos o trabas legales/ambientales.
+    - **Resultado:** Se decide si el proyecto se rechaza, se pospone o si pasa a la siguiente etapa (Prefactibilidad).
+
+1.3 Prefactibilidad (o Estudio de Prefactibilidad)
+- **Objetivo:** Analizar y comparar diferentes alternativas técnicas y de localización para el proyecto, seleccionando la mejor opción basada en criterios económicos, financieros y sociales.
+- **Qué se hace:**
+    - Se profundiza en la investigación (se usan encuestas básicas, cotizaciones reales, estudios de campo preliminares).
+    - Se evalúan distintas tecnologías, tamaños de planta o ubicaciones geográficas.
+    - Se realizan flujos de caja proyectados preliminares (cálculo de VAN y TIR aproximados).
+    - **Resultado:** Se selecciona **una sola alternativa** (la óptima) para ser estudiada a detalle en la siguiente fase.
+
+1.4 Factibilidad (o Estudio de Factibilidad)
+- **Objetivo:** Demostrar de forma definitiva y con el menor margen de error posible que la alternativa seleccionada es viable en todos sus aspectos (financiero, técnico, legal, ambiental y social) para proceder a buscar financiamiento.
+- **Qué se hace:**
+    - Se trabaja únicamente sobre la alternativa elegida en la prefactibilidad.
+    - Se realizan estudios de ingeniería detallados (planos iniciales, especificaciones técnicas exactas).
+    - Se tramitan permisos legales y licencias ambientales preliminares.
+    - Se afina el presupuesto y el cronograma de ejecución con alta precisión.
+    - **Resultado:** El proyecto queda "listo para financiamiento" y se da luz verde para pasar a la fase de **Inversión** (diseño final y construcción).
+
+
+<hr>
