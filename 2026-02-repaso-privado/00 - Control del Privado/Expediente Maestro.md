@@ -69,3 +69,14 @@ Esta nota Markdown es la **fuente de verdad** en Obsidian. Los tres proyectos de
 
 ## Transición entre chats
 Cuando un chat se vuelva largo, su respuesta deje de integrar contexto previo o concluya una unidad, pedir **Cierre y traspaso** con: (1) objetivo, (2) cobertura validada, (3) errores no resueltos, (4) decisiones y fuentes, (5) próximos pasos, (6) enlaces a apuntes y (7) bloque para expediente maestro. Abrir chat nuevo de la misma área y cargar ese bloque + expediente actualizado. No confiar en un número fijo de mensajes ni en supuesta memoria perfecta.
+
+## Protocolo operativo de sincronización (23 de noviembre de 2026)
+- **Repositorio oficial:** `DanielSajvin/grado-ingenieria-sistemas`, rama `main`, carpeta `2026-02-repaso-privado/00 - Control del Privado/`.
+- **Al iniciar una sesión:** solicitar al asistente consultar este archivo directamente desde GitHub antes de planificar; no tratar las copias adjuntas en las fuentes de los proyectos como versiones vigentes.
+- **Durante la sesión:** usar el programa y apuntes pertinentes; evaluar con preguntas sin pistas y casos/diagramas antes de asignar `DOMINADO_VERIFICADO`.
+- **Al terminar:** el asistente redacta un registro factual, lee la versión más reciente del archivo y, cuando la conexión de GitHub permita escritura, lo actualiza usando el SHA vigente. Verifica después la escritura. No reescribe ni borra registros previos; si hay conflicto, vuelve a leer y concilia antes de reintentar. Si la escritura falla o no está disponible, entrega el bloque Markdown para incorporar manualmente.
+- **El estudiante sincroniza GitHub a su computadora** mediante Git (por ejemplo, `git pull --ff-only` si su árbol de trabajo está limpio) antes de abrir la nota actualizada en Obsidian. Si hay cambios locales pendientes, primero guardarlos/confirmarlos y resolver cualquier conflicto; nunca reemplazar o forzar cambios a ciegas.
+- **Cambios locales:** los apuntes modificados en Obsidian no se reflejan en GitHub hasta hacer commit y push mediante Git; antes de estudiar nuevas versiones, verificar que se han sincronizado.
+- **Entre proyectos:** Informática, Sistemas y Gestión comparten este expediente mediante lectura del repositorio, no por memoria interproyecto. Las fuentes adjuntas a cada proyecto son copias estáticas.
+- **Privacidad:** el repositorio es público. No registrar datos personales innecesarios, calificaciones privadas de terceros, credenciales ni información sensible en el expediente o las notas.
+- **Traspaso entre chats:** al cerrar una unidad generar un resumen de continuidad; registrar los hechos verificables en el expediente y abrir un chat nuevo con enlace al registro vigente. El asistente no puede prometer detección perfecta de pérdida de contexto.
