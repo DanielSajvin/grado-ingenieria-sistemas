@@ -135,30 +135,46 @@ Acá también tenemos que ver la forma de inscripción de la empresa y bajo que 
 **Forma de inscripción (Identidad Legal en el Registro Mercantil)**,  define qué tipo de persona o entidad eres ante la ley. Determina quién responde legal y económicamente por el negocio (si se responde con los bienes propios y personales o solo con el dinero aportado), cuántos dueños hay y quién firma como representante legal. Acá nos dan una patente de comercio ya sea como empresa o como sociedad. 
 **Régimen tributario (Obligación fiscal ante la SAT)**, define cómo, cuándo y qué porcentaje de impuestos se deben pagar al Estado sobre las ventas o ganancias. Acá nos dan un Número de Identificación Tributaria.
 
-#### Formas de Inscripción de una empresa 
+### Formas de Inscripción de una empresa 
 El código de comercio contempla principalmente las siguientes figuras para operar un negocio: 
 
-**Comerciante Individual (Empresa Individual)**
+#### **Comerciante Individual (Empresa Individual)**
 - La titularidad la tiene una sola persona física. 
 - **Responsabilidad Ilimitada**, si el negocio contrae deudas o demandas, se responde con todo el patrimonio comercial (cuentas bancarias personales, vehículos, inmuebles personales). 
 - **Uso Ideal**, negocios pequeños, consultorías unipersonales, tiendas locales o profesionales independientes que arrancan con poco riesgo.
+Conviene cuando se quiere operar con la menor fricción burocrática y el menor costo operativo posible. Se elige también cuando el negocio no tiene pasivos pesados (no se compra maquinaria a crédito, no se piden préstamos bancarios grandes, no se tienen empleados fijos). 
 
-**Sociedad Anónima** 
+#### **Sociedad Anónima** 
 - Titularidad dos o mas accionistas (personas individuales o jurídicas).
 - **Responsabilidad Limitada**, el patrimonio personal de los socios está protegido; ante quiebra o contingencias, únicamente responde el capital aportado a la sociedad. 
 - **Estructura**, requiere escritura pública constituida ante Notario, nombramiento de Representante Legal inscrito y emisión de acciones. 
 - **Uso Ideal**, empresas medianas a grandes, negocios con socios inversionistas, o actividades comerciales con contratos corporativos. 
+Se recomienda cuando se busca escalabilidad, socios inversionistas, licitaciones o proyectos grandes, y también cuando se busca protección frente a contratos de alto impacto financiero. 
+Si se quiere negociar las empresas grandes solo firman contratos con S.A. con historial y con una estructura bien definida; también los bancos probablemente aprueben de manera más fácil un préstamo a una S.A. que una una S.E. o a un comerciante individual. 
+
+Una sociedad anónima se divide en socios, es decir, un socio es una persona jurídica que aporta dinero, bienes o trabajo a una empresa y a cambio se convierte en propietaria de una parte de esa empresa. Esta parte de la empresa, es más bien, que el socio puede aspirar a conseguir una parte del capital de la empresa, esa parte o partes en la que se divide el capital son las acciones; una acción es "qué porcentaje de la empresa tengo", entonces al propietario de cada acción se convierte en un accionista. 
+
+**Tipos de Socios**
+1. **Socio Preferente**, este tipo de socio tiene cierta ventaja sobre los demás, es decir, a este tipo de socio se le pagan primero sus dividendos antes que a los demás, y se le paga de forma segura, es decir, a este socio no le importa si la empresa ganó o perdió dinero, ya que a el de forma fija se le darán sus dividendos; a cambio de este beneficio, este tipo de socio solo tiene voz más no tiene voto, es decir, puede opinar y todo pero cuando se haga una votación para tomar decisiones este tipo de socio no será tomado en cuenta. 
+2. **Socio Ordinario (Accionista común)**, es el socio normal, este asume cierto riesgo, porque sus dividendos dependerán de si se ganó o se perdió dinero en la empresa, estos tipos de socios cobrarán sus dividendos después de que la empresa haya cubierto los compromisos con los acreedores y las cuotas preferentes de los socios preferentes. Si la empresa genera pocas utilidades o nulas, no recibe dividendos. También en caso de liquidación estos socios serán los últimos en recibir lo que sobre, asumiendo que sobró algo. Pero a cambio de todos estos riesgos, el socio ordinario tiene voz y voto pleno, es decir, pueden decidir qué hacer con la empresa. 
 
 **Sociedad de Emprendimiento**
 - **Titularidad**, puede constituirse con uno o más socios. 
 - **Responsabilidad**, limitada al patrimonio aportado. 
 - **Ventajas**, no requiere escritura pública notarial para constitución inicial (se gestiona mediante estatutos en la plataforma del Registro Mercantil) y capital mínimo desde Q 1.00. 
 - **Limite Legal**, si los ingresos brutos superan los Q 5,000,000 anuales, la ley obliga a transformarse en otra sociedad mercantil tradicional (como S.A.). 
+Se elige cuando queremos proteger nuestro patrimonio personal o solo se tiene un único socio (yo soy el único fundador), pero no se dispone de Q 5,000 (gastos de inscripción) para pagar una escritura pública notarial y tampoco se quiere la burocracia de una S.A.
+Este tipo de sociedad no puede recibir inversión de fondos de capital de riesgo ni de otras empresas, porque la ley prohíbe que personas jurídicas sean accionistas.
 
-#### Regímenes Tributarios ante la SAT
+**_Criterios de Decisión_**
+- Si se va a prestar servicios profesionales o consultorías por mi propia cuenta, no es ni necesarios ser comerciante individual, se puede operar como persona individual (servicios técnicos/profesionales) ante la SAT. 
+- Si se lanza una plataforma SaaS o startup con recursos propios, es mejor una _Sociedad de Emprendimiento S.E._
+- Si se manejan transacciones financieras, datos sensibles, se contrata personal o se buscan inversionistas lo mejor es una _Sociedad Anónima_. 
+
+### Regímenes Tributarios ante la SAT
 La SAT divide el camino en dos opciones: _Régimen de Pequeño Contribuyente_ o _Régimen General_.
 
-**Régimen de Pequeño Contribuyente**
+#### **Régimen de Pequeño Contribuyente**
 Diseñado para negocios pequeños o personas individuales. 
 - **Límite de facturación**, hasta Q 500,285 en un año calendario (del 1 de enero al 31 de diciembre). Si se pasa este límite la SAT pasará en automático el negocio a Régimen General. 
 - **Modalidad Tradicional**, se paga el 5% mensual sobre el total facturado. 
@@ -166,7 +182,11 @@ Diseñado para negocios pequeños o personas individuales.
 - **Ventaja**, no se paga ISR ni ISO. El 5% o 4% es un pago definitivo. 
 - **Desventaja**, las facturas que se emitan no generan crédito fiscal de IVA para los clientes y tampoco nosotros podemos reclamar IVAS por nuestras compras. 
 
-**Régimen General (IVA + ISR)**
+**Cuando Conviene inscribirse en este Régimen**
+- Los ingresos anuales son menores a Q. 500,285
+- Cuando se vende al consumidor final o personas particulares, clientes a quienes no les interesa recibir crédito fiscal de IVA. 
+
+#### **Régimen General (IVA + ISR)**
 Este régimen aplica de forma obligatoria si se factura más de Q 150,000 al año, o voluntariamente si los clientes corporativos exigen facturas con derecho a crédito fiscal. 
 
 _IVA en Régimen General_
@@ -179,10 +199,32 @@ El IVA es fijo el 12% ahora para el ISR están las siguiente opciones:
 	- 5% sobre los primeros Q 30,000 facturados al mes. 
 	- 7% sobre el excedente arriba de los Q 30,000 (más una cuota fija de Q 1,500)
 	- **Mecanismo**, nuestros clientes agentes de retención retienen este impuesto en la factura, o se paga directamente con declaración mensual. 
+	- **Cuando Conviene inscribirse en este Régimen**
+		- Empresas de servicios, consultoría y desarrollo de software, negocios donde el principal activo es el conocimiento y la mano de obra, lo que genera márgenes de ganancia netos muy altos. 
+		- Seguridad contable y menor riesgo fiscal, no se tiene que meter cada recibo, viático o factura de gasto a los informes para la SAT para ver si es deducible, ya que el impuesto se calcula sobre el ingreso bruto. 
 - **Régimen Sobre las Utilidades**, la base para determinar cuánto se debe pagar son las ganancias reales (la utilidad neta fiscal). 
 	- Se paga 25% anual sobre la ganancia o utilidad neta. 
 	- _Pagos anticipados_, se presentan pagos trimestrales y una liquidación anual definitiva. 
 	- Requiere contabilidad formal completa llevada por un perito contador registrado. 
+	- **Cuando Conviene inscribirse en este Régimen**
+		- Comercio, reventa, importación o distribución física, negocios que compran mercadería para revenderla con márgenes de ganancia reducidos. 
+		- Empresas con altos costos fijos comprobables, planillas con IGSS, alquileres de y maquinaria, conde los gastos representan el 75% o más de las ventas. 
+
+#### **Régimen de Fomento y Desarrollo de la Actividad Exportadora y de Maquila**
+Se incluyen los servicios vinculados a las tecnologías de la información y comunicación (TIC), específicamente: _desarrollo de software, desarrollo de contenido digital y centros de contacto, siempre que los servicios se presten a clientes no residentes en Guatemala (exportación de servicios)._
+**Beneficios para la empresa:**
+- Exoneración total del ISR durante 10 años, 0% de ISR sobre los ingresos netos provenientes exclusivamente de la exportación de software o servicios digitales. 
+- Suspensión y exención de aranceles e IVA de importación, aplicable a la importación de servidores, equipo de cómputo, componentes de red y maquinaria tecnológica necesaria para la operación. 
+- Exención de IVA en compras locales, para insumos y servicios directamente ligados a la exportación calificada. 
+**Requisitos para Optar a este Régimen:**
+1. Estar constituido como empresa (habitualmente como Sociedad Anónima)
+2. Solicitar la calificación del proyecto ante la Dirección de Servicios al Comercio y la Inversión del Ministerio de Economía. 
+3. Demostrar la generación de empleo formal con planillas presentadas ante el IGSS. 
+
+Tener en cuenta que solo los ingresos que se obtienen de la exportación son exentos del 100% de ISR y esos ingresos son facturados con el 0% de IVA. Ahora si se tienen ingresos por ventas o por servicios pero que se dan en el territorio nacional, es decir, dentro de Guatemala, eso se sigue haciendo de la forma normal, pagando ISR del régimen general y el 12% de IVA. 
+
+*Débito Fiscal, el IVA que yo cobro.
+Crédito Fiscal, el IVA que yo pago.*
 
 ### Formas de Contratación 
 

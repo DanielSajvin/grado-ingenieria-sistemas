@@ -689,3 +689,130 @@ Al transformar la orden en un objeto independiente (ficha o caja), esa acción a
 - **Invocador**, es el disparador. Mantiene una referencia a la interfaz Comando y llama a su ejecutar(). Nunca interactúa directamente con el receptor. 
 - **Cliente**, crea los receptores, instancia los comandos concretos pasándoles su receptor correspondiente y los asigna a los invocadores. 
 
+## DevOps
+DevOps no es una herramienta, no es un puesto de trabajo ni una metodología como Scrum. Es una filosofía de trabajo respaldada por prácticas técnicas, procesos, automatización y colaboración, cuyo objetivo es entregar software de manera rápida, frecuente, segura y confiable. 
+
+Tradicionalmente una empresa de desarrollo tiene dos equipos separados: 
+
+| Desarrollo (DEVelopment)                                                                                                                                                                       | Operaciones (OPS - Operations)                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Los programadores se encargan de: <br>1. Crear funcionalidades <br>2. Corregir errores <br>3. Programar frontend y backend<br>4. Entregar una nueva versión de software<br>5. Probar el código | Los responsables de infraestructura se encargan de: <br>1. Administrar servidores <br>2. Publicar aplicaciones <br>3. Gestionar disponibilidad <br>4. Monitorear sistemas <br>5. Resolver problemas en producción |
+Lo que busca DevOps es eliminar estos dos equipos de trabajo, eliminar esa separación rígida de responsabilidades y convertir el desarrollo, la entrega y la operación en un proceso coordinado. 
+
+Cultura, Procesos y Herramientas.
+Permite entregar actualizaciones de software a alta velocidad, garantizando la calidad del código, estabilidad del software y evitando el aislamiento de los equipos. 
+
+No existe un puesto DevOps, la persona que se encarga de diseñar los procesos recibe el nombre de SRE - Site Reliability Engineer - Ingeniero de Confiabilidad del Sitio. 
+![](../recursos/Pasted%20image%2020261029084058.png)
+
+1. **Planning - Planeación**, se analizan los requerimientos del proyecto, se analiza y se planifica cómo desarrollar la solución, según la metodología de desarrollo que se esté utilizando; si es Scrum se realizan las historias de usuario y se planifican los entregables del primer sprint. 
+2. **Code - Código**, los programadores ya tienen sus tareas e historias de usuarios asignados y empiezan a escribir el código según lo que se les haya asignado.  
+3. **Build - Compilación**, es dónde todos los programadores juntan su código, se fusionan todas las ramas con la rama principal (Main), se entrega un ejecutable que haya pasado todas las pruebas de integración. 
+4. **Test - Pruebas**, se prueba el software para garantizar que funcione según los requerimientos que se pidieron al inicio, es decir, que cubra las necesidades del cliente y que ver que lo que se hizo sea verdaderamente lo que se necesitaba. 
+5. **Release - Lanzamiento**, después de pasar todas las pruebas ya se crea la versión final (puede ser una imagen, un ejecutable) del software, esta versión ya probada es la que está lista para pasar a producción, es decir, es la versión del software que estará ya en un entorno real, la versión con la que los usuarios finales o el cliente va interactuar, es la que ya está en funcionamiento.
+6. **Deploy - Despliegue**, es enviar la versión final a los servidores de producción, para que los usuarios finales ya la puedan usar. 
+7. **Operate - Operaciones**, esta etapa aunque se encuentre al final, no significa que ocurra solamente al final, si no que ocurre en todo el ciclo; en esta etapa se encuentran las tareas de configuraciones de los sistemas, tareas de optimización de recursos, tareas de implementación de infraestructura, cómo configuraciones de bases de datos, servidores, backups. 
+8. **Monitor - Monitoreo**, consiste en utilizar herramientas que estén monitoreando (viendo) siempre a la aplicación (porque los sistemas pueden fallar en cualquier momento) para saber si puede llegar a fallar, ya sea por sobrecarga, o por si existe algún otro fallo, también ayuda a identificar que en el caso que falle el software saber exactamente qué lo hizo fallar o por qué falló, de esta manera se logra poder corregir lo más rápido posible ese fallo y hacer que la aplicación siga funcionando. 
+
+#### CI/CD
+No sirve de nada si tenemos este ciclo de desarrollo, si al final en cada etapa nos detenemos demasiado o siguen habiendo atrasos, el objetivo es pasar cada fase de la manera más rápida, es decir, desde que el programador envía sus cambios, las demás fases deberían ser automáticas y rápidas. 
+
+**CI - Continous Integration - Integración Continua**
+Significa mezclar el código, es decir, cada programador escribe código en su propio entorno, entonces todo funciona porque lo que hace un programador no se mezcla con lo que hace otro programador, es hasta que todo se fusiona en la rama main por ejemplo que surgen los problemas, porque se mezcla el código de todos los programadores en un solo entorno general. La integración continua consiste en crear pruebas automatizadas, lo que se logra con esto es, cada vez que un programador envíe sus código o sus cambios estas pruebas corran de manera automática y revisen si su código cumpla con los estándares ya definidos, políticas o que este nuevo código no entre en conflicto con código que ya existe en este entorno general.
+Si cumple con todo eso se acepta el cambio y el nuevo código se integra de forma automática. De lo contrario si no pasa las pruebas, se le devuelve el código al programador. 
+Otra ventaja es que rápido y de forma automática se tiene retroalimentación, de sí el cambio fue aceptado o no, entonces rápido se sabe si hay algo que corregir y se hace inmediato. 
+
+**CD - Continous Delivery - Entrega Continua**
+Se encarga de tomar el código o la versión del software que ya pasó las pruebas de integración (CI), crear un ejecutable o más bien crear un paquete que contenga ya la versión final de ese software y que ya puede pasar a producción. 
+Entonces básicamente es, el código de envía el programador llega rápido y de forma automática a producción y si no llega se le devuelve al programador para que arregle lo que haya fallado. 
+
+**Herramientas para DevOps**
+1. **Herramientas para planeación**, se analizan requerimientos y se van asignando tareas. 
+	1. Jira - Scrum 
+	2. Asana
+	3. Trello 
+	4. Notion 
+2. **Herramientas para Código**
+	1. GitHub - Control de versiones y gestión de repositorios 
+	2. GitLab - herramientas de pipeline de CI/CD 
+	3. Apache Maven 
+	4. Gradle 
+3. **Herramientas para Testing**
+	1. Selenium 
+	2. Gremlin 
+4. **CI/CD - Release y Deploy**
+	1. Jenkins 
+	2. GitHub Actions
+	3. GitLab 
+5. **Herramientas para Operaciones**, configurar y dar mantenimiento a toda la infraestructura 
+	1.  Terraform - Infraestructura como código 
+	2. Contenedores y Microservicios - Docker, Kubernetes 
+6. **Herramientas para Monitoreo**
+	1. Amazon Cloud Watch
+
+## Patrones de Diseño 
+Un patrón de diseño es una solución general, reutilizable y probada conceptualmente para un problema de diseño que aparece frecuentemente en el desarrollo de software. No es un biblioteca, un framework ni una pieza de código que se copia. Es una forma de organizar responsabilidades y colaboraciones dentro del sistema. 
+
+#### Tipos de Patrones de Diseño 
+Se dividen en tres grandes familias: 
+1. **Patrones Creacionales**, resuelven problemas relacionados con cómo se crean y configuran los objetos. 
+	1. Singleton
+	2. Factory Method 
+	3. Abstract Factory 
+	4. Builder 
+	5. Prototype
+2. **Patrones Estructurales**, resuelven problemas relacionados con cómo se conectan y organizan clases y objetos. 
+	1. Adapter
+	2. Bridge 
+	3. Composite 
+	4. Decorator
+	5. Facade
+	6. Flyweight
+	7. Proxy 
+3. **Patrones de Comportamiento**, resuelven problemas relacionados con cómo los objetos se comunican, distribuyen responsabilidades y coordinan acciones. 
+	1. Chain of Responsability 
+	2. Command 
+	3. Interpreter 
+	4. Interator 
+	5. Mediator 
+	6. Memento 
+	7. Observer 
+	8. State
+	9. Strategy
+	10. Template Method 
+	11. Visitor 
+
+#### Patrones Creacionales 
+Los patrones creacionales buscan responder una pregunta: _¿Cómo podemos crear objetos de manera controlada, flexible y sin generar dependencias innecesarias?_
+
+**Singleton**
+_Control de Instancias_
+Garantiza que una clase tenga una sola instancia dentro del ámbito definido y proporciona un punto de acceso a esa instancia. 
+- **Instancia**, es un objeto concreto creado a partir de una clase. Un clase es dónde se define el objeto, una instancia es el objeto que existe durante la ejecución. 
+- **Única instancia**, no significa que solo pueda existir en todo internet o en todos los servidores. Normalmente significa una única instancia por proceso, aplicación o contenedor de ejecución, según la implementación. 
+_Singleton trata de controlar la identidad y la cantidad de instancias, no simplemente de hacer que algo sea accesible desde cualquier lugar_. 
+
+*Singleton es un patrón de diseño creacional cuyo objetivo es garantizar que una clase tenga una única instancia dentro de un ámbito determinado y proporcionar un punto de acceso a ella. Su funcionamiento consiste en controlar la creación de esa instancia. Cuando un módulo o componente solicita una instancia, primero verifica si ya existe para reutilizar esa instancia, si no existe crea una nueva y la guarda para su uso posterior*.
+Se recomienda utilizarlo cuando existe una necesidad de controlar una instancia única dentro de un ámbito de ejecución. Un ejemplo puede ser un administrador de recursos de una aplicación o un registro central de componentes. 
+
+**Factory Method**
+_Creación Polimórfica_
+Su objetivo es definir un método para crear objetos mediante una abstracción, permitiendo que las subclases decidan qué tipo concreto de producto instanciar. Factory Method no significa simplemente colocar la creación de objetos dentro de una función llamada crear. Existe una clase creadora que define un método de fábrica (un método que contiene la lógica general o los pasos bases para crear algo), son las subclases especializadas que implementan esta clase creadora general y modifican sus métodos para lograr entregar productos distintos en concreto. 
+_Ejemplo, notificar al cliente que su compra fue exitosa (sistema de notificaciones)_. 
+Se recomienda utilizar cuando una clase tiene un proceso general que debe trabajar con diferentes tipos de productos, pero se quiere permitir que sus subclases decidan cuáles crear. 
+Por ejemplo: 
+- Sistemas que generan diferentes documentos 
+- Aplicaciones extensibles mediante complementos
+_Evita que la lógica principal dependa directamente de las clases concretas de los objetos que se necesita crear_.
+
+Existen dos familias: 
+- **Productos**, representan los objetos que se quieren obtener (son métodos). 
+	- notificacion
+	- notificacionEmail
+	- notificacionSms
+- **Creadores**, representan las clases responsables de producir esos objetos. 
+	- creadorNotificacion
+	- creadorEmail
+	- creadorSms
+
+_Fatory Method es un patrón de diseño creacional cuyo objetivo es desacoplar la creación de objetos concretos de la lógica que los utiliza. Funciona definiendo una lase creadora que establece un proceso general y un método de fábrica. Las subclases especializadas heredan de este creador y redefinen el método para producir diferentes tipos de objetos que comparten un contrato_.

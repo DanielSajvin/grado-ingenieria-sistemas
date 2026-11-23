@@ -103,3 +103,38 @@ Se clasifica según el grado de confidencialidad y el impacto que provocaría la
 3. **Confidencialidad**, datos de valor cuya divulgación o alteración causaría pérdidas financieras, sanciones regulatorias o daño a la reputación (datos personales de empleados o clientes, estados financieros, contratos con proveedores).
 4. **Restringido o Crítico**, información de máxima sensibilidad dentro de la organización. Solo un puñado de personas autorizadas tiene acceso. (claves privadas de cifrado, secretos industriales, algoritmos propietarios, contraseñas maestras, credenciales de infraestructura).
 
+#### Protección de los Datos Sensibles 
+Los datos deben salvaguardarse en sus tres estados posibles mediante controles criptográficos y de acceso estricto: 
+- **Datos en Reposo**
+	- *Técnicas*, cifrado simétrico a nivel de almacenamiento o base de datos. 
+	- *Herramientas cotidianas*, Cifrado de Datos Transparente (TDE), es una tecnología utilizada en SQL Server, Azure y otros motores de bases de datos para cifrar los datos en reposo (los archivos físicos de la base de datos en el disco y las copias de seguridad). 
+- **Datos en Tránsito**
+	- *Técnicas*, encapsulación del tráfico de túneles criptográficos seguros para evitar la intercepción (evitar Man-in-the-middle). 
+	- *Herramientas*, forzar HTTPS con TLS 1.3 en servicios web, uso de SSH para administración remota, VPNs empresariales para interconexión de sucursales o teletrabajo. 
+- **Datos en Uso**
+	- *Técnicas*, aislamiento de memoria y control estricto de visibilidad durante el procesamiento. 
+	- *Herramientas*, enmascaramiento dinámico de datos, para que los demás usuarios solo vean (xxx-xxx-123) y gestión de secretos centralizada (HashiCorp Vault, AWS Secrets Manager) para no quemar contraseñas en código fuente. 
+- **Integridad y Disponibilidad del Dato**
+	- Hashes criptográficos y firmas digitales para validar que el dato no fue alterado. 
+	- Respaldos periódicos e inmutables (protegidos contra ransomware) siguiendo la regla 3-2-1. 3 copias, en 2 medios distintos, con 1 fuera de línea o en la nube. 
+
+#### Protección del Sistema y Aplicaciones 
+Comprende la seguridad del SO, las plataformas de red y las aplicaciones que interactúan directamente con los datos: 
+- **Hardening**, reducir al mínimo la superficie de ataque del sistema operativo. 
+	- *Acciones*, cerrar puertos no indispensables, desinstalar servicios y programas por defecto, aplicar guías estándar de la industria y mantener una gestión estricta de parches de seguridad. 
+- **Control de identidad y acceso**
+	- *Acciones*, implementar autenticación multifactor obligatoria, gestión de accesos basada en roles y directorios centrales (Active Directory). 
+- **Seguridad en Red y Perímetro**
+	- *Técnica*, segmentación lógica de tráfico para contener intrusiones. 
+	- *Herramientas*, firewalls de siguiente generación, creación de VLANs, zonas desmilitarizadas para servidores públicos, firewalls de aplicaciones web (cloudflare, WAF) para detener ataques web comunes (inyecciones SQL, XSS).
+
+#### Protección del Hardware y Equipo Físico 
+Si un intruse tiene acceso físico directo al servidor, la seguridad lógica se vuelve vulnerable. La seguridad física garantiza principalmente la Disponibilidad y la Posesión del Activo.
+- **Control de Acceso al Centro de Cómputo**
+	- *Mecanismos*, puertas de seguridad reforzadas con autenticación de dos factores físicos (tarjeta de proximidad RFID combinada con biometría de huella o rostro).
+	- *Vigilancia*, circuito de cámaras con monitoreo continuo y retención prologada de grabaciones, sumado a bitácoras manuales o digitales de ingreso de visitas y técnicos.
+- **Resiliencia Ambiental y Eléctrica**
+	- *Energía*, sistemas de alimentación ininterrumpida (UPS) de doble conversión para suprimir picos y mantener la carga eléctrica mientras arranca la planta generadora. 
+	- *Climatización*, aire acondicionado con control estricto de temperatura y humedad para prevenir condensación o sobrecalentamiento de procesadores. 
+- **Destrucción y Disposición Segura**
+	- Des magnetizadores o trituración mecánica física de discos duros al terminar sus ciclo de vida útil, impidiendo la recuperación forense de datos residuales. 

@@ -620,3 +620,49 @@ Se utiliza en redes pequeñas o sucursales de empresas medianas donde no se cuen
 No existe ningún router externo para el tráfico local. Todo el enrutamiento ocurre internamente dentro de un Switch de capa 3. En la memoria del switch multicapa se crean interfaces virutales de software llamadas **Interfaces Virtuales**, utilizando el comando *interface vlan 10*, asignándole a cada una la dirección IP de la puerta de enlace. 
 
 Se utiliza en cualquier red empresarial. Elimina por completo los cuellos de botella porque el enrutamiento se realiza por hardware a velocidad de cable, alcanzando decenas de Gigabits por segundo sin saturar procesadores externos. 
+
+### STP - Spanning Tree Protocol 
+Es un protocolo de red de capa 2 (enlace de datos - MAC) que evita bucles y tormentas de broadcast en redes Ethernet mediante el bloque lógico de enlaces redundantes. 
+
+**Funciones Principales**
+- **Prevención de bucles**, elimina los bucles de conmutación que ocurren cuando existen múltiples caminos físicos entre los conmutadores (switches).
+- **Tolerancia a Fallos**, mantiene enlaces de respaldo listos para activarse automáticamente si el enlace principal falla.
+- **Elección del Puente Raíz**, el protocolo selecciona un switch principal (con la prioridad y dirección MAC más baja) como el centro de la topología. 
+
+**Evolución de STP**
+- **STP**, versión original, ofrece una convergencia lenta (tarda entre 30 y 50 segundos en reestructurarse).
+- **RSTP**, reduce drásticamente el tiempo de convergencia a menos segundos. 
+- **MSTP**, permite asociar múltiples VLANs a diferentes instancias de árbol de expansión para aprovechar mejor los enlaces. 
+![](../recursos/Pasted%20image%2020261028160753.png)
+
+**Enrutamiento Dinámico vs Estático**
+Las rutas estáticas son ideales para el borde perimetral hacia el proveedor de internet por ser deterministas y seguras. Sin embargo, en el interior del campus provocan sobrecarga operativa. 
+**Función en el Campus**
+OSPF reemplaza las rutas estáticas entres los switches Core y routers de los edificios, descubriendo subredes de forma autónoma y convergiendo ante caídas de fibra sin intervención manual. 
+
+#### OSPF (Open Shortest Path First - Primero el camino mas corto)
+OSPF es un protocolo de enrutamiento de _Estado de Enlace_ basado en estándares abiertos, diseñado bajo un esquema no propietario. 
+- **Mecanismo de Estado de Enlace**, a diferencia de los protocolos de vector de distancia (como RIP) que enrutan por "rumor" copiando tablas de vecinos, cada enrutador OSPF construye una copia exacta de la topología completa de la red en su propia memoria: la _Base de Datos de Estado de Enlace (LSDB)_.
+- **Algoritmo de Dijktsra (SPF - Shortest Path First)**, cada router procesa la _Base de Datos de Estado de Enlace (LSBD)_ de forma independiente utilizando el algoritmo matemático de Dijkstra. Se coloca a sí mismo como raíz de un árbol topológico y calcula la ruta más corta y eficiente (de menor costo acumulado) hacia cada subred destino, inyectando los mejores caminos en la tabla de enrutamiento principal. 
+_La métrica utilizada por OSPF es el Costo, un valor proporcional al ancho de banda del medio físico: a mayor velocidad de enlace, menor costo y mayor preferencia._
+
+Se debe definir un _Área 0_, es el área central obligatoria. Toda otra área del campus debe conectase físicamente o lógicamente al área 0. Áreas estándar, se crean para sucursales o edificios. El tráfico inter-área siempre debe cruzar a través del área 0 para evitar bucles de enrutamiento. 
+
+### DHCP 
+Protocolo de Configuración Dinámica de Host, es un protocolo cliente-servidor de la capa de Aplicación (capa 7), utiliza UDP, diseñado para automatizar la asignación y administración de parámetros de red en dispositivos finales. Sirve para asignarle IP a los dispositivos. 
+
+En lugar de que un administrador configure manualmente una dirección IP estática, máscara de subred, puerta de enlace predeterminada y servidores DNS en cada computadora o teléfono, el protocolo DHCP entrega estos valores bajo un esquema de "alquiler temporal", evitando erroes humanos de duplicidad de direcciones y reduciendo el costo operativo. 
+
+**Parámetros Principales que Entrega un Servidor DHCP**
+- _Dirección IP única del segmento correspondiente_.
+- _Máscara de subred para que el host delimite su red local_. 
+- _Puerta de enlace_, la IP de la interfaz virtual o del router local. 
+- _Servidores DNS_, para resolución de nombres de dominio. 
+- _Tiempo de concesión_, período durante el cual el cliente puede usar esa IP antes de solicitar una renovación. 
+
+**Flujo del funcionamiento de DHCP**
+Cuando una computadora arranca o se conecta un cable de red, su tarjeta de red no tiene IP. Para obtener una IP, ejecuta los siguientes 4 pasos, conocidos con el acrónimo de DORA: 
+1. **Discover -  Descubrimiento**, el dispositivo pregunta a la red si existe algún servidor DHCP activo disponible. Hace un broadcast en capa 3 con la dirección destino 255.255.255.255 y también hace una difusión de broadcast en capa 2 a la MAC FF:FF:FF:FF:FF:FF. 
+2. **Offer - Oferta**, el servidor DHCP escucha la petición, ahora el servidor DHCP le propone una IP que el tiene disponible al cliente. 
+3. **Request - Petición**, el dispositivo acepta la IP que el servidor le propuso. Al aceptar la IP el dispositivo también crea una tormenta de broadcast, para avisar a los demás servidores DHCP (si hay más de uno) que ese dispositivo ya tiene IP y que la que le habían reservado la pueden liberar. 
+4. **ACK - Confirmación**. confirmar que el dispositivo ya tiene red. En este punto el servidor guarda la dirección MAC del dispositivo que le pidió IP, entonces guarda. 

@@ -161,13 +161,13 @@ SISTMAS OPERATIVOS: Historia, Clasificacion de los sistemas operativos, procesos
 
 <hr> 
 
-## Repaso 
+# Repaso 
 
 ### Sistema Operativo
 El Sistema Operativo tiene dos propósitos fundamentales o se le conoce cómo: 
 
 **Máquina Extendida**
-El hardware (discos, memoria, procesador) es complejo y difícil de programar. El SO abstrae esta complejidad y le presenta a los programas interfaces limpias y sencillas (conocidas como Llamadas al Sistema o Systems Calls). En lugar de que un programa tenga que saber cómo mover el cabezal magnético de un disco duro, el SO le da la abstracción de "Archivo".
+El hardware (discos, memoria, procesador) es complejo y difícil de programar. El SO abstrae esta complejidad y le presenta a los programas interfaces limpias y sencillas (conocidas como Llamadas al Sistema o Systems Calls). En lugar de |que un programa tenga que saber cómo mover el cabezal magnético de un disco duro, el SO le da la abstracción de "Archivo".
 
 **Administrador de Recursos**
 Se tienen múltiples programas compitiendo por CPU, memoria y red al mismo tiempo. El SO es el administrador que se encarga de repartir estos recursos (los divide en el tiempo y en el espacio), y se hace esto para asegurar que ningún proceso acapare el sistema o corrompa los datos de otro. 
@@ -460,3 +460,64 @@ Para evitar la espera activa, el SO introduce dos llamadas al sistema fundamenta
 - **Sleep()**, el proceso que la invoca le indica voluntariamente al Kernel: "no puedo continuar". A nivel interno, el SO toma el PCB/TCB del proceso, cambia su estado de En Ejecución a Bloqueado, lo retira de la cola de Listos del planificador y lo coloca en una cola de procesos bloqueados. El planificador toma la CPU y despacha a otro proceso. El proceso dormido consume cero ciclos de procesador. 
 - **Wakeup**, una llamada al sistema que recibe como parámetro la referencia o identificador de un proceso dormido. El Kernel busca el PCB/TCB en la cola de los proceso Bloqueados, cambia su estado de Bloqueado a Listo y lo inserta nuevamente en la cola del planificador de la CPU para que vuelva a competir por tiempo de procesamiento o CPU. 
 
+## Semáforo 
+Es un mecanismo de sincronización (es una variable especial) que controla el acceso de varios procesos o hilos a un recurso compartido, evitando conflictos y condiciones de carrera. 
+
+**Componentes de un semáforo**
+- **Un contador entero**, indica cuántas unidades del recurso están libres (si vale >= 0). Representa cuántas unidades de un recurso están libres. 
+- **Una cola de procesos (Cola de Bloqueados)**, almacena los procesos o hilos que están esperando para usar el recurso. Una lista enlazada donde el kernel almacena los punteros a los bloques de control de procesos (PCB) que intentaron acceder al semáforo y tuvieron que ser suspendidos. 
+
+**Operaciones Principales**
+Un semáforo solo permite ser inicializado y manipulado mediante dos operaciones atómicas estándar. Estas dos operaciones estándar son las siguientes: 
+- **Wait (también llamada P o Esperar)**
+	- Decrementa el valor del contador. 
+	- Si el contador es negativo o cero, el proceso se bloquea y entra en la cola de espera sin consumir tiempo de CPU. 
+- **Signal (también llamada V o Liberar)**
+	- Incrementa el valor del contador. 
+	- Si hay procesos bloqueado en la cola, despierta a uno de ellos para que pueda continuar. 
+
+#### Tipos de Semáforos
+
+**Semáforo Binario**
+- Su contador ```valor``` solo puede oscilar entre 0 y 1.
+- Se inicializa en 1. 
+- Se utiliza para garantizar exclusión mutua en una región crítica. 
+_Objetivo_, garantizar que solo un proceso a la vez acceda a un recurso crítico. Su valor solo puede ser 1 (disponible) o 0 (ocupado). 
+Flujo de funcionamiento paso a paso: 
+1. Estado inicial: el semáforo arranca en 1 (disponible). 
+2. Llega el proceso A, quiere usar el recurso, ejecuta ```wait```, el semáforo decrementa en 1 y pasa de 1 a 0. 
+	1. *Como el valor no es negativo, el proceso A entra a la sección crítica*.
+3. Llega el proceso B y también quiere entrar, A se encuentra adentro de la región crítica aún, B ejecuta ```wait```, el semáforo decrementa en 1, cómo estaba en 0 ahora es -1. 
+	1. *Ahora como el resultado es negativo, el SO bloquea a B y lo pone en cola de espera*. 
+4. El proceso A termina, sale de la región crítica y ejecuta ```signal```, el semáforo incrementa en 1 y ahora cambia a 0. 
+	1. *La regla es que sí el resultado de signal es menor o igual a 0, es porque había uno o más procesos en cola de espera*.
+	2. En este caso como el resultado es 0 se sabe que había uno esperando, por lo tanto el semáforo se queda en 0 (ocupado), pero se le cede el paso a B, es decir, la región crítica sigue ocupada pero ya no por A si no se hizo el cambio y ahora la ocupa B. 
+5. El proceso B toma el control y entra, cuando este termina ejecuta ```signal```, el semáforo ahora incrementa en 1, cambia de 0 a 1. 
+	1. El resultado fue mayor a 0, es decir, no hay nadie en cola de espera. 
+6. El semáforo ahora queda 1 (libre). 
+
+**Semáforo Contador (es el normal)**
+- Su contador puede tomar cualquier valor entero no negativo. 
+- Se inicializa con el número ```N``` total de recursos físicos o lógicos disponibles. 
+- Permite que hasta ```N``` hilos accedan al conjunto de recursos de forma concurrente. 
+_Objetivo_, controlar el acceso a un recurso del cual existen múltiples copias idénticas disponibles. Su valor inicial indica la cantidad total de esas copias. 
+Flujo de funcionamiento paso a paso: 
+1. Estado inicial: el semáforo arranca en 3 (hay 3 espacios disponibles). 
+2. Llegan los proceso A, B y C (al mismo tiempo). Cada uno ejecuta ```wait```, el contador queda entonces en 0 y como habían tres espacios disponibles los tres recursos entran. 
+3. Llega el proceso D, quiere entrar y ejecuta ```wait```, decrementa en 1 el contador y ahora queda en -1. 
+	1. Cómo el resultado es negativo el SO bloquea a D y lo pone en la cola de espera. 
+4. Llega otro proceso E, ejecuta ```wait``` y decrementa en 1 el contador, ahora es -2. 
+	1. *El número negativo indica el número de procesos que hay en la cola de espera*.
+5. El proceso B termina, ejecuta ```signal``` si el contador incrementa en 1, ahora es -1. 
+	1. Cómo detecta que hay cola, despierta a D y le cede el espacio que dejó libre B. 
+6. Y así sucesivamente hasta completar todos los recursos. 
+
+_El semáforo contador limita el acceso de la infraestructura, evita que demasiados procesos saturen un búfer de memoria_.
+_El semáforo binario protege código sensible (bloques de líneas que modifican una variable común)_. 
+
+### Mutex (Mutual Exclusion Locks - Cerraduras de Exclusión Mutua)
+Un Mutex es una primitiva de sincronización diseñada específicamente para garantizar la exclusión mutua en el acceso a un recurso compartido único. Aunque conceptualmente se parece a un semáforo binario inicializado en 1, a nivel arquitectónico y de diseño de SO posee diferencia críticas que alteran la forma en que el Kernel gestiona la seguridad y el rendimiento. 
+
+**La diferencia fundamental: Principio de Propiedad**
+- Es un semáforo binario, no existe el concepto de dueño. El proceso A puede ejecutar ```wait``` para entrar a una región crítica y el Proceso B puede ejecutar ```signal``` para desbloquearlo. Funciona como un mecanismo de señalización entre hilos. 
+- En un **Mutex**, existe estricta propiedad. El hilo que bloque el mutex adquiere su posesión. 

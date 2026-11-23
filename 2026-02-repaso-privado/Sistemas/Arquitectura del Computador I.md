@@ -184,3 +184,7 @@ Dentro de la CPU existe la ALU (unidad aritmética lógica), la ALU también ser
 ### 32 bit
 
 ### 64 bit
+
+
+## Registros
+Los Registros son los elementos de almacenamiento más rápidos que existen, ubicados dentro del propio silicio de la CPU. 
