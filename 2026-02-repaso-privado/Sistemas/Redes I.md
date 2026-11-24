@@ -666,3 +666,15 @@ Cuando una computadora arranca o se conecta un cable de red, su tarjeta de red n
 2. **Offer - Oferta**, el servidor DHCP escucha la petición, ahora el servidor DHCP le propone una IP que el tiene disponible al cliente. 
 3. **Request - Petición**, el dispositivo acepta la IP que el servidor le propuso. Al aceptar la IP el dispositivo también crea una tormenta de broadcast, para avisar a los demás servidores DHCP (si hay más de uno) que ese dispositivo ya tiene IP y que la que le habían reservado la pueden liberar. 
 4. **ACK - Confirmación**. confirmar que el dispositivo ya tiene red. En este punto el servidor guarda la dirección MAC del dispositivo que le pidió IP, entonces guarda. 
+
+## Aseguramiento de disponibilidad de una LAN 
+### Protocolo de Redundancia de Primer Salto
+- **HSRP - Protocolo de Enrutador de Reserva en Caliente**, protocolo propietario de CISCO. 
+	- **Roles**
+		- Activo
+		- En Espera
+- **VRRP - Protocolo de Redundancia de Enrutador Virtual**, protocolo estándar abierto. Funciona en prácticamente cualquier fabricante (CISCO, Micro Tik, Huawei, Juniper, Aruba) y permite mezclar marcas. 
+	- **Roles**
+		- Maestro, es el que tiene prioridad mas alta
+		- Respaldo, prioridad más baja que el maestro y se encuentra en espera. 
+En ambos protocolos se configura una IP Virtual en ambos routers o switch multicapa. A los dispositivos finales se le configura como puerta de enlace esta IP virtual que ambos Routers o Switch tienen, para que en caso de fallar los dispositivos finales no noten el cambio de equipo físico. A pesar de cada router tiene la misma IP virtual, ambos conservan su propia IP "física real". Por lo tanto se puede aprovechar también el router que está de respaldo. 
