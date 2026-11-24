@@ -80,3 +80,17 @@ Cuando un chat se vuelva largo, su respuesta deje de integrar contexto previo o 
 - **Entre proyectos:** Informática, Sistemas y Gestión comparten este expediente mediante lectura del repositorio, no por memoria interproyecto. Las fuentes adjuntas a cada proyecto son copias estáticas.
 - **Privacidad:** el repositorio es público. No registrar datos personales innecesarios, calificaciones privadas de terceros, credenciales ni información sensible en el expediente o las notas.
 - **Traspaso entre chats:** al cerrar una unidad generar un resumen de continuidad; registrar los hechos verificables en el expediente y abrir un chat nuevo con enlace al registro vigente. El asistente no puede prometer detección perfecta de pérdida de contexto.
+
+## SIS-RED-2026-11-23 — Diagnóstico inicial de Redes (sesión 01)
+- **Área / curso / programas:** Sistemas; Redes I (2022), Redes II (2023), Redes y Telecomunicaciones 2025. **Prioridad A**, porque diseño de campus, redes IP y disponibilidad integran contenidos de los programas y del Privado.
+- **Apunte consultado:** `2026-02-repaso-privado/Sistemas/Redes I.md` (GitHub). El apunte acredita estudio anterior, no dominio.
+- **Registro detallado:** [Diagnóstico Inicial - Redes.md](./Diagnóstico%20Inicial%20-%20Redes.md).
+- **Fecha:** 2026-11-23. **Tiempo efectivo:** no registrado.
+- **Caso de pizarra:** campus ficticio de cuatro edificios (A 120, B 240, C 100, D 180 terminales), conexiones interedificios por fibra, arquitectura core/distribución/acceso, equipos multicapa, firewall/Dual WAN y redundancia propuesta; bloque `10.40.0.0/16` para etapa posterior.
+- **Evaluación oral / resultados satisfactorios:** defendió jerarquía física, diferencia entre switch de capa 2 y multicapa, límites del presupuesto y punto único de falla en distribución; predijo correctamente el efecto de caída de distribución; explicó gateway virtual, rol master/backup, conmutación sin cambiar IP de clientes y ausencia de balanceo automático en un grupo VRRP. Argumentó OSPF como alternativa de enrutamiento; validez condicionada a la existencia de rutas L3 adecuadas.
+- **Pendientes específicos:** precisión de velocidades/distancias de fibra multimodo; justificar mejor elección multicapa; verificar enlaces alternativos y alcance real de redundancia; distinguir VRRP de conectividad integral, prioridad/preemption y OSPF de rutas hacia redes destino; backbone vertical UTP por capacidad y distancias; STP y rutas redundantes sin prueba formal.
+- **Criterio y estado:** etapa I **completada satisfactoriamente**, pero competencias se mantienen **EN_ESTUDIO** hasta prueba independiente completa; **ninguna DOMINADO_VERIFICADO**. Etapa II **iniciada sin respuestas: NO_DIAGNOSTICADO**. Etapas III–VI pendientes: **NO_DIAGNOSTICADO**. Diagnóstico general **EN_ESTUDIO**.
+- **Prerrequisitos a comprobar si surgen fallos:** direccionamiento IP, VLAN/capa 2 y rutas L3. No se verificó persistencia de dudas antiguas en el apunte sobre bits/IP.
+- **Próxima acción:** retomar exactamente **Etapa II, pregunta 1: diseño de subredes**, sobre `10.40.0.0/16`; razonar organización por edificio/departamento, correspondencia VLAN-subred, crecimiento 30 % y VLSM; **no resolver por el estudiante ni avanzar a otras etapas**.
+- **Repaso:** recuperación breve en próxima sesión de arquitectura y gateway; refuerzo focalizado de aspectos físicos y redundancia en sus etapas posteriores. Fecha de siguiente sesión y repaso aún sin fijar.
+- **Fuentes verificadas:** expediente maestro y apunte en GitHub, programas adjuntos, 2026-11-23.
