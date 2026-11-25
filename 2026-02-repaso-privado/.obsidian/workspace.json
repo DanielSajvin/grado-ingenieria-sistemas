@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00 - Control del Privado/Expediente Maestro.md",
+                "file": "Sistemas/Redes I.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Expediente Maestro"
+              "title": "Redes I"
             }
           }
         ]
@@ -185,8 +185,9 @@
   },
   "active": "237af7dbf4bfad91",
   "lastOpenFiles": [
-    "Sistemas/Redes I.md",
+    "00 - Control del Privado/Diagnóstico Inicial - Redes.md",
     "00 - Control del Privado/Expediente Maestro.md",
+    "Sistemas/Redes I.md",
     "00 - Control del Privado/Inventario de materiales 1.csv",
     "Informática/Análisis y Diseño.md",
     "00 - Control del Privado/Inventario de materiales.csv",
